@@ -103,7 +103,7 @@ if [ "$FORCE_ASSETS" -eq 1 ] || ! assets_ready; then
                 ;;
         esac
         trap 'rm -rf "$TMP"' EXIT
-        VER="$(find "$TMP" -maxdepth 3 -path '*/qemu/src/VERSION' -print -quit)"
+        VER="$(find "$TMP" -maxdepth 4 -path '*/qemu/src/VERSION' -print -quit)"
         [ -n "$VER" ] || die "资产包内缺少 qemu/src/VERSION"
         ASSET_ROOT="${VER%/qemu/src/VERSION}"
         install_assets_from_dir "$ASSET_ROOT"
