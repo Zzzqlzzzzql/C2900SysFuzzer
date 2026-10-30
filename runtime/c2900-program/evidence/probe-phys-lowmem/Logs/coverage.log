@@ -1,0 +1,35 @@
+[2026-10-20 17:04:26] [INFO] config loaded: <PROJECT_ROOT>/runtime/c2900-program/config/monlib-probe-m7.json
+[2026-10-20 17:04:26] [INFO] mode: 3, target: ios, debug: true
+[2026-10-20 17:04:26] [INFO] coverage: range=0x0000000000000001-0x0000000000100000 addr_mode=phys runtime_delta=0x0000000060000000 exclude_baseline=true
+[2026-10-20 17:04:26] [INFO] inst_ratio: 65536
+[2026-10-20 17:04:26] [INFO] snapshot: name=(default fuzz_snapshot) device=(all devices)
+[2026-10-20 17:04:26] [INFO] crash: mode=off panic_addrs=0 status=11 on_reset=false exc_mask=0x00000000
+[2026-10-20 17:04:26] [INFO] entry instructions: 
+[2026-10-20 17:04:26] [INFO] entry addr: 0x0000000000000000  text_start: 0x0000000081000000  text_size: 0x0000000004950000
+[2026-10-20 17:11:14] [INFO] coverage captured at snapshot save, before any fuzz round
+[2026-10-20 17:11:14] [INFO] ios tb stats: seen=5898230098 phys_missing=0 in_range=49601 out_range=5898180497 virt[kseg0=0 runtime=5898094311 other=135787] alias_merge=0 (range 0x0000000000000001-0x0000000000100000)
+[2026-10-20 17:11:14] [DEBUG] canon_addr,virt_addr,phys_addr,asid,exec_count,insn_count
+[2026-10-20 17:11:14] [DEBUG] 0x00000000000003a8,0xffffffff800003a8,0x00000000000003a8,0x00,7073,1
+[2026-10-20 17:11:14] [DEBUG] 0x0000000000000184,0xffffffff80000184,0x0000000000000184,0x00,90,1
+[2026-10-20 17:11:14] [DEBUG] 0x00000000000003c0,0xffffffff800003c0,0x00000000000003c0,0x00,7073,1
+[2026-10-20 17:11:14] [DEBUG] 0x0000000000000398,0xffffffff80000398,0x0000000000000398,0x00,7073,1
+[2026-10-20 17:11:14] [DEBUG] 0x000000000000038c,0xffffffff8000038c,0x000000000000038c,0x00,7073,1
+[2026-10-20 17:11:14] [DEBUG] 0x0000000000000188,0xffffffff80000188,0x0000000000000188,0x00,7073,2
+[2026-10-20 17:11:14] [DEBUG] 0x00000000000003c4,0xffffffff800003c4,0x00000000000003c4,0x00,7073,15
+[2026-10-20 17:11:14] [DEBUG] 0x0000000000000180,0xffffffff80000180,0x0000000000000180,0x00,7073,2
+[2026-10-20 17:11:14] [INFO] 8 TB entries collected
+[2026-10-20 17:11:14] [INFO] edge coverage: 9 edges hit
+[2026-10-20 17:11:14] [INFO] exit status: 0xdeadbeef (timeout sentinel, program did not exit)
+[2026-10-20 17:12:32] [INFO] coverage after fuzz round 1
+[2026-10-20 17:12:32] [INFO] ios tb stats: seen=1092129063 phys_missing=0 in_range=735 out_range=1092128328 virt[kseg0=0 runtime=1092128328 other=735] alias_merge=0 (range 0x0000000000000001-0x0000000000100000)
+[2026-10-20 17:12:32] [DEBUG] canon_addr,virt_addr,phys_addr,asid,exec_count,insn_count
+[2026-10-20 17:12:32] [DEBUG] 0x0000000000000188,0xffffffff80000188,0x0000000000000188,0x00,105,2
+[2026-10-20 17:12:32] [DEBUG] 0x00000000000003c4,0xffffffff800003c4,0x00000000000003c4,0x00,105,15
+[2026-10-20 17:12:32] [DEBUG] 0x0000000000000180,0xffffffff80000180,0x0000000000000180,0x00,105,2
+[2026-10-20 17:12:32] [DEBUG] 0x00000000000003c0,0xffffffff800003c0,0x00000000000003c0,0x00,105,1
+[2026-10-20 17:12:32] [DEBUG] 0x0000000000000398,0xffffffff80000398,0x0000000000000398,0x00,105,1
+[2026-10-20 17:12:32] [DEBUG] 0x000000000000038c,0xffffffff8000038c,0x000000000000038c,0x00,105,1
+[2026-10-20 17:12:32] [DEBUG] 0x00000000000003a8,0xffffffff800003a8,0x00000000000003a8,0x00,105,1
+[2026-10-20 17:12:32] [INFO] 7 TB entries collected
+[2026-10-20 17:12:32] [INFO] edge coverage: 8 edges hit
+[2026-10-20 17:12:32] [INFO] exit status: 0xdeadbeef (timeout sentinel, program did not exit)

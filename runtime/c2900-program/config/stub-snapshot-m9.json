@@ -1,0 +1,28 @@
+{
+    "mode": 3,
+    "target_type": "ios",
+    "debug": true,
+    "auto_snapshot": true,
+    "coverage_types": [
+        "block",
+        "edge"
+    ],
+    "exclude_baseline": true,
+    "inst_ratio": 65536,
+    "addr_mode": "phys",
+    "coverage_start": "0x01000000",
+    "coverage_end": "0x01018000",
+    "text_start": "0x81000000",
+    "text_size": "0x18000",
+    "runtime_delta": "0x60000000",
+    "firmware_entry": "0x81000000",
+    "snapshot_trigger": "0x81000000",
+    "snapshot_name": "snap_stub",
+    "wait_snapshot_restore": 100,
+    "wait_program_done": 300,
+    "crash_mode": "off",
+    "panic_addrs": [],
+    "crash_status": 11,
+    "crash_on_reset": false,
+    "crash_exceptions": []
+}

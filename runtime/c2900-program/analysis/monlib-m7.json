@@ -1,0 +1,3878 @@
+{
+  "firmware": "vendor/c2900/firmware/C2900-UN.150.BIN",
+  "firmware_sha256": "a398d815722310afc21ab670b0b2101decf587663a21456da4326a939ee9f465",
+  "module_offset": 77234748,
+  "module_size": 124792,
+  "module_sha256": "720e1a24125adae91e01089659944a5fc5961e8eea9d92bde67d825ebf141eb6",
+  "entry": 2147516416,
+  "text_start": 2147516416,
+  "text_size": 98468,
+  "rodata_start": 2147614884,
+  "rodata_size": 8220,
+  "pdr_functions": 490,
+  "string_refs": 301,
+  "functions_with_strings": {
+    "0x80008458": {
+      "size": 240,
+      "strings": [
+        "Flash File System Version %1.1"
+      ]
+    },
+    "0x80008568": {
+      "size": 88,
+      "strings": [
+        "%8x: %8x \n"
+      ]
+    },
+    "0x80008624": {
+      "size": 52,
+      "strings": [
+        "clock values      = %8x%8x\n"
+      ]
+    },
+    "0x80008c8c": {
+      "size": 168,
+      "strings": [
+        "flash0",
+        "flash1"
+      ]
+    },
+    "0x80009108": {
+      "size": 232,
+      "strings": [
+        "external ATA CompactFlash card"
+      ]
+    },
+    "0x80009f80": {
+      "size": 708,
+      "strings": [
+        "\n%30s: ",
+        "%30s: ",
+        "%30s: %d\n",
+        "%30s: 0x%x\n",
+        "%30s: 0x%x 0x%x 0x%x\n",
+        "------------------------------------\n",
+        "ATA device information structure\n",
+        "Buffer Info"
+      ]
+    },
+    "0x8000b218": {
+      "size": 12,
+      "strings": [
+        "flash slot0"
+      ]
+    },
+    "0x8000d330": {
+      "size": 248,
+      "strings": [
+        "\n rc is %d:"
+      ]
+    },
+    "0x8000e19c": {
+      "size": 208,
+      "strings": [
+        "\n dfs_FCBScan: Returning FCB.... %s"
+      ]
+    },
+    "0x8000e26c": {
+      "size": 192,
+      "strings": [
+        "\n%s: Unable to allocate element from                    the (pcmciafs_fcb_chunk) chunk pool",
+        "dfs_allocateFCB"
+      ]
+    },
+    "0x8000e394": {
+      "size": 168,
+      "strings": [
+        "\n%s: Unable to free the chunk element",
+        "dfs_freeFCB"
+      ]
+    },
+    "0x8000e43c": {
+      "size": 116,
+      "strings": [
+        "\n%s: Unable to allocate element from                    the (pcmciafs_fib_chunk) chunk pool",
+        "dfs_allocateFIB"
+      ]
+    },
+    "0x8000e4b0": {
+      "size": 200,
+      "strings": [
+        "\n%s: Unable to free the chunk element",
+        "dfs_freeFIB"
+      ]
+    },
+    "0x8000e694": {
+      "size": 312,
+      "strings": [
+        "\n dfs_closehandle: Closed file.... %x"
+      ]
+    },
+    "0x8000e7cc": {
+      "size": 208,
+      "strings": [
+        "\n dfs_closefile: Closing file.... %x"
+      ]
+    },
+    "0x8000ec9c": {
+      "size": 368,
+      "strings": [
+        "\n dfs_openfile: Opened file %s with fib = %x",
+        "\n dfs_openfile: Opening file....%s"
+      ]
+    },
+    "0x8000f59c": {
+      "size": 604,
+      "strings": [
+        ".          ",
+        "..         "
+      ]
+    },
+    "0x80010e28": {
+      "size": 968,
+      "strings": [
+        "\n Extended Partition entry %d error %d",
+        "\n Partition entry %d error %d",
+        "\nAnalyzing partition table entry %d",
+        "\nExtended Partition...",
+        "\nPartition table entry %d OK...",
+        "\nPartition table read OK...",
+        "\nPartition table read failed",
+        "\nReading Partition table"
+      ]
+    },
+    "0x8001198c": {
+      "size": 276,
+      "strings": [
+        "\nUnable to find pdevice info for %d\n"
+      ]
+    },
+    "0x80011b74": {
+      "size": 176,
+      "strings": [
+        "disk0:/hello"
+      ]
+    },
+    "0x80011c24": {
+      "size": 408,
+      "strings": [
+        "Using monlib version %d\n",
+        "Using version info %d\n"
+      ]
+    },
+    "0x80011dc4": {
+      "size": 132,
+      "strings": [
+        "Formatting failure! Error code: %d\n"
+      ]
+    },
+    "0x80012100": {
+      "size": 440,
+      "strings": [
+        "DFS Sector",
+        "FDNODE",
+        "PCMCIAFS LFN Node",
+        "disk0"
+      ]
+    },
+    "0x8001235c": {
+      "size": 132,
+      "strings": [
+        "%s:%d"
+      ]
+    },
+    "0x80012408": {
+      "size": 760,
+      "strings": [
+        "\nMonlib write complete \n",
+        "Writing Monlib sectors."
+      ]
+    },
+    "0x80012700": {
+      "size": 600,
+      "strings": [
+        "DFSLIB: Restoring file %s\n",
+        "DFSLIB: open file failed - retval = %d\n"
+      ]
+    },
+    "0x80012958": {
+      "size": 1056,
+      "strings": [
+        "DFSLIB: Buffering file: %s\n",
+        "DFSLIB: Cannot allocate memory for clusters",
+        "DFSLIB: Cannot allocate memory for file\n",
+        "DFSLIB: number of clusters = %d\n"
+      ]
+    },
+    "0x80012d78": {
+      "size": 640,
+      "strings": [
+        "            ",
+        "FAT32   ",
+        "MSDOS5.0"
+      ]
+    },
+    "0x80012ff8": {
+      "size": 652,
+      "strings": [
+        "            ",
+        "FAT12",
+        "MSDOS5.0"
+      ]
+    },
+    "0x80013320": {
+      "size": 180,
+      "strings": [
+        "Root directory cluster is %d\n"
+      ]
+    },
+    "0x800138f4": {
+      "size": 1304,
+      "strings": [
+        "\nFormat: All system sectors written. OK...\n",
+        "\nFormat: Total sectors in formatted partition: %d\n",
+        "\nNot a valid partition, try partitioning the disk.\n",
+        "DFSLIB: buffering clusters/files\n",
+        "DFSLIB: monlib_sizes %d & %d\n",
+        "Format: Operation completed successfully.\n",
+        "Format: Total bytes in formatted partition: %llu\n"
+      ]
+    },
+    "0x80013e0c": {
+      "size": 396,
+      "strings": [
+        "\n%s:Flushing partition %x",
+        "DFSLIB_ioctl"
+      ]
+    },
+    "0x8001420c": {
+      "size": 288,
+      "strings": [
+        "\nDFSLIB: File exceeds the file name limit"
+      ]
+    },
+    "0x8001432c": {
+      "size": 204,
+      "strings": [
+        "%8x: %8x \n"
+      ]
+    },
+    "0x800145c0": {
+      "size": 224,
+      "strings": [
+        "%8x: %8x \n"
+      ]
+    },
+    "0x80014864": {
+      "size": 228,
+      "strings": [
+        "%8x: %8x \n"
+      ]
+    },
+    "0x80014948": {
+      "size": 972,
+      "strings": [
+        "\n%s: Unable to allocate from the                   (pcmciafs_lfn_chunk) chunk pool",
+        "lfn_chain_ops"
+      ]
+    },
+    "0x800153ec": {
+      "size": 336,
+      "strings": [
+        "%8x: %8x \n"
+      ]
+    },
+    "0x80015834": {
+      "size": 884,
+      "strings": [
+        "\nInvalid bytes per sector: %d %d %d",
+        "\nInvalid file system type: %d",
+        "\nInvalid number of FAT sectors: %d",
+        "\nInvalid number of FATs: %d",
+        "\nInvalid number of data sectors: %d",
+        "\nInvalid number of root directory entries: %d",
+        "\nInvalid number of root directory sectors: %d",
+        "\nInvalid sectors_per_track : %x"
+      ]
+    },
+    "0x80015bb0": {
+      "size": 240,
+      "strings": [
+        "\nBoot Sector Read failed"
+      ]
+    },
+    "0x80015ca0": {
+      "size": 1008,
+      "strings": [
+        "\nInvalid bytes per sector: %d %d %d",
+        "\nInvalid fsinfo sector: %d",
+        "\nInvalid number of FAT sectors: %d",
+        "\nInvalid number of FATs: %d",
+        "\nInvalid number of data sectors: %d",
+        "\nInvalid root cluster: %d",
+        "\nInvalid sectors_per_track : %x",
+        "\nInvalid starting FAT sector: %d"
+      ]
+    },
+    "0x80016090": {
+      "size": 568,
+      "strings": [
+        "\nBackup Boot Sector Read failed",
+        "\nBoot Sector Read failed",
+        "\nBoot sector write failed"
+      ]
+    },
+    "0x800164e4": {
+      "size": 312,
+      "strings": [
+        "%8x: %8x \n"
+      ]
+    },
+    "0x8001661c": {
+      "size": 64,
+      "strings": [
+        "%8x: %8x \n"
+      ]
+    },
+    "0x8001665c": {
+      "size": 64,
+      "strings": [
+        "%8x: %8x \n"
+      ]
+    },
+    "0x80016800": {
+      "size": 148,
+      "strings": [
+        "\nPartition, Start sector = %u,End sector = %u, overlaps with partition,Start sector = %u, End sector = %u",
+        "%8x: %8x \n"
+      ]
+    },
+    "0x800168d4": {
+      "size": 156,
+      "strings": [
+        "%8x: %8x \n"
+      ]
+    },
+    "0x80016c18": {
+      "size": 1048,
+      "strings": [
+        "\nStart cluster %u allocated for fib %x"
+      ]
+    },
+    "0x80017074": {
+      "size": 244,
+      "strings": [
+        "\nWriting cluster = %u, offset = %d, nsecs = %d"
+      ]
+    },
+    "0x80017168": {
+      "size": 244,
+      "strings": [
+        "\nReading cluster = %d, offset = %d, nsecs = %d"
+      ]
+    },
+    "0x800174f4": {
+      "size": 924,
+      "strings": [
+        "\nWrite buffer overflow:sz 0x%x,off 0x%x,bufsz 0x%x\n"
+      ]
+    },
+    "0x80017890": {
+      "size": 1028,
+      "strings": [
+        "external ATA CompactFlash card"
+      ]
+    },
+    "0x80017c94": {
+      "size": 428,
+      "strings": [
+        "flash0"
+      ]
+    },
+    "0x80017e40": {
+      "size": 632,
+      "strings": [
+        "external ATA CompactFlash card"
+      ]
+    },
+    "0x800180b8": {
+      "size": 1244,
+      "strings": [
+        "\n FAT buffer sync flush failed for disk %d partition \t\t%d, error = %d",
+        "external ATA CompactFlash card"
+      ]
+    },
+    "0x80018594": {
+      "size": 940,
+      "strings": [
+        "\n FAT buffer sync flush failed for disk %d partition \t\t%d, error = %d"
+      ]
+    },
+    "0x80018940": {
+      "size": 724,
+      "strings": [
+        "Bytes Per Sector"
+      ]
+    },
+    "0x80018c14": {
+      "size": 396,
+      "strings": [
+        "Bytes Per Sector",
+        "Configuration"
+      ]
+    },
+    "0x80018da0": {
+      "size": 608,
+      "strings": [
+        "Bytes Per Sector"
+      ]
+    },
+    "0x80019000": {
+      "size": 884,
+      "strings": [
+        "%30s: %d\n",
+        "Bytes Per Sector"
+      ]
+    },
+    "0x80019374": {
+      "size": 692,
+      "strings": [
+        "Bytes Per Sector",
+        "Configuration"
+      ]
+    },
+    "0x80019628": {
+      "size": 464,
+      "strings": [
+        "\n Data buffer flush failed for disk %d partition \t%d, error = %d",
+        "\n Dir buffer flush failed for disk %d partition \t%d, error = %d",
+        "\n FAT buffer flush failed for disk %d partition \t%d, error = %d",
+        "\n Root buffer flush failed for disk %d partition \t%d, error = %d",
+        "\nBuffer flush already in progress for %d %d",
+        "\nBuffer flush done for %d %d",
+        "Current Head #"
+      ]
+    },
+    "0x800199cc": {
+      "size": 260,
+      "strings": [
+        "\n Partition entry %d error %d",
+        "Current Head #"
+      ]
+    },
+    "0x80019ad0": {
+      "size": 304,
+      "strings": [
+        "Current Head #",
+        "Default Sectors Per Card"
+      ]
+    },
+    "0x80019c00": {
+      "size": 380,
+      "strings": [
+        "Current Head #",
+        "Default Sectors Per Card"
+      ]
+    },
+    "0x80019d7c": {
+      "size": 180,
+      "strings": [
+        "Current Head #"
+      ]
+    },
+    "0x80019e30": {
+      "size": 276,
+      "strings": [
+        "Current Cylinder #",
+        "Current Head #"
+      ]
+    },
+    "0x80019f44": {
+      "size": 176,
+      "strings": [
+        "Current Head #"
+      ]
+    },
+    "0x80019ff4": {
+      "size": 76,
+      "strings": [
+        "Current Head #"
+      ]
+    },
+    "0x8001a040": {
+      "size": 164,
+      "strings": [
+        "Current Head #",
+        "Default Sectors Per Card"
+      ]
+    },
+    "0x8001a0e4": {
+      "size": 108,
+      "strings": [
+        "Current Head #"
+      ]
+    },
+    "0x8001a150": {
+      "size": 108,
+      "strings": [
+        "Current Head #"
+      ]
+    },
+    "0x8001a1bc": {
+      "size": 108,
+      "strings": [
+        "Current Head #"
+      ]
+    },
+    "0x8001a228": {
+      "size": 108,
+      "strings": [
+        "Current Head #"
+      ]
+    },
+    "0x8001a294": {
+      "size": 108,
+      "strings": [
+        "Current Head #"
+      ]
+    },
+    "0x8001a300": {
+      "size": 172,
+      "strings": [
+        "Current Head #",
+        "Default Sectors Per Card"
+      ]
+    },
+    "0x8001a3ac": {
+      "size": 156,
+      "strings": [
+        "Current Head #"
+      ]
+    },
+    "0x8001a448": {
+      "size": 92,
+      "strings": [
+        "Current Head #"
+      ]
+    },
+    "0x8001a4a4": {
+      "size": 140,
+      "strings": [
+        "Current Head #"
+      ]
+    },
+    "0x8001a530": {
+      "size": 156,
+      "strings": [
+        "Current Head #"
+      ]
+    },
+    "0x8001a5cc": {
+      "size": 156,
+      "strings": [
+        "Current Head #"
+      ]
+    },
+    "0x8001a668": {
+      "size": 504,
+      "strings": [
+        "Current Head #",
+        "Default Sectors Per Card"
+      ]
+    },
+    "0x8001a860": {
+      "size": 108,
+      "strings": [
+        "Current Head #"
+      ]
+    },
+    "0x8001a8cc": {
+      "size": 32,
+      "strings": [
+        "Current Head #"
+      ]
+    },
+    "0x8001a940": {
+      "size": 32,
+      "strings": [
+        "Current Head #"
+      ]
+    },
+    "0x8001a960": {
+      "size": 32,
+      "strings": [
+        "Current Head #"
+      ]
+    },
+    "0x8001a980": {
+      "size": 32,
+      "strings": [
+        "Current Head #"
+      ]
+    },
+    "0x8001a9a0": {
+      "size": 32,
+      "strings": [
+        "Current Head #"
+      ]
+    },
+    "0x8001a9c0": {
+      "size": 36,
+      "strings": [
+        "Current Head #"
+      ]
+    },
+    "0x8001a9e4": {
+      "size": 32,
+      "strings": [
+        "Current Head #"
+      ]
+    },
+    "0x8001aa04": {
+      "size": 32,
+      "strings": [
+        "Current Head #"
+      ]
+    },
+    "0x8001aadc": {
+      "size": 80,
+      "strings": [
+        "Current Head #"
+      ]
+    },
+    "0x8001ab2c": {
+      "size": 484,
+      "strings": [
+        "Bytes Per Sector",
+        "Current Head #"
+      ]
+    },
+    "0x8001ad10": {
+      "size": 80,
+      "strings": [
+        "Current Head #",
+        "Default Sectors Per Card"
+      ]
+    },
+    "0x8001ad60": {
+      "size": 116,
+      "strings": [
+        "Current Head #"
+      ]
+    },
+    "0x8001add4": {
+      "size": 192,
+      "strings": [
+        "Current Head #"
+      ]
+    },
+    "0x8001ae94": {
+      "size": 96,
+      "strings": [
+        "Current Head #"
+      ]
+    },
+    "0x8001aef4": {
+      "size": 76,
+      "strings": [
+        "Current Head #"
+      ]
+    },
+    "0x8001af40": {
+      "size": 208,
+      "strings": [
+        "Current Head #"
+      ]
+    },
+    "0x8001b06c": {
+      "size": 176,
+      "strings": [
+        "Current Head #"
+      ]
+    },
+    "0x8001b15c": {
+      "size": 336,
+      "strings": [
+        "Current Head #"
+      ]
+    },
+    "0x8001b344": {
+      "size": 68,
+      "strings": [
+        "Current Head #"
+      ]
+    },
+    "0x8001b3c4": {
+      "size": 124,
+      "strings": [
+        "Current Head #"
+      ]
+    },
+    "0x8001b574": {
+      "size": 132,
+      "strings": [
+        "Current Head #"
+      ]
+    },
+    "0x8001b634": {
+      "size": 320,
+      "strings": [
+        "Current Head #",
+        "Default Sectors Per Card"
+      ]
+    },
+    "0x8001b774": {
+      "size": 136,
+      "strings": [
+        "Current Head #",
+        "Default Sectors Per Card"
+      ]
+    },
+    "0x8001b7fc": {
+      "size": 200,
+      "strings": [
+        "Current Head #"
+      ]
+    },
+    "0x8001b968": {
+      "size": 176,
+      "strings": [
+        "Current Head #"
+      ]
+    },
+    "0x8001ba18": {
+      "size": 176,
+      "strings": [
+        "Current Head #"
+      ]
+    },
+    "0x8001bac8": {
+      "size": 128,
+      "strings": [
+        "Current Head #"
+      ]
+    },
+    "0x8001bb48": {
+      "size": 128,
+      "strings": [
+        "Current Head #"
+      ]
+    },
+    "0x8001bbc8": {
+      "size": 148,
+      "strings": [
+        "Current Head #"
+      ]
+    },
+    "0x8001bc5c": {
+      "size": 148,
+      "strings": [
+        "Current Head #"
+      ]
+    },
+    "0x8001bcf0": {
+      "size": 196,
+      "strings": [
+        "Current Head #"
+      ]
+    },
+    "0x8001bdb4": {
+      "size": 192,
+      "strings": [
+        "\tNumber of cylinders %u\n\tNumber of heads %u\n",
+        "\tTotal drive capacity (@ %ld * 512 bytes/sector) is %ld bytes\n",
+        "\tUnformatted Bytes/sector %u\n\tSectors/track %u\n",
+        "ATA disk drive attribute not present in PCMCIA CIS.\n",
+        "ATA disk drive identification \n",
+        "Current Head #",
+        "Get drive info failed.\n"
+      ]
+    },
+    "0x8001be74": {
+      "size": 1464,
+      "strings": [
+        "\nCreating partfs %s:%d\n",
+        "\nPartition Start Cyl/Head/Sector valuecorrupted, Cyl = %d, Head = %d, Sec = %d,Total Cyl = %d, Head = %d, Sec = %d",
+        "\nStart sector = %u, Number of sectors = %u",
+        "Current Head #",
+        "Default Sectors Per Card"
+      ]
+    },
+    "0x8001c42c": {
+      "size": 184,
+      "strings": [
+        "\nPartition exceeds device size, Start sector = %u, End sector = %u, Total sectors = %d",
+        "Current Head #"
+      ]
+    },
+    "0x8001c634": {
+      "size": 2200,
+      "strings": [
+        "\n\nDrive communication & 1st Sector Write OK...",
+        "\n\nExtended Partition entry %d created...Size %u MB",
+        "\n\nPrimary Partition created...Size %u MB",
+        "\n Extended partition entry %d st_sec = %d,\n\t\tend_sec = %d, size = %d MB",
+        "\nExtended Partition Table %d Write OK...",
+        "\nExtended Partition created...Size %u MB",
+        "\nExtended partition entry %d st_sec = %d,\n\t\t\tend_sec = %d",
+        "\nExtended partition st_sec = %d, end_sec = %d"
+      ]
+    },
+    "0x8001cecc": {
+      "size": 1164,
+      "strings": [
+        "\nExtended partition size exceeds device sizeStart sector = %u, End sector = %u, Total sectors = %u",
+        "\nExtended partition table read OK...",
+        "\nExtended partition table read failed",
+        "\nLogical Partition %d OK...",
+        "\nPartition Start Cyl/Head/Sector valuecorrupted, Cyl = %d, Head = %d, Sec = %d,Total Cyl = %d, Head = %d, Sec = %d",
+        "\nReading next extended partition table entry...",
+        "\nSignature not found in partition table"
+      ]
+    },
+    "0x8001d378": {
+      "size": 80,
+      "strings": [
+        "DATAINCONSISTENCY/DATACORRUPTION %s, \n           0x%08x\n"
+      ]
+    },
+    "0x8001d504": {
+      "size": 92,
+      "strings": [
+        "Current Sectors Per Track"
+      ]
+    },
+    "0x8001d560": {
+      "size": 124,
+      "strings": [
+        "Current Sectors Per Track"
+      ]
+    },
+    "0x8001d5dc": {
+      "size": 236,
+      "strings": [
+        "Attempt to %s %u bytes should have been %u bytes",
+        "copy error",
+        "strcpy"
+      ]
+    },
+    "0x8001d6c8": {
+      "size": 168,
+      "strings": [
+        "Attempt to %s %u bytes should have been %u bytes",
+        "copy error",
+        "strlen"
+      ]
+    },
+    "0x8001dbd0": {
+      "size": 72,
+      "strings": [
+        "strlen"
+      ]
+    },
+    "0x8001dcfc": {
+      "size": 204,
+      "strings": [
+        "Attempt to %s %u bytes should have been %u bytes",
+        "bcopy",
+        "copy error"
+      ]
+    },
+    "0x8001ddc8": {
+      "size": 336,
+      "strings": [
+        "Attempt to %s %u bytes should have been %u bytes",
+        "Serial Number",
+        "copy error",
+        "sstrncat"
+      ]
+    },
+    "0x8001df18": {
+      "size": 204,
+      "strings": [
+        "Attempt to %s %u bytes should have been %u bytes",
+        "Serial Number",
+        "copy error",
+        "sstrncpy"
+      ]
+    },
+    "0x8001dfe4": {
+      "size": 148,
+      "strings": [
+        "Serial Number"
+      ]
+    },
+    "0x8001ed94": {
+      "size": 612,
+      "strings": [
+        "ATA device information structure\n"
+      ]
+    },
+    "0x8001f064": {
+      "size": 120,
+      "strings": [
+        "Serial Number"
+      ]
+    },
+    "0x8001f0dc": {
+      "size": 72,
+      "strings": [
+        "Serial Number"
+      ]
+    },
+    "0x8001f124": {
+      "size": 156,
+      "strings": [
+        "Serial Number"
+      ]
+    },
+    "0x8001f1c0": {
+      "size": 124,
+      "strings": [
+        "Serial Number"
+      ]
+    }
+  },
+  "functions": [
+    {
+      "start": 2147516416,
+      "end": 2147516496,
+      "size": 80,
+      "name_hint": null
+    },
+    {
+      "start": 2147516496,
+      "end": 2147516524,
+      "size": 28,
+      "name_hint": null
+    },
+    {
+      "start": 2147516524,
+      "end": 2147516552,
+      "size": 28,
+      "name_hint": null
+    },
+    {
+      "start": 2147516552,
+      "end": 2147516588,
+      "size": 36,
+      "name_hint": null
+    },
+    {
+      "start": 2147516588,
+      "end": 2147516600,
+      "size": 12,
+      "name_hint": null
+    },
+    {
+      "start": 2147516600,
+      "end": 2147516612,
+      "size": 12,
+      "name_hint": null
+    },
+    {
+      "start": 2147516612,
+      "end": 2147516624,
+      "size": 12,
+      "name_hint": null
+    },
+    {
+      "start": 2147516624,
+      "end": 2147516636,
+      "size": 12,
+      "name_hint": null
+    },
+    {
+      "start": 2147516636,
+      "end": 2147516648,
+      "size": 12,
+      "name_hint": null
+    },
+    {
+      "start": 2147516648,
+      "end": 2147516660,
+      "size": 12,
+      "name_hint": null
+    },
+    {
+      "start": 2147516660,
+      "end": 2147516672,
+      "size": 12,
+      "name_hint": null
+    },
+    {
+      "start": 2147516672,
+      "end": 2147516684,
+      "size": 12,
+      "name_hint": null
+    },
+    {
+      "start": 2147516684,
+      "end": 2147516696,
+      "size": 12,
+      "name_hint": null
+    },
+    {
+      "start": 2147516696,
+      "end": 2147516708,
+      "size": 12,
+      "name_hint": null
+    },
+    {
+      "start": 2147516708,
+      "end": 2147516720,
+      "size": 12,
+      "name_hint": null
+    },
+    {
+      "start": 2147516720,
+      "end": 2147516732,
+      "size": 12,
+      "name_hint": null
+    },
+    {
+      "start": 2147516732,
+      "end": 2147516744,
+      "size": 12,
+      "name_hint": null
+    },
+    {
+      "start": 2147516744,
+      "end": 2147516756,
+      "size": 12,
+      "name_hint": null
+    },
+    {
+      "start": 2147516756,
+      "end": 2147516768,
+      "size": 12,
+      "name_hint": null
+    },
+    {
+      "start": 2147516768,
+      "end": 2147516780,
+      "size": 12,
+      "name_hint": null
+    },
+    {
+      "start": 2147516780,
+      "end": 2147516792,
+      "size": 12,
+      "name_hint": null
+    },
+    {
+      "start": 2147516792,
+      "end": 2147516804,
+      "size": 12,
+      "name_hint": null
+    },
+    {
+      "start": 2147516804,
+      "end": 2147516812,
+      "size": 8,
+      "name_hint": null
+    },
+    {
+      "start": 2147516812,
+      "end": 2147516820,
+      "size": 8,
+      "name_hint": null
+    },
+    {
+      "start": 2147516820,
+      "end": 2147516828,
+      "size": 8,
+      "name_hint": null
+    },
+    {
+      "start": 2147516828,
+      "end": 2147517084,
+      "size": 256,
+      "name_hint": null
+    },
+    {
+      "start": 2147517084,
+      "end": 2147517224,
+      "size": 140,
+      "name_hint": null
+    },
+    {
+      "start": 2147517224,
+      "end": 2147517344,
+      "size": 120,
+      "name_hint": null
+    },
+    {
+      "start": 2147517344,
+      "end": 2147517388,
+      "size": 44,
+      "name_hint": null
+    },
+    {
+      "start": 2147517388,
+      "end": 2147517432,
+      "size": 44,
+      "name_hint": null
+    },
+    {
+      "start": 2147517432,
+      "end": 2147517476,
+      "size": 44,
+      "name_hint": null
+    },
+    {
+      "start": 2147517476,
+      "end": 2147517520,
+      "size": 44,
+      "name_hint": null
+    },
+    {
+      "start": 2147517520,
+      "end": 2147517528,
+      "size": 8,
+      "name_hint": null
+    },
+    {
+      "start": 2147517528,
+      "end": 2147517768,
+      "size": 240,
+      "name_hint": "Flash File System Version %1.1"
+    },
+    {
+      "start": 2147517768,
+      "end": 2147517776,
+      "size": 8,
+      "name_hint": null
+    },
+    {
+      "start": 2147517776,
+      "end": 2147517784,
+      "size": 8,
+      "name_hint": null
+    },
+    {
+      "start": 2147517784,
+      "end": 2147517792,
+      "size": 8,
+      "name_hint": null
+    },
+    {
+      "start": 2147517792,
+      "end": 2147517800,
+      "size": 8,
+      "name_hint": null
+    },
+    {
+      "start": 2147517800,
+      "end": 2147517888,
+      "size": 88,
+      "name_hint": "%8x: %8x"
+    },
+    {
+      "start": 2147517888,
+      "end": 2147517928,
+      "size": 40,
+      "name_hint": null
+    },
+    {
+      "start": 2147517928,
+      "end": 2147517988,
+      "size": 60,
+      "name_hint": null
+    },
+    {
+      "start": 2147517988,
+      "end": 2147518040,
+      "size": 52,
+      "name_hint": "clock values      = %8x%8x"
+    },
+    {
+      "start": 2147518040,
+      "end": 2147518316,
+      "size": 276,
+      "name_hint": null
+    },
+    {
+      "start": 2147518316,
+      "end": 2147518500,
+      "size": 184,
+      "name_hint": null
+    },
+    {
+      "start": 2147518500,
+      "end": 2147518676,
+      "size": 176,
+      "name_hint": null
+    },
+    {
+      "start": 2147518676,
+      "end": 2147518704,
+      "size": 28,
+      "name_hint": null
+    },
+    {
+      "start": 2147518704,
+      "end": 2147518816,
+      "size": 112,
+      "name_hint": null
+    },
+    {
+      "start": 2147518816,
+      "end": 2147518884,
+      "size": 68,
+      "name_hint": null
+    },
+    {
+      "start": 2147518884,
+      "end": 2147518984,
+      "size": 100,
+      "name_hint": null
+    },
+    {
+      "start": 2147518984,
+      "end": 2147519136,
+      "size": 152,
+      "name_hint": null
+    },
+    {
+      "start": 2147519136,
+      "end": 2147519352,
+      "size": 216,
+      "name_hint": null
+    },
+    {
+      "start": 2147519352,
+      "end": 2147519412,
+      "size": 60,
+      "name_hint": null
+    },
+    {
+      "start": 2147519412,
+      "end": 2147519628,
+      "size": 216,
+      "name_hint": null
+    },
+    {
+      "start": 2147519628,
+      "end": 2147519796,
+      "size": 168,
+      "name_hint": "flash0"
+    },
+    {
+      "start": 2147519796,
+      "end": 2147519832,
+      "size": 36,
+      "name_hint": null
+    },
+    {
+      "start": 2147519832,
+      "end": 2147519984,
+      "size": 152,
+      "name_hint": null
+    },
+    {
+      "start": 2147519984,
+      "end": 2147520072,
+      "size": 88,
+      "name_hint": null
+    },
+    {
+      "start": 2147520072,
+      "end": 2147520240,
+      "size": 168,
+      "name_hint": null
+    },
+    {
+      "start": 2147520240,
+      "end": 2147520380,
+      "size": 140,
+      "name_hint": null
+    },
+    {
+      "start": 2147520380,
+      "end": 2147520548,
+      "size": 168,
+      "name_hint": null
+    },
+    {
+      "start": 2147520548,
+      "end": 2147520688,
+      "size": 140,
+      "name_hint": null
+    },
+    {
+      "start": 2147520688,
+      "end": 2147520768,
+      "size": 80,
+      "name_hint": null
+    },
+    {
+      "start": 2147520768,
+      "end": 2147520776,
+      "size": 8,
+      "name_hint": null
+    },
+    {
+      "start": 2147520776,
+      "end": 2147521008,
+      "size": 232,
+      "name_hint": "external ATA CompactFlash card"
+    },
+    {
+      "start": 2147521008,
+      "end": 2147521016,
+      "size": 8,
+      "name_hint": null
+    },
+    {
+      "start": 2147521016,
+      "end": 2147521044,
+      "size": 28,
+      "name_hint": null
+    },
+    {
+      "start": 2147521044,
+      "end": 2147521200,
+      "size": 156,
+      "name_hint": null
+    },
+    {
+      "start": 2147521200,
+      "end": 2147521496,
+      "size": 296,
+      "name_hint": null
+    },
+    {
+      "start": 2147521496,
+      "end": 2147521732,
+      "size": 236,
+      "name_hint": null
+    },
+    {
+      "start": 2147521732,
+      "end": 2147522412,
+      "size": 680,
+      "name_hint": null
+    },
+    {
+      "start": 2147522412,
+      "end": 2147522740,
+      "size": 328,
+      "name_hint": null
+    },
+    {
+      "start": 2147522740,
+      "end": 2147523112,
+      "size": 372,
+      "name_hint": null
+    },
+    {
+      "start": 2147523112,
+      "end": 2147523644,
+      "size": 532,
+      "name_hint": null
+    },
+    {
+      "start": 2147523644,
+      "end": 2147524220,
+      "size": 576,
+      "name_hint": null
+    },
+    {
+      "start": 2147524220,
+      "end": 2147524480,
+      "size": 260,
+      "name_hint": null
+    },
+    {
+      "start": 2147524480,
+      "end": 2147525188,
+      "size": 708,
+      "name_hint": "%30s:"
+    },
+    {
+      "start": 2147525188,
+      "end": 2147525464,
+      "size": 276,
+      "name_hint": null
+    },
+    {
+      "start": 2147525464,
+      "end": 2147525532,
+      "size": 68,
+      "name_hint": null
+    },
+    {
+      "start": 2147525532,
+      "end": 2147525664,
+      "size": 132,
+      "name_hint": null
+    },
+    {
+      "start": 2147525664,
+      "end": 2147526288,
+      "size": 624,
+      "name_hint": null
+    },
+    {
+      "start": 2147526288,
+      "end": 2147526404,
+      "size": 116,
+      "name_hint": null
+    },
+    {
+      "start": 2147526404,
+      "end": 2147527088,
+      "size": 684,
+      "name_hint": null
+    },
+    {
+      "start": 2147527088,
+      "end": 2147527832,
+      "size": 744,
+      "name_hint": null
+    },
+    {
+      "start": 2147527832,
+      "end": 2147528476,
+      "size": 644,
+      "name_hint": null
+    },
+    {
+      "start": 2147528476,
+      "end": 2147528616,
+      "size": 140,
+      "name_hint": null
+    },
+    {
+      "start": 2147528616,
+      "end": 2147528724,
+      "size": 108,
+      "name_hint": null
+    },
+    {
+      "start": 2147528724,
+      "end": 2147528940,
+      "size": 216,
+      "name_hint": null
+    },
+    {
+      "start": 2147528940,
+      "end": 2147528988,
+      "size": 48,
+      "name_hint": null
+    },
+    {
+      "start": 2147528988,
+      "end": 2147528996,
+      "size": 8,
+      "name_hint": null
+    },
+    {
+      "start": 2147528996,
+      "end": 2147529004,
+      "size": 8,
+      "name_hint": null
+    },
+    {
+      "start": 2147529004,
+      "end": 2147529164,
+      "size": 160,
+      "name_hint": null
+    },
+    {
+      "start": 2147529164,
+      "end": 2147529212,
+      "size": 48,
+      "name_hint": null
+    },
+    {
+      "start": 2147529212,
+      "end": 2147529240,
+      "size": 28,
+      "name_hint": null
+    },
+    {
+      "start": 2147529240,
+      "end": 2147529252,
+      "size": 12,
+      "name_hint": "flash slot0"
+    },
+    {
+      "start": 2147529252,
+      "end": 2147529260,
+      "size": 8,
+      "name_hint": null
+    },
+    {
+      "start": 2147529260,
+      "end": 2147529444,
+      "size": 184,
+      "name_hint": null
+    },
+    {
+      "start": 2147529444,
+      "end": 2147529576,
+      "size": 132,
+      "name_hint": null
+    },
+    {
+      "start": 2147529576,
+      "end": 2147529584,
+      "size": 8,
+      "name_hint": null
+    },
+    {
+      "start": 2147529584,
+      "end": 2147529592,
+      "size": 8,
+      "name_hint": null
+    },
+    {
+      "start": 2147529592,
+      "end": 2147529600,
+      "size": 8,
+      "name_hint": null
+    },
+    {
+      "start": 2147529600,
+      "end": 2147529728,
+      "size": 128,
+      "name_hint": null
+    },
+    {
+      "start": 2147529728,
+      "end": 2147529800,
+      "size": 72,
+      "name_hint": null
+    },
+    {
+      "start": 2147529800,
+      "end": 2147529984,
+      "size": 184,
+      "name_hint": null
+    },
+    {
+      "start": 2147529984,
+      "end": 2147530224,
+      "size": 240,
+      "name_hint": null
+    },
+    {
+      "start": 2147530224,
+      "end": 2147530440,
+      "size": 216,
+      "name_hint": null
+    },
+    {
+      "start": 2147530440,
+      "end": 2147530612,
+      "size": 172,
+      "name_hint": null
+    },
+    {
+      "start": 2147530612,
+      "end": 2147531312,
+      "size": 700,
+      "name_hint": null
+    },
+    {
+      "start": 2147531312,
+      "end": 2147531464,
+      "size": 152,
+      "name_hint": null
+    },
+    {
+      "start": 2147531464,
+      "end": 2147532036,
+      "size": 572,
+      "name_hint": null
+    },
+    {
+      "start": 2147532036,
+      "end": 2147532344,
+      "size": 308,
+      "name_hint": null
+    },
+    {
+      "start": 2147532344,
+      "end": 2147532468,
+      "size": 124,
+      "name_hint": null
+    },
+    {
+      "start": 2147532468,
+      "end": 2147532972,
+      "size": 504,
+      "name_hint": null
+    },
+    {
+      "start": 2147532972,
+      "end": 2147533348,
+      "size": 376,
+      "name_hint": null
+    },
+    {
+      "start": 2147533348,
+      "end": 2147533608,
+      "size": 260,
+      "name_hint": null
+    },
+    {
+      "start": 2147533608,
+      "end": 2147534040,
+      "size": 432,
+      "name_hint": null
+    },
+    {
+      "start": 2147534040,
+      "end": 2147534116,
+      "size": 76,
+      "name_hint": null
+    },
+    {
+      "start": 2147534116,
+      "end": 2147534160,
+      "size": 44,
+      "name_hint": null
+    },
+    {
+      "start": 2147534160,
+      "end": 2147534468,
+      "size": 308,
+      "name_hint": null
+    },
+    {
+      "start": 2147534468,
+      "end": 2147534680,
+      "size": 212,
+      "name_hint": null
+    },
+    {
+      "start": 2147534680,
+      "end": 2147535168,
+      "size": 488,
+      "name_hint": null
+    },
+    {
+      "start": 2147535168,
+      "end": 2147535392,
+      "size": 224,
+      "name_hint": null
+    },
+    {
+      "start": 2147535392,
+      "end": 2147535892,
+      "size": 500,
+      "name_hint": null
+    },
+    {
+      "start": 2147535892,
+      "end": 2147536260,
+      "size": 368,
+      "name_hint": null
+    },
+    {
+      "start": 2147536260,
+      "end": 2147536292,
+      "size": 32,
+      "name_hint": null
+    },
+    {
+      "start": 2147536292,
+      "end": 2147536336,
+      "size": 44,
+      "name_hint": null
+    },
+    {
+      "start": 2147536336,
+      "end": 2147536528,
+      "size": 192,
+      "name_hint": null
+    },
+    {
+      "start": 2147536528,
+      "end": 2147536740,
+      "size": 212,
+      "name_hint": null
+    },
+    {
+      "start": 2147536740,
+      "end": 2147536812,
+      "size": 72,
+      "name_hint": null
+    },
+    {
+      "start": 2147536812,
+      "end": 2147537088,
+      "size": 276,
+      "name_hint": null
+    },
+    {
+      "start": 2147537088,
+      "end": 2147537296,
+      "size": 208,
+      "name_hint": null
+    },
+    {
+      "start": 2147537296,
+      "end": 2147537640,
+      "size": 344,
+      "name_hint": null
+    },
+    {
+      "start": 2147537640,
+      "end": 2147537668,
+      "size": 28,
+      "name_hint": null
+    },
+    {
+      "start": 2147537668,
+      "end": 2147537712,
+      "size": 44,
+      "name_hint": null
+    },
+    {
+      "start": 2147537712,
+      "end": 2147537960,
+      "size": 248,
+      "name_hint": "rc is %d:"
+    },
+    {
+      "start": 2147537960,
+      "end": 2147538048,
+      "size": 88,
+      "name_hint": null
+    },
+    {
+      "start": 2147538048,
+      "end": 2147538092,
+      "size": 44,
+      "name_hint": null
+    },
+    {
+      "start": 2147538092,
+      "end": 2147538180,
+      "size": 88,
+      "name_hint": null
+    },
+    {
+      "start": 2147538180,
+      "end": 2147538300,
+      "size": 120,
+      "name_hint": null
+    },
+    {
+      "start": 2147538300,
+      "end": 2147538420,
+      "size": 120,
+      "name_hint": null
+    },
+    {
+      "start": 2147538420,
+      "end": 2147538460,
+      "size": 40,
+      "name_hint": null
+    },
+    {
+      "start": 2147538460,
+      "end": 2147538504,
+      "size": 44,
+      "name_hint": null
+    },
+    {
+      "start": 2147538504,
+      "end": 2147538572,
+      "size": 68,
+      "name_hint": null
+    },
+    {
+      "start": 2147538572,
+      "end": 2147538612,
+      "size": 40,
+      "name_hint": null
+    },
+    {
+      "start": 2147538612,
+      "end": 2147538856,
+      "size": 244,
+      "name_hint": null
+    },
+    {
+      "start": 2147538856,
+      "end": 2147538884,
+      "size": 28,
+      "name_hint": null
+    },
+    {
+      "start": 2147538884,
+      "end": 2147539048,
+      "size": 164,
+      "name_hint": null
+    },
+    {
+      "start": 2147539048,
+      "end": 2147539268,
+      "size": 220,
+      "name_hint": null
+    },
+    {
+      "start": 2147539268,
+      "end": 2147539492,
+      "size": 224,
+      "name_hint": null
+    },
+    {
+      "start": 2147539492,
+      "end": 2147539532,
+      "size": 40,
+      "name_hint": null
+    },
+    {
+      "start": 2147539532,
+      "end": 2147539768,
+      "size": 236,
+      "name_hint": null
+    },
+    {
+      "start": 2147539768,
+      "end": 2147539856,
+      "size": 88,
+      "name_hint": null
+    },
+    {
+      "start": 2147539856,
+      "end": 2147540372,
+      "size": 516,
+      "name_hint": null
+    },
+    {
+      "start": 2147540372,
+      "end": 2147540492,
+      "size": 120,
+      "name_hint": null
+    },
+    {
+      "start": 2147540492,
+      "end": 2147540752,
+      "size": 260,
+      "name_hint": null
+    },
+    {
+      "start": 2147540752,
+      "end": 2147540792,
+      "size": 40,
+      "name_hint": null
+    },
+    {
+      "start": 2147540792,
+      "end": 2147540832,
+      "size": 40,
+      "name_hint": null
+    },
+    {
+      "start": 2147540832,
+      "end": 2147540912,
+      "size": 80,
+      "name_hint": null
+    },
+    {
+      "start": 2147540912,
+      "end": 2147540920,
+      "size": 8,
+      "name_hint": null
+    },
+    {
+      "start": 2147540920,
+      "end": 2147540928,
+      "size": 8,
+      "name_hint": null
+    },
+    {
+      "start": 2147540928,
+      "end": 2147540936,
+      "size": 8,
+      "name_hint": null
+    },
+    {
+      "start": 2147540936,
+      "end": 2147541404,
+      "size": 468,
+      "name_hint": null
+    },
+    {
+      "start": 2147541404,
+      "end": 2147541612,
+      "size": 208,
+      "name_hint": "dfs_FCBScan: Returning FCB.... %s"
+    },
+    {
+      "start": 2147541612,
+      "end": 2147541804,
+      "size": 192,
+      "name_hint": "%s: Unable to allocate element from                    the (pcmciafs_fcb_chunk) "
+    },
+    {
+      "start": 2147541804,
+      "end": 2147541908,
+      "size": 104,
+      "name_hint": null
+    },
+    {
+      "start": 2147541908,
+      "end": 2147542076,
+      "size": 168,
+      "name_hint": "%s: Unable to free the chunk element"
+    },
+    {
+      "start": 2147542076,
+      "end": 2147542192,
+      "size": 116,
+      "name_hint": "%s: Unable to allocate element from                    the (pcmciafs_fib_chunk) "
+    },
+    {
+      "start": 2147542192,
+      "end": 2147542392,
+      "size": 200,
+      "name_hint": "%s: Unable to free the chunk element"
+    },
+    {
+      "start": 2147542392,
+      "end": 2147542440,
+      "size": 48,
+      "name_hint": null
+    },
+    {
+      "start": 2147542440,
+      "end": 2147542540,
+      "size": 100,
+      "name_hint": null
+    },
+    {
+      "start": 2147542540,
+      "end": 2147542676,
+      "size": 136,
+      "name_hint": null
+    },
+    {
+      "start": 2147542676,
+      "end": 2147542988,
+      "size": 312,
+      "name_hint": "dfs_closehandle: Closed file.... %x"
+    },
+    {
+      "start": 2147542988,
+      "end": 2147543196,
+      "size": 208,
+      "name_hint": "dfs_closefile: Closing file.... %x"
+    },
+    {
+      "start": 2147543196,
+      "end": 2147543204,
+      "size": 8,
+      "name_hint": null
+    },
+    {
+      "start": 2147543204,
+      "end": 2147544220,
+      "size": 1016,
+      "name_hint": null
+    },
+    {
+      "start": 2147544220,
+      "end": 2147544588,
+      "size": 368,
+      "name_hint": "dfs_openfile: Opened file %s with fib = %x"
+    },
+    {
+      "start": 2147544588,
+      "end": 2147545184,
+      "size": 596,
+      "name_hint": null
+    },
+    {
+      "start": 2147545184,
+      "end": 2147545412,
+      "size": 228,
+      "name_hint": null
+    },
+    {
+      "start": 2147545412,
+      "end": 2147545644,
+      "size": 232,
+      "name_hint": null
+    },
+    {
+      "start": 2147545644,
+      "end": 2147546312,
+      "size": 668,
+      "name_hint": null
+    },
+    {
+      "start": 2147546312,
+      "end": 2147546524,
+      "size": 212,
+      "name_hint": null
+    },
+    {
+      "start": 2147546524,
+      "end": 2147547128,
+      "size": 604,
+      "name_hint": "."
+    },
+    {
+      "start": 2147547128,
+      "end": 2147547868,
+      "size": 740,
+      "name_hint": null
+    },
+    {
+      "start": 2147547868,
+      "end": 2147548404,
+      "size": 536,
+      "name_hint": null
+    },
+    {
+      "start": 2147548404,
+      "end": 2147549680,
+      "size": 1276,
+      "name_hint": null
+    },
+    {
+      "start": 2147549680,
+      "end": 2147549712,
+      "size": 32,
+      "name_hint": null
+    },
+    {
+      "start": 2147549712,
+      "end": 2147550684,
+      "size": 972,
+      "name_hint": null
+    },
+    {
+      "start": 2147550684,
+      "end": 2147551548,
+      "size": 864,
+      "name_hint": null
+    },
+    {
+      "start": 2147551548,
+      "end": 2147551752,
+      "size": 204,
+      "name_hint": null
+    },
+    {
+      "start": 2147551752,
+      "end": 2147551816,
+      "size": 64,
+      "name_hint": null
+    },
+    {
+      "start": 2147551816,
+      "end": 2147551868,
+      "size": 52,
+      "name_hint": null
+    },
+    {
+      "start": 2147551868,
+      "end": 2147551932,
+      "size": 64,
+      "name_hint": null
+    },
+    {
+      "start": 2147551932,
+      "end": 2147551984,
+      "size": 52,
+      "name_hint": null
+    },
+    {
+      "start": 2147551984,
+      "end": 2147552036,
+      "size": 52,
+      "name_hint": null
+    },
+    {
+      "start": 2147552036,
+      "end": 2147552096,
+      "size": 60,
+      "name_hint": null
+    },
+    {
+      "start": 2147552096,
+      "end": 2147552148,
+      "size": 52,
+      "name_hint": null
+    },
+    {
+      "start": 2147552148,
+      "end": 2147552340,
+      "size": 192,
+      "name_hint": null
+    },
+    {
+      "start": 2147552340,
+      "end": 2147552536,
+      "size": 196,
+      "name_hint": null
+    },
+    {
+      "start": 2147552536,
+      "end": 2147552620,
+      "size": 84,
+      "name_hint": null
+    },
+    {
+      "start": 2147552620,
+      "end": 2147552704,
+      "size": 84,
+      "name_hint": null
+    },
+    {
+      "start": 2147552704,
+      "end": 2147552808,
+      "size": 104,
+      "name_hint": null
+    },
+    {
+      "start": 2147552808,
+      "end": 2147553776,
+      "size": 968,
+      "name_hint": "Extended Partition entry %d error %d"
+    },
+    {
+      "start": 2147553776,
+      "end": 2147553932,
+      "size": 156,
+      "name_hint": null
+    },
+    {
+      "start": 2147553932,
+      "end": 2147554020,
+      "size": 88,
+      "name_hint": null
+    },
+    {
+      "start": 2147554020,
+      "end": 2147554284,
+      "size": 264,
+      "name_hint": null
+    },
+    {
+      "start": 2147554284,
+      "end": 2147554444,
+      "size": 160,
+      "name_hint": null
+    },
+    {
+      "start": 2147554444,
+      "end": 2147554592,
+      "size": 148,
+      "name_hint": null
+    },
+    {
+      "start": 2147554592,
+      "end": 2147554924,
+      "size": 332,
+      "name_hint": null
+    },
+    {
+      "start": 2147554924,
+      "end": 2147555088,
+      "size": 164,
+      "name_hint": null
+    },
+    {
+      "start": 2147555088,
+      "end": 2147555148,
+      "size": 60,
+      "name_hint": null
+    },
+    {
+      "start": 2147555148,
+      "end": 2147555208,
+      "size": 60,
+      "name_hint": null
+    },
+    {
+      "start": 2147555208,
+      "end": 2147555332,
+      "size": 124,
+      "name_hint": null
+    },
+    {
+      "start": 2147555332,
+      "end": 2147555468,
+      "size": 136,
+      "name_hint": null
+    },
+    {
+      "start": 2147555468,
+      "end": 2147555532,
+      "size": 64,
+      "name_hint": null
+    },
+    {
+      "start": 2147555532,
+      "end": 2147555608,
+      "size": 76,
+      "name_hint": null
+    },
+    {
+      "start": 2147555608,
+      "end": 2147555656,
+      "size": 48,
+      "name_hint": null
+    },
+    {
+      "start": 2147555656,
+      "end": 2147555692,
+      "size": 36,
+      "name_hint": null
+    },
+    {
+      "start": 2147555692,
+      "end": 2147555724,
+      "size": 32,
+      "name_hint": null
+    },
+    {
+      "start": 2147555724,
+      "end": 2147556000,
+      "size": 276,
+      "name_hint": "Unable to find pdevice info for %d"
+    },
+    {
+      "start": 2147556000,
+      "end": 2147556072,
+      "size": 72,
+      "name_hint": null
+    },
+    {
+      "start": 2147556072,
+      "end": 2147556080,
+      "size": 8,
+      "name_hint": null
+    },
+    {
+      "start": 2147556080,
+      "end": 2147556212,
+      "size": 132,
+      "name_hint": null
+    },
+    {
+      "start": 2147556212,
+      "end": 2147556388,
+      "size": 176,
+      "name_hint": "disk0:/hello"
+    },
+    {
+      "start": 2147556388,
+      "end": 2147556796,
+      "size": 408,
+      "name_hint": "Using monlib version %d"
+    },
+    {
+      "start": 2147556796,
+      "end": 2147556804,
+      "size": 8,
+      "name_hint": null
+    },
+    {
+      "start": 2147556804,
+      "end": 2147556936,
+      "size": 132,
+      "name_hint": "Formatting failure! Error code: %d"
+    },
+    {
+      "start": 2147556936,
+      "end": 2147557128,
+      "size": 192,
+      "name_hint": null
+    },
+    {
+      "start": 2147557128,
+      "end": 2147557260,
+      "size": 132,
+      "name_hint": null
+    },
+    {
+      "start": 2147557260,
+      "end": 2147557392,
+      "size": 132,
+      "name_hint": null
+    },
+    {
+      "start": 2147557392,
+      "end": 2147557524,
+      "size": 132,
+      "name_hint": null
+    },
+    {
+      "start": 2147557524,
+      "end": 2147557632,
+      "size": 108,
+      "name_hint": null
+    },
+    {
+      "start": 2147557632,
+      "end": 2147558072,
+      "size": 440,
+      "name_hint": "DFS Sector"
+    },
+    {
+      "start": 2147558072,
+      "end": 2147558228,
+      "size": 156,
+      "name_hint": null
+    },
+    {
+      "start": 2147558228,
+      "end": 2147558236,
+      "size": 8,
+      "name_hint": null
+    },
+    {
+      "start": 2147558236,
+      "end": 2147558368,
+      "size": 132,
+      "name_hint": "%s:%d"
+    },
+    {
+      "start": 2147558368,
+      "end": 2147558376,
+      "size": 8,
+      "name_hint": null
+    },
+    {
+      "start": 2147558376,
+      "end": 2147558384,
+      "size": 8,
+      "name_hint": null
+    },
+    {
+      "start": 2147558384,
+      "end": 2147558392,
+      "size": 8,
+      "name_hint": null
+    },
+    {
+      "start": 2147558392,
+      "end": 2147558400,
+      "size": 8,
+      "name_hint": null
+    },
+    {
+      "start": 2147558400,
+      "end": 2147558408,
+      "size": 8,
+      "name_hint": null
+    },
+    {
+      "start": 2147558408,
+      "end": 2147559168,
+      "size": 760,
+      "name_hint": "Monlib write complete"
+    },
+    {
+      "start": 2147559168,
+      "end": 2147559768,
+      "size": 600,
+      "name_hint": "DFSLIB: Restoring file %s"
+    },
+    {
+      "start": 2147559768,
+      "end": 2147560824,
+      "size": 1056,
+      "name_hint": "DFSLIB: Buffering file: %s"
+    },
+    {
+      "start": 2147560824,
+      "end": 2147561464,
+      "size": 640,
+      "name_hint": "FAT32"
+    },
+    {
+      "start": 2147561464,
+      "end": 2147562116,
+      "size": 652,
+      "name_hint": "FAT12"
+    },
+    {
+      "start": 2147562116,
+      "end": 2147562272,
+      "size": 156,
+      "name_hint": null
+    },
+    {
+      "start": 2147562272,
+      "end": 2147562452,
+      "size": 180,
+      "name_hint": "Root directory cluster is %d"
+    },
+    {
+      "start": 2147562452,
+      "end": 2147562964,
+      "size": 512,
+      "name_hint": null
+    },
+    {
+      "start": 2147562964,
+      "end": 2147563764,
+      "size": 800,
+      "name_hint": null
+    },
+    {
+      "start": 2147563764,
+      "end": 2147565068,
+      "size": 1304,
+      "name_hint": "Format: All system sectors written. OK..."
+    },
+    {
+      "start": 2147565068,
+      "end": 2147565464,
+      "size": 396,
+      "name_hint": "%s:Flushing partition %x"
+    },
+    {
+      "start": 2147565464,
+      "end": 2147565644,
+      "size": 180,
+      "name_hint": null
+    },
+    {
+      "start": 2147565644,
+      "end": 2147565696,
+      "size": 52,
+      "name_hint": null
+    },
+    {
+      "start": 2147565696,
+      "end": 2147565708,
+      "size": 12,
+      "name_hint": null
+    },
+    {
+      "start": 2147565708,
+      "end": 2147565720,
+      "size": 12,
+      "name_hint": null
+    },
+    {
+      "start": 2147565720,
+      "end": 2147565788,
+      "size": 68,
+      "name_hint": null
+    },
+    {
+      "start": 2147565788,
+      "end": 2147565816,
+      "size": 28,
+      "name_hint": null
+    },
+    {
+      "start": 2147565816,
+      "end": 2147565896,
+      "size": 80,
+      "name_hint": null
+    },
+    {
+      "start": 2147565896,
+      "end": 2147566092,
+      "size": 196,
+      "name_hint": null
+    },
+    {
+      "start": 2147566092,
+      "end": 2147566380,
+      "size": 288,
+      "name_hint": "DFSLIB: File exceeds the file name limit"
+    },
+    {
+      "start": 2147566380,
+      "end": 2147566584,
+      "size": 204,
+      "name_hint": "%8x: %8x"
+    },
+    {
+      "start": 2147566584,
+      "end": 2147567040,
+      "size": 456,
+      "name_hint": null
+    },
+    {
+      "start": 2147567040,
+      "end": 2147567264,
+      "size": 224,
+      "name_hint": "%8x: %8x"
+    },
+    {
+      "start": 2147567264,
+      "end": 2147567716,
+      "size": 452,
+      "name_hint": null
+    },
+    {
+      "start": 2147567716,
+      "end": 2147567944,
+      "size": 228,
+      "name_hint": "%8x: %8x"
+    },
+    {
+      "start": 2147567944,
+      "end": 2147568916,
+      "size": 972,
+      "name_hint": "%s: Unable to allocate from the                   (pcmciafs_lfn_chunk) chunk poo"
+    },
+    {
+      "start": 2147568916,
+      "end": 2147568948,
+      "size": 32,
+      "name_hint": null
+    },
+    {
+      "start": 2147568948,
+      "end": 2147569376,
+      "size": 428,
+      "name_hint": null
+    },
+    {
+      "start": 2147569376,
+      "end": 2147569832,
+      "size": 456,
+      "name_hint": null
+    },
+    {
+      "start": 2147569832,
+      "end": 2147570108,
+      "size": 276,
+      "name_hint": null
+    },
+    {
+      "start": 2147570108,
+      "end": 2147570660,
+      "size": 552,
+      "name_hint": null
+    },
+    {
+      "start": 2147570660,
+      "end": 2147570668,
+      "size": 8,
+      "name_hint": null
+    },
+    {
+      "start": 2147570668,
+      "end": 2147571004,
+      "size": 336,
+      "name_hint": "%8x: %8x"
+    },
+    {
+      "start": 2147571004,
+      "end": 2147571556,
+      "size": 552,
+      "name_hint": null
+    },
+    {
+      "start": 2147571556,
+      "end": 2147571572,
+      "size": 16,
+      "name_hint": null
+    },
+    {
+      "start": 2147571572,
+      "end": 2147571620,
+      "size": 48,
+      "name_hint": null
+    },
+    {
+      "start": 2147571620,
+      "end": 2147571652,
+      "size": 32,
+      "name_hint": null
+    },
+    {
+      "start": 2147571652,
+      "end": 2147571676,
+      "size": 24,
+      "name_hint": null
+    },
+    {
+      "start": 2147571676,
+      "end": 2147571700,
+      "size": 24,
+      "name_hint": null
+    },
+    {
+      "start": 2147571700,
+      "end": 2147571732,
+      "size": 32,
+      "name_hint": null
+    },
+    {
+      "start": 2147571732,
+      "end": 2147571764,
+      "size": 32,
+      "name_hint": null
+    },
+    {
+      "start": 2147571764,
+      "end": 2147572648,
+      "size": 884,
+      "name_hint": "Invalid bytes per sector: %d %d %d"
+    },
+    {
+      "start": 2147572648,
+      "end": 2147572656,
+      "size": 8,
+      "name_hint": null
+    },
+    {
+      "start": 2147572656,
+      "end": 2147572896,
+      "size": 240,
+      "name_hint": "Boot Sector Read failed"
+    },
+    {
+      "start": 2147572896,
+      "end": 2147573904,
+      "size": 1008,
+      "name_hint": "Invalid bytes per sector: %d %d %d"
+    },
+    {
+      "start": 2147573904,
+      "end": 2147574472,
+      "size": 568,
+      "name_hint": "Backup Boot Sector Read failed"
+    },
+    {
+      "start": 2147574472,
+      "end": 2147574528,
+      "size": 56,
+      "name_hint": null
+    },
+    {
+      "start": 2147574528,
+      "end": 2147575012,
+      "size": 484,
+      "name_hint": null
+    },
+    {
+      "start": 2147575012,
+      "end": 2147575324,
+      "size": 312,
+      "name_hint": "%8x: %8x"
+    },
+    {
+      "start": 2147575324,
+      "end": 2147575388,
+      "size": 64,
+      "name_hint": "%8x: %8x"
+    },
+    {
+      "start": 2147575388,
+      "end": 2147575452,
+      "size": 64,
+      "name_hint": "%8x: %8x"
+    },
+    {
+      "start": 2147575452,
+      "end": 2147575560,
+      "size": 108,
+      "name_hint": null
+    },
+    {
+      "start": 2147575560,
+      "end": 2147575668,
+      "size": 108,
+      "name_hint": null
+    },
+    {
+      "start": 2147575668,
+      "end": 2147575744,
+      "size": 76,
+      "name_hint": null
+    },
+    {
+      "start": 2147575744,
+      "end": 2147575808,
+      "size": 64,
+      "name_hint": null
+    },
+    {
+      "start": 2147575808,
+      "end": 2147575956,
+      "size": 148,
+      "name_hint": "Partition, Start sector = %u,End sector = %u, overlaps with partition,Start sect"
+    },
+    {
+      "start": 2147575956,
+      "end": 2147576020,
+      "size": 64,
+      "name_hint": null
+    },
+    {
+      "start": 2147576020,
+      "end": 2147576176,
+      "size": 156,
+      "name_hint": "%8x: %8x"
+    },
+    {
+      "start": 2147576176,
+      "end": 2147576248,
+      "size": 72,
+      "name_hint": null
+    },
+    {
+      "start": 2147576248,
+      "end": 2147576320,
+      "size": 72,
+      "name_hint": null
+    },
+    {
+      "start": 2147576320,
+      "end": 2147576372,
+      "size": 52,
+      "name_hint": null
+    },
+    {
+      "start": 2147576372,
+      "end": 2147576424,
+      "size": 52,
+      "name_hint": null
+    },
+    {
+      "start": 2147576424,
+      "end": 2147576476,
+      "size": 52,
+      "name_hint": null
+    },
+    {
+      "start": 2147576476,
+      "end": 2147576528,
+      "size": 52,
+      "name_hint": null
+    },
+    {
+      "start": 2147576528,
+      "end": 2147576784,
+      "size": 256,
+      "name_hint": null
+    },
+    {
+      "start": 2147576784,
+      "end": 2147576856,
+      "size": 72,
+      "name_hint": null
+    },
+    {
+      "start": 2147576856,
+      "end": 2147577904,
+      "size": 1048,
+      "name_hint": "Start cluster %u allocated for fib %x"
+    },
+    {
+      "start": 2147577904,
+      "end": 2147577960,
+      "size": 56,
+      "name_hint": null
+    },
+    {
+      "start": 2147577960,
+      "end": 2147577972,
+      "size": 12,
+      "name_hint": null
+    },
+    {
+      "start": 2147577972,
+      "end": 2147578216,
+      "size": 244,
+      "name_hint": "Writing cluster = %u, offset = %d, nsecs = %d"
+    },
+    {
+      "start": 2147578216,
+      "end": 2147578460,
+      "size": 244,
+      "name_hint": "Reading cluster = %d, offset = %d, nsecs = %d"
+    },
+    {
+      "start": 2147578460,
+      "end": 2147578572,
+      "size": 112,
+      "name_hint": null
+    },
+    {
+      "start": 2147578572,
+      "end": 2147578684,
+      "size": 112,
+      "name_hint": null
+    },
+    {
+      "start": 2147578684,
+      "end": 2147578796,
+      "size": 112,
+      "name_hint": null
+    },
+    {
+      "start": 2147578796,
+      "end": 2147578908,
+      "size": 112,
+      "name_hint": null
+    },
+    {
+      "start": 2147578908,
+      "end": 2147579008,
+      "size": 100,
+      "name_hint": null
+    },
+    {
+      "start": 2147579008,
+      "end": 2147579124,
+      "size": 116,
+      "name_hint": null
+    },
+    {
+      "start": 2147579124,
+      "end": 2147580048,
+      "size": 924,
+      "name_hint": "Write buffer overflow:sz 0x%x,off 0x%x,bufsz 0x%x"
+    },
+    {
+      "start": 2147580048,
+      "end": 2147581076,
+      "size": 1028,
+      "name_hint": "external ATA CompactFlash card"
+    },
+    {
+      "start": 2147581076,
+      "end": 2147581504,
+      "size": 428,
+      "name_hint": "flash0"
+    },
+    {
+      "start": 2147581504,
+      "end": 2147582136,
+      "size": 632,
+      "name_hint": "external ATA CompactFlash card"
+    },
+    {
+      "start": 2147582136,
+      "end": 2147583380,
+      "size": 1244,
+      "name_hint": "FAT buffer sync flush failed for disk %d partition \t\t%d, error = %d"
+    },
+    {
+      "start": 2147583380,
+      "end": 2147584320,
+      "size": 940,
+      "name_hint": "FAT buffer sync flush failed for disk %d partition \t\t%d, error = %d"
+    },
+    {
+      "start": 2147584320,
+      "end": 2147585044,
+      "size": 724,
+      "name_hint": "Bytes Per Sector"
+    },
+    {
+      "start": 2147585044,
+      "end": 2147585440,
+      "size": 396,
+      "name_hint": "Bytes Per Sector"
+    },
+    {
+      "start": 2147585440,
+      "end": 2147586048,
+      "size": 608,
+      "name_hint": "Bytes Per Sector"
+    },
+    {
+      "start": 2147586048,
+      "end": 2147586932,
+      "size": 884,
+      "name_hint": "%30s: %d"
+    },
+    {
+      "start": 2147586932,
+      "end": 2147587624,
+      "size": 692,
+      "name_hint": "Bytes Per Sector"
+    },
+    {
+      "start": 2147587624,
+      "end": 2147588088,
+      "size": 464,
+      "name_hint": "Data buffer flush failed for disk %d partition \t%d, error = %d"
+    },
+    {
+      "start": 2147588088,
+      "end": 2147588100,
+      "size": 12,
+      "name_hint": null
+    },
+    {
+      "start": 2147588100,
+      "end": 2147588180,
+      "size": 80,
+      "name_hint": null
+    },
+    {
+      "start": 2147588180,
+      "end": 2147588260,
+      "size": 80,
+      "name_hint": null
+    },
+    {
+      "start": 2147588260,
+      "end": 2147588332,
+      "size": 72,
+      "name_hint": null
+    },
+    {
+      "start": 2147588332,
+      "end": 2147588408,
+      "size": 76,
+      "name_hint": null
+    },
+    {
+      "start": 2147588408,
+      "end": 2147588484,
+      "size": 76,
+      "name_hint": null
+    },
+    {
+      "start": 2147588484,
+      "end": 2147588556,
+      "size": 72,
+      "name_hint": null
+    },
+    {
+      "start": 2147588556,
+      "end": 2147588816,
+      "size": 260,
+      "name_hint": "Partition entry %d error %d"
+    },
+    {
+      "start": 2147588816,
+      "end": 2147589120,
+      "size": 304,
+      "name_hint": "Current Head #"
+    },
+    {
+      "start": 2147589120,
+      "end": 2147589500,
+      "size": 380,
+      "name_hint": "Current Head #"
+    },
+    {
+      "start": 2147589500,
+      "end": 2147589680,
+      "size": 180,
+      "name_hint": "Current Head #"
+    },
+    {
+      "start": 2147589680,
+      "end": 2147589956,
+      "size": 276,
+      "name_hint": "Current Cylinder #"
+    },
+    {
+      "start": 2147589956,
+      "end": 2147590132,
+      "size": 176,
+      "name_hint": "Current Head #"
+    },
+    {
+      "start": 2147590132,
+      "end": 2147590208,
+      "size": 76,
+      "name_hint": "Current Head #"
+    },
+    {
+      "start": 2147590208,
+      "end": 2147590372,
+      "size": 164,
+      "name_hint": "Current Head #"
+    },
+    {
+      "start": 2147590372,
+      "end": 2147590480,
+      "size": 108,
+      "name_hint": "Current Head #"
+    },
+    {
+      "start": 2147590480,
+      "end": 2147590588,
+      "size": 108,
+      "name_hint": "Current Head #"
+    },
+    {
+      "start": 2147590588,
+      "end": 2147590696,
+      "size": 108,
+      "name_hint": "Current Head #"
+    },
+    {
+      "start": 2147590696,
+      "end": 2147590804,
+      "size": 108,
+      "name_hint": "Current Head #"
+    },
+    {
+      "start": 2147590804,
+      "end": 2147590912,
+      "size": 108,
+      "name_hint": "Current Head #"
+    },
+    {
+      "start": 2147590912,
+      "end": 2147591084,
+      "size": 172,
+      "name_hint": "Current Head #"
+    },
+    {
+      "start": 2147591084,
+      "end": 2147591240,
+      "size": 156,
+      "name_hint": "Current Head #"
+    },
+    {
+      "start": 2147591240,
+      "end": 2147591332,
+      "size": 92,
+      "name_hint": "Current Head #"
+    },
+    {
+      "start": 2147591332,
+      "end": 2147591472,
+      "size": 140,
+      "name_hint": "Current Head #"
+    },
+    {
+      "start": 2147591472,
+      "end": 2147591628,
+      "size": 156,
+      "name_hint": "Current Head #"
+    },
+    {
+      "start": 2147591628,
+      "end": 2147591784,
+      "size": 156,
+      "name_hint": "Current Head #"
+    },
+    {
+      "start": 2147591784,
+      "end": 2147592288,
+      "size": 504,
+      "name_hint": "Current Head #"
+    },
+    {
+      "start": 2147592288,
+      "end": 2147592396,
+      "size": 108,
+      "name_hint": "Current Head #"
+    },
+    {
+      "start": 2147592396,
+      "end": 2147592428,
+      "size": 32,
+      "name_hint": "Current Head #"
+    },
+    {
+      "start": 2147592428,
+      "end": 2147592512,
+      "size": 84,
+      "name_hint": null
+    },
+    {
+      "start": 2147592512,
+      "end": 2147592544,
+      "size": 32,
+      "name_hint": "Current Head #"
+    },
+    {
+      "start": 2147592544,
+      "end": 2147592576,
+      "size": 32,
+      "name_hint": "Current Head #"
+    },
+    {
+      "start": 2147592576,
+      "end": 2147592608,
+      "size": 32,
+      "name_hint": "Current Head #"
+    },
+    {
+      "start": 2147592608,
+      "end": 2147592640,
+      "size": 32,
+      "name_hint": "Current Head #"
+    },
+    {
+      "start": 2147592640,
+      "end": 2147592676,
+      "size": 36,
+      "name_hint": "Current Head #"
+    },
+    {
+      "start": 2147592676,
+      "end": 2147592708,
+      "size": 32,
+      "name_hint": "Current Head #"
+    },
+    {
+      "start": 2147592708,
+      "end": 2147592740,
+      "size": 32,
+      "name_hint": "Current Head #"
+    },
+    {
+      "start": 2147592740,
+      "end": 2147592764,
+      "size": 24,
+      "name_hint": null
+    },
+    {
+      "start": 2147592764,
+      "end": 2147592808,
+      "size": 44,
+      "name_hint": null
+    },
+    {
+      "start": 2147592808,
+      "end": 2147592832,
+      "size": 24,
+      "name_hint": null
+    },
+    {
+      "start": 2147592832,
+      "end": 2147592868,
+      "size": 36,
+      "name_hint": null
+    },
+    {
+      "start": 2147592868,
+      "end": 2147592888,
+      "size": 20,
+      "name_hint": null
+    },
+    {
+      "start": 2147592888,
+      "end": 2147592924,
+      "size": 36,
+      "name_hint": null
+    },
+    {
+      "start": 2147592924,
+      "end": 2147593004,
+      "size": 80,
+      "name_hint": "Current Head #"
+    },
+    {
+      "start": 2147593004,
+      "end": 2147593488,
+      "size": 484,
+      "name_hint": "Bytes Per Sector"
+    },
+    {
+      "start": 2147593488,
+      "end": 2147593568,
+      "size": 80,
+      "name_hint": "Current Head #"
+    },
+    {
+      "start": 2147593568,
+      "end": 2147593684,
+      "size": 116,
+      "name_hint": "Current Head #"
+    },
+    {
+      "start": 2147593684,
+      "end": 2147593876,
+      "size": 192,
+      "name_hint": "Current Head #"
+    },
+    {
+      "start": 2147593876,
+      "end": 2147593972,
+      "size": 96,
+      "name_hint": "Current Head #"
+    },
+    {
+      "start": 2147593972,
+      "end": 2147594048,
+      "size": 76,
+      "name_hint": "Current Head #"
+    },
+    {
+      "start": 2147594048,
+      "end": 2147594256,
+      "size": 208,
+      "name_hint": "Current Head #"
+    },
+    {
+      "start": 2147594256,
+      "end": 2147594348,
+      "size": 92,
+      "name_hint": null
+    },
+    {
+      "start": 2147594348,
+      "end": 2147594524,
+      "size": 176,
+      "name_hint": "Current Head #"
+    },
+    {
+      "start": 2147594524,
+      "end": 2147594532,
+      "size": 8,
+      "name_hint": null
+    },
+    {
+      "start": 2147594532,
+      "end": 2147594540,
+      "size": 8,
+      "name_hint": null
+    },
+    {
+      "start": 2147594540,
+      "end": 2147594548,
+      "size": 8,
+      "name_hint": null
+    },
+    {
+      "start": 2147594548,
+      "end": 2147594556,
+      "size": 8,
+      "name_hint": null
+    },
+    {
+      "start": 2147594556,
+      "end": 2147594564,
+      "size": 8,
+      "name_hint": null
+    },
+    {
+      "start": 2147594564,
+      "end": 2147594572,
+      "size": 8,
+      "name_hint": null
+    },
+    {
+      "start": 2147594572,
+      "end": 2147594580,
+      "size": 8,
+      "name_hint": null
+    },
+    {
+      "start": 2147594580,
+      "end": 2147594588,
+      "size": 8,
+      "name_hint": null
+    },
+    {
+      "start": 2147594588,
+      "end": 2147594924,
+      "size": 336,
+      "name_hint": "Current Head #"
+    },
+    {
+      "start": 2147594924,
+      "end": 2147594932,
+      "size": 8,
+      "name_hint": null
+    },
+    {
+      "start": 2147594932,
+      "end": 2147594940,
+      "size": 8,
+      "name_hint": null
+    },
+    {
+      "start": 2147594940,
+      "end": 2147594948,
+      "size": 8,
+      "name_hint": null
+    },
+    {
+      "start": 2147594948,
+      "end": 2147594956,
+      "size": 8,
+      "name_hint": null
+    },
+    {
+      "start": 2147594956,
+      "end": 2147594964,
+      "size": 8,
+      "name_hint": null
+    },
+    {
+      "start": 2147594964,
+      "end": 2147594972,
+      "size": 8,
+      "name_hint": null
+    },
+    {
+      "start": 2147594972,
+      "end": 2147594980,
+      "size": 8,
+      "name_hint": null
+    },
+    {
+      "start": 2147594980,
+      "end": 2147594988,
+      "size": 8,
+      "name_hint": null
+    },
+    {
+      "start": 2147594988,
+      "end": 2147594996,
+      "size": 8,
+      "name_hint": null
+    },
+    {
+      "start": 2147594996,
+      "end": 2147595004,
+      "size": 8,
+      "name_hint": null
+    },
+    {
+      "start": 2147595004,
+      "end": 2147595012,
+      "size": 8,
+      "name_hint": null
+    },
+    {
+      "start": 2147595012,
+      "end": 2147595020,
+      "size": 8,
+      "name_hint": null
+    },
+    {
+      "start": 2147595020,
+      "end": 2147595028,
+      "size": 8,
+      "name_hint": null
+    },
+    {
+      "start": 2147595028,
+      "end": 2147595036,
+      "size": 8,
+      "name_hint": null
+    },
+    {
+      "start": 2147595036,
+      "end": 2147595044,
+      "size": 8,
+      "name_hint": null
+    },
+    {
+      "start": 2147595044,
+      "end": 2147595052,
+      "size": 8,
+      "name_hint": null
+    },
+    {
+      "start": 2147595052,
+      "end": 2147595060,
+      "size": 8,
+      "name_hint": null
+    },
+    {
+      "start": 2147595060,
+      "end": 2147595068,
+      "size": 8,
+      "name_hint": null
+    },
+    {
+      "start": 2147595068,
+      "end": 2147595076,
+      "size": 8,
+      "name_hint": null
+    },
+    {
+      "start": 2147595076,
+      "end": 2147595144,
+      "size": 68,
+      "name_hint": "Current Head #"
+    },
+    {
+      "start": 2147595144,
+      "end": 2147595164,
+      "size": 20,
+      "name_hint": null
+    },
+    {
+      "start": 2147595164,
+      "end": 2147595172,
+      "size": 8,
+      "name_hint": null
+    },
+    {
+      "start": 2147595172,
+      "end": 2147595180,
+      "size": 8,
+      "name_hint": null
+    },
+    {
+      "start": 2147595180,
+      "end": 2147595188,
+      "size": 8,
+      "name_hint": null
+    },
+    {
+      "start": 2147595188,
+      "end": 2147595196,
+      "size": 8,
+      "name_hint": null
+    },
+    {
+      "start": 2147595196,
+      "end": 2147595204,
+      "size": 8,
+      "name_hint": null
+    },
+    {
+      "start": 2147595204,
+      "end": 2147595328,
+      "size": 124,
+      "name_hint": "Current Head #"
+    },
+    {
+      "start": 2147595328,
+      "end": 2147595508,
+      "size": 180,
+      "name_hint": null
+    },
+    {
+      "start": 2147595508,
+      "end": 2147595516,
+      "size": 8,
+      "name_hint": null
+    },
+    {
+      "start": 2147595516,
+      "end": 2147595584,
+      "size": 68,
+      "name_hint": null
+    },
+    {
+      "start": 2147595584,
+      "end": 2147595636,
+      "size": 52,
+      "name_hint": null
+    },
+    {
+      "start": 2147595636,
+      "end": 2147595768,
+      "size": 132,
+      "name_hint": "Current Head #"
+    },
+    {
+      "start": 2147595768,
+      "end": 2147595828,
+      "size": 60,
+      "name_hint": null
+    },
+    {
+      "start": 2147595828,
+      "end": 2147596148,
+      "size": 320,
+      "name_hint": "Current Head #"
+    },
+    {
+      "start": 2147596148,
+      "end": 2147596284,
+      "size": 136,
+      "name_hint": "Current Head #"
+    },
+    {
+      "start": 2147596284,
+      "end": 2147596484,
+      "size": 200,
+      "name_hint": "Current Head #"
+    },
+    {
+      "start": 2147596484,
+      "end": 2147596548,
+      "size": 64,
+      "name_hint": null
+    },
+    {
+      "start": 2147596548,
+      "end": 2147596612,
+      "size": 64,
+      "name_hint": null
+    },
+    {
+      "start": 2147596612,
+      "end": 2147596648,
+      "size": 36,
+      "name_hint": null
+    },
+    {
+      "start": 2147596648,
+      "end": 2147596824,
+      "size": 176,
+      "name_hint": "Current Head #"
+    },
+    {
+      "start": 2147596824,
+      "end": 2147597000,
+      "size": 176,
+      "name_hint": "Current Head #"
+    },
+    {
+      "start": 2147597000,
+      "end": 2147597128,
+      "size": 128,
+      "name_hint": "Current Head #"
+    },
+    {
+      "start": 2147597128,
+      "end": 2147597256,
+      "size": 128,
+      "name_hint": "Current Head #"
+    },
+    {
+      "start": 2147597256,
+      "end": 2147597404,
+      "size": 148,
+      "name_hint": "Current Head #"
+    },
+    {
+      "start": 2147597404,
+      "end": 2147597552,
+      "size": 148,
+      "name_hint": "Current Head #"
+    },
+    {
+      "start": 2147597552,
+      "end": 2147597748,
+      "size": 196,
+      "name_hint": "Current Head #"
+    },
+    {
+      "start": 2147597748,
+      "end": 2147597940,
+      "size": 192,
+      "name_hint": "Number of cylinders %u"
+    },
+    {
+      "start": 2147597940,
+      "end": 2147599404,
+      "size": 1464,
+      "name_hint": "Creating partfs %s:%d"
+    },
+    {
+      "start": 2147599404,
+      "end": 2147599588,
+      "size": 184,
+      "name_hint": "Partition exceeds device size, Start sector = %u, End sector = %u, Total sectors"
+    },
+    {
+      "start": 2147599588,
+      "end": 2147599872,
+      "size": 284,
+      "name_hint": null
+    },
+    {
+      "start": 2147599872,
+      "end": 2147599924,
+      "size": 52,
+      "name_hint": null
+    },
+    {
+      "start": 2147599924,
+      "end": 2147602124,
+      "size": 2200,
+      "name_hint": "Drive communication & 1st Sector Write OK..."
+    },
+    {
+      "start": 2147602124,
+      "end": 2147603288,
+      "size": 1164,
+      "name_hint": "Extended partition size exceeds device sizeStart sector = %u, End sector = %u, T"
+    },
+    {
+      "start": 2147603288,
+      "end": 2147603320,
+      "size": 32,
+      "name_hint": null
+    },
+    {
+      "start": 2147603320,
+      "end": 2147603400,
+      "size": 80,
+      "name_hint": "DATAINCONSISTENCY/DATACORRUPTION %s, "
+    },
+    {
+      "start": 2147603400,
+      "end": 2147603440,
+      "size": 40,
+      "name_hint": null
+    },
+    {
+      "start": 2147603440,
+      "end": 2147603552,
+      "size": 112,
+      "name_hint": null
+    },
+    {
+      "start": 2147603552,
+      "end": 2147603664,
+      "size": 112,
+      "name_hint": null
+    },
+    {
+      "start": 2147603664,
+      "end": 2147603684,
+      "size": 20,
+      "name_hint": null
+    },
+    {
+      "start": 2147603684,
+      "end": 2147603716,
+      "size": 32,
+      "name_hint": null
+    },
+    {
+      "start": 2147603716,
+      "end": 2147603808,
+      "size": 92,
+      "name_hint": "Current Sectors Per Track"
+    },
+    {
+      "start": 2147603808,
+      "end": 2147603932,
+      "size": 124,
+      "name_hint": "Current Sectors Per Track"
+    },
+    {
+      "start": 2147603932,
+      "end": 2147604168,
+      "size": 236,
+      "name_hint": "Attempt to %s %u bytes should have been %u bytes"
+    },
+    {
+      "start": 2147604168,
+      "end": 2147604336,
+      "size": 168,
+      "name_hint": "Attempt to %s %u bytes should have been %u bytes"
+    },
+    {
+      "start": 2147604336,
+      "end": 2147604420,
+      "size": 84,
+      "name_hint": null
+    },
+    {
+      "start": 2147604420,
+      "end": 2147604688,
+      "size": 268,
+      "name_hint": null
+    },
+    {
+      "start": 2147604688,
+      "end": 2147604908,
+      "size": 220,
+      "name_hint": null
+    },
+    {
+      "start": 2147604908,
+      "end": 2147604968,
+      "size": 60,
+      "name_hint": null
+    },
+    {
+      "start": 2147604968,
+      "end": 2147605116,
+      "size": 148,
+      "name_hint": null
+    },
+    {
+      "start": 2147605116,
+      "end": 2147605200,
+      "size": 84,
+      "name_hint": null
+    },
+    {
+      "start": 2147605200,
+      "end": 2147605240,
+      "size": 40,
+      "name_hint": null
+    },
+    {
+      "start": 2147605240,
+      "end": 2147605456,
+      "size": 216,
+      "name_hint": null
+    },
+    {
+      "start": 2147605456,
+      "end": 2147605528,
+      "size": 72,
+      "name_hint": "strlen"
+    },
+    {
+      "start": 2147605528,
+      "end": 2147605572,
+      "size": 44,
+      "name_hint": null
+    },
+    {
+      "start": 2147605572,
+      "end": 2147605696,
+      "size": 124,
+      "name_hint": null
+    },
+    {
+      "start": 2147605696,
+      "end": 2147605756,
+      "size": 60,
+      "name_hint": null
+    },
+    {
+      "start": 2147605756,
+      "end": 2147605960,
+      "size": 204,
+      "name_hint": "Attempt to %s %u bytes should have been %u bytes"
+    },
+    {
+      "start": 2147605960,
+      "end": 2147606296,
+      "size": 336,
+      "name_hint": "Attempt to %s %u bytes should have been %u bytes"
+    },
+    {
+      "start": 2147606296,
+      "end": 2147606500,
+      "size": 204,
+      "name_hint": "Attempt to %s %u bytes should have been %u bytes"
+    },
+    {
+      "start": 2147606500,
+      "end": 2147606648,
+      "size": 148,
+      "name_hint": "Serial Number"
+    },
+    {
+      "start": 2147606648,
+      "end": 2147607044,
+      "size": 396,
+      "name_hint": null
+    },
+    {
+      "start": 2147607044,
+      "end": 2147607608,
+      "size": 564,
+      "name_hint": null
+    },
+    {
+      "start": 2147607608,
+      "end": 2147608004,
+      "size": 396,
+      "name_hint": null
+    },
+    {
+      "start": 2147608004,
+      "end": 2147608568,
+      "size": 564,
+      "name_hint": null
+    },
+    {
+      "start": 2147608568,
+      "end": 2147609552,
+      "size": 984,
+      "name_hint": null
+    },
+    {
+      "start": 2147609552,
+      "end": 2147610004,
+      "size": 452,
+      "name_hint": null
+    },
+    {
+      "start": 2147610004,
+      "end": 2147610616,
+      "size": 612,
+      "name_hint": "ATA device information structure"
+    },
+    {
+      "start": 2147610616,
+      "end": 2147610700,
+      "size": 84,
+      "name_hint": null
+    },
+    {
+      "start": 2147610700,
+      "end": 2147610724,
+      "size": 24,
+      "name_hint": null
+    },
+    {
+      "start": 2147610724,
+      "end": 2147610844,
+      "size": 120,
+      "name_hint": "Serial Number"
+    },
+    {
+      "start": 2147610844,
+      "end": 2147610916,
+      "size": 72,
+      "name_hint": "Serial Number"
+    },
+    {
+      "start": 2147610916,
+      "end": 2147611072,
+      "size": 156,
+      "name_hint": "Serial Number"
+    },
+    {
+      "start": 2147611072,
+      "end": 2147611196,
+      "size": 124,
+      "name_hint": "Serial Number"
+    },
+    {
+      "start": 2147611196,
+      "end": 2147612588,
+      "size": 1392,
+      "name_hint": null
+    },
+    {
+      "start": 2147612588,
+      "end": 2147612848,
+      "size": 260,
+      "name_hint": null
+    },
+    {
+      "start": 2147612848,
+      "end": 2147612856,
+      "size": 8,
+      "name_hint": null
+    },
+    {
+      "start": 2147612856,
+      "end": 2147613192,
+      "size": 336,
+      "name_hint": null
+    },
+    {
+      "start": 2147613192,
+      "end": 2147613200,
+      "size": 8,
+      "name_hint": null
+    },
+    {
+      "start": 2147613200,
+      "end": 2147613276,
+      "size": 76,
+      "name_hint": null
+    },
+    {
+      "start": 2147613276,
+      "end": 2147614884,
+      "size": 1608,
+      "name_hint": null
+    }
+  ]
+}

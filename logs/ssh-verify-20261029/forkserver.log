@@ -1,0 +1,19 @@
+[2026-10-29 16:29:30] [INFO] edge map shared memory created at key 0x2000
+[2026-10-29 16:29:30] [INFO] exit status shared memory created at key 0x2001
+[2026-10-29 16:29:30] [INFO] pipes created: ctl=/tmp/qemu_fuzz_ctl st=/tmp/qemu_fuzz_st
+[2026-10-29 16:29:30] [INFO] enabled, waiting for fuzzer on /tmp/qemu_fuzz_ctl
+[2026-10-29 17:01:04] [INFO] saving snapshot 'snap_ssh_verify'
+[2026-10-29 17:01:05] [INFO] snapshot saved: snap_ssh_verify
+[2026-10-29 17:01:05] [INFO] coverage state backed up
+[2026-10-29 17:01:05] [INFO] received fuzz command 1
+[2026-10-29 17:01:06] [INFO] snapshot restored
+[2026-10-29 17:01:06] [INFO] coverage reset after snapshot restore
+[2026-10-29 17:01:06] [INFO] vm started
+[2026-10-29 17:01:19] [INFO] received fuzz command 2
+[2026-10-29 17:01:19] [INFO] snapshot restored
+[2026-10-29 17:01:19] [INFO] coverage reset after snapshot restore
+[2026-10-29 17:01:19] [INFO] vm started
+[2026-10-29 17:01:42] [INFO] received fuzz command 3
+[2026-10-29 17:01:42] [INFO] snapshot restored
+[2026-10-29 17:01:42] [INFO] coverage reset after snapshot restore
+[2026-10-29 17:01:42] [INFO] vm started

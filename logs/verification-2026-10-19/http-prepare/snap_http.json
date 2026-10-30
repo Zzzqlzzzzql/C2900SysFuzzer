@@ -1,0 +1,28 @@
+{
+  "protocol": "http",
+  "display_name": "HTTP",
+  "snapshot_name": "snap_http",
+  "created_at": "2026-10-19 16:12:01",
+  "config_script": "<PROJECT_ROOT>/runtime/protocols/http/configure.py",
+  "config_exit": 0,
+  "snapshot_status": 1,
+  "kernel_source": "<PROJECT_ROOT>/vendor/c2900/firmware/c2900-universalk9-mz.SPA.150-1.M9.bin",
+  "kernel_used": "<PROJECT_ROOT>/runtime/protocols/http/kernel-elffix.bin",
+  "kernel_sha256": "6d7278032fc9fe5858a1b6b5a925e7b43c88db6cec78638763b2ca42519d6811",
+  "fuzz_config": "<PROJECT_ROOT>/runtime/protocols/http/config/fuzz.json",
+  "fuzz_config_sha256": "c3d6b5a2cebc7955b2a88f2de5b70c4b07dabb06c1647375c8dc3aecd715002b",
+  "qemu_session": "c2900fuzz-http",
+  "coverage_at_snapshot": "edges=62430 sum=2740974 hash=a8444a19aa4188ad exit=0xdeadbeef",
+  "aflnet_protocol": "HTTP",
+  "network": "tcp://172.16.100.2:80",
+  "net_mode": "socket",
+  "notes": "config_web.py \u540c\u65f6\u542f\u7528 HTTP+HTTPS\uff1b\u672c\u5feb\u7167\u7528\u4e8e HTTP\uff0880\uff09campaign\u3002",
+  "logs": {
+    "console": "<PROJECT_ROOT>/runtime/protocols/http/logs/console.log",
+    "configure": "<PROJECT_ROOT>/runtime/protocols/http/logs/configure.log",
+    "snapshot": "<PROJECT_ROOT>/runtime/protocols/http/logs/snapshot.log",
+    "coverage": "<PROJECT_ROOT>/runtime/protocols/http/Logs/coverage.log",
+    "forkserver": "<PROJECT_ROOT>/runtime/protocols/http/Logs/forkserver.log",
+    "serial": "<PROJECT_ROOT>/runtime/protocols/http/serial.log"
+  }
+}

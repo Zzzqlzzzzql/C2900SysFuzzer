@@ -1,0 +1,268 @@
+{
+  "schema": "c2900-firmware-analysis/1",
+  "protocol": "ssh",
+  "date": "2026-10-26",
+  "method": "static firmware analysis only; no QEMU",
+  "address_formula": {
+    "runtime": "linked - 0x60000000",
+    "phys": "linked - 0x80000000"
+  },
+  "images": {
+    "m9": {
+      "path": "/tmp/binwalk_m9/_c2900-universalk9-mz.SPA.150-1.M9.bin.extracted/C2900-UN.BIN",
+      "sha256": "2e045a88536b1c247ebd3a988a654f0ee94fbf02f7aeb9ef787d643eadb66a6e",
+      "text": {
+        "va": "0x81000000",
+        "size": "0x4956000"
+      }
+    },
+    "m7": {
+      "path": "vendor/c2900/firmware/C2900-UN.150.BIN",
+      "sha256": "a398d815722310afc21ab670b0b2101decf587663a21456da4326a939ee9f465",
+      "text": {
+        "va": "0x81000000",
+        "size": "0x4950000"
+      }
+    }
+  },
+  "service": {
+    "transport": "tcp",
+    "port": 22,
+    "port_fixed": true,
+    "no_ip_ssh_port_command": true,
+    "handler_name": "SSH-Server",
+    "internal_name": "ssh",
+    "nbar_protocol_id": 40,
+    "nbar_definition": "(tcp-static-port 22 `ssh' 40 `Secured Shell' SSH-Server)",
+    "nbar_definition_m9_va": "0x88244ab6",
+    "version_format": "SSH-<major>.<minor>-Cisco-1.25",
+    "version_format_va_m9": "0x86b5ce48",
+    "version_suffix": "Cisco-1.25",
+    "version_suffix_va_m9": "0x86b5ce58"
+  },
+  "algorithms": {
+    "kex": [
+      "diffie-hellman-group-exchange-sha1",
+      "diffie-hellman-group14-sha1",
+      "diffie-hellman-group1-sha1"
+    ],
+    "hostkey": [
+      "ssh-rsa"
+    ],
+    "cipher": [
+      "aes128-cbc",
+      "3des-cbc",
+      "aes192-cbc",
+      "aes256-cbc"
+    ],
+    "mac": [
+      "hmac-sha1",
+      "hmac-sha1-96",
+      "hmac-md5",
+      "hmac-md5-96"
+    ],
+    "compression": [
+      "none"
+    ]
+  },
+  "entries": {
+    "m9": {
+      "service_entry": {
+        "role": "ssh2_packet_loop",
+        "linked": "0x8383e3d8",
+        "runtime": "0x2383e3d8",
+        "phys": "0x0383e3d8"
+      },
+      "alternatives": {
+        "ssh2_packet_parser": {
+          "linked": "0x8383df88",
+          "runtime": "0x2383df88",
+          "phys": "0x0383df88"
+        },
+        "ssh2_message_dispatch": {
+          "linked": "0x8383e7f8",
+          "runtime": "0x2383e7f8",
+          "phys": "0x0383e7f8"
+        },
+        "ssh_session_data_entry": {
+          "linked": "0x838363a0",
+          "runtime": "0x238363a0",
+          "phys": "0x038363a0"
+        },
+        "ssh_receive": {
+          "linked": "0x83830e5c",
+          "runtime": "0x23830e5c",
+          "phys": "0x03830e5c"
+        },
+        "tcp_listener_callback": {
+          "linked": "0x83837250",
+          "runtime": "0x23837250",
+          "phys": "0x03837250"
+        },
+        "accept_session_setup": {
+          "linked": "0x83837114",
+          "runtime": "0x23837114",
+          "phys": "0x03837114"
+        },
+        "listener_start": {
+          "linked": "0x838374c0",
+          "runtime": "0x238374c0",
+          "phys": "0x038374c0"
+        },
+        "service_enable_event_handler": {
+          "linked": "0x83837c90",
+          "runtime": "0x23837c90",
+          "phys": "0x03837c90"
+        },
+        "ssh_process_entry": {
+          "linked": "0x83839098",
+          "runtime": "0x23839098",
+          "phys": "0x03839098"
+        },
+        "ssh_event_handler_entry": {
+          "linked": "0x83848970",
+          "runtime": "0x23848970",
+          "phys": "0x03848970"
+        },
+        "version_builder": {
+          "linked": "0x83833638",
+          "runtime": "0x23833638",
+          "phys": "0x03833638"
+        }
+      },
+      "snapshot_trigger_listener_ready": {
+        "linked": "0x83837fc8",
+        "runtime": "0x23837fc8",
+        "phys": "0x03837fc8"
+      }
+    },
+    "m7": {
+      "service_entry": {
+        "role": "ssh2_packet_loop",
+        "linked": "0x838398a8",
+        "runtime": "0x238398a8",
+        "phys": "0x038398a8"
+      },
+      "alternatives": {
+        "ssh2_packet_parser": {
+          "linked": "0x83839458",
+          "runtime": "0x23839458",
+          "phys": "0x03839458"
+        },
+        "ssh2_message_dispatch": {
+          "linked": "0x83839fcc",
+          "runtime": "0x23839fcc",
+          "phys": "0x03839fcc"
+        },
+        "ssh_session_data_entry": {
+          "linked": "0x83830398",
+          "runtime": "0x23830398",
+          "phys": "0x03830398"
+        },
+        "ssh_receive": {
+          "linked": "0x8382c5fc",
+          "runtime": "0x2382c5fc",
+          "phys": "0x0382c5fc"
+        },
+        "tcp_listener_callback": {
+          "linked": "0x838329f0",
+          "runtime": "0x238329f0",
+          "phys": "0x038329f0"
+        },
+        "accept_session_setup": {
+          "linked": "0x838328b4",
+          "runtime": "0x238328b4",
+          "phys": "0x038328b4"
+        },
+        "listener_start": {
+          "linked": "0x83832c60",
+          "runtime": "0x23832c60",
+          "phys": "0x03832c60"
+        },
+        "service_enable_event_handler": {
+          "linked": "0x83833430",
+          "runtime": "0x23833430",
+          "phys": "0x03833430"
+        },
+        "ssh_process_entry": {
+          "linked": "0x83834838",
+          "runtime": "0x23834838",
+          "phys": "0x03834838"
+        },
+        "ssh_event_handler_entry": {
+          "linked": "0x83844144",
+          "runtime": "0x23844144",
+          "phys": "0x03844144"
+        },
+        "version_builder": {
+          "linked": "0x8382edd8",
+          "runtime": "0x2382edd8",
+          "phys": "0x0382edd8"
+        }
+      },
+      "snapshot_trigger_listener_ready": {
+        "linked": "0x83833768",
+        "runtime": "0x23833768",
+        "phys": "0x03833768"
+      }
+    }
+  },
+  "ranges": {
+    "m9": {
+      "full_ssh_scp": {
+        "linked_start": "0x8382b834",
+        "linked_end_exclusive": "0x8384939c",
+        "phys_start": "0x0382b834",
+        "phys_end_exclusive": "0x0384939c",
+        "boundary_before": "EEM ED RPC (ends 0x8382b834)",
+        "boundary_after": "CNS SSL Transport (starts 0x8384939c)"
+      },
+      "marker_span": {
+        "linked_start": "0x8382f720",
+        "linked_end_exclusive": "0x83848364",
+        "phys_start": "0x0382f720",
+        "phys_end_exclusive": "0x03848364"
+      },
+      "ssh2_core": {
+        "linked_start": "0x83839b28",
+        "linked_end_exclusive": "0x83844a50",
+        "phys_start": "0x03839b28",
+        "phys_end_exclusive": "0x03844a50"
+      }
+    },
+    "m7": {
+      "full_ssh_scp": {
+        "linked_start": "0x83826fd4",
+        "linked_end_exclusive": "0x83844b70",
+        "phys_start": "0x03826fd4",
+        "phys_end_exclusive": "0x03844b70",
+        "boundary_before": "EEM ED RPC (ends 0x83826fd4)",
+        "boundary_after": "CNS SSL Transport (starts 0x83844b70)"
+      },
+      "marker_span": {
+        "linked_start": "0x8382aec0",
+        "linked_end_exclusive": "0x83843b38",
+        "phys_start": "0x0382aec0",
+        "phys_end_exclusive": "0x03843b38"
+      },
+      "ssh2_core": {
+        "linked_start": "0x838352c8",
+        "linked_end_exclusive": "0x83840224",
+        "phys_start": "0x038352c8",
+        "phys_end_exclusive": "0x03840224"
+      }
+    }
+  },
+  "aflnet": {
+    "protocol": "SSH",
+    "seed": "seeds/ssh_kexinit.raw",
+    "seed_generator": "scripts/gen_ssh_seed.py",
+    "plaintext_scope": "version line + KEXINIT + KEXDH_INIT + NEWKEYS; responses after NEWKEYS are encrypted and not parseable by AFLNet -P SSH"
+  },
+  "notes": [
+    "service_entry is parsed by QEMU but currently unused (coverage.c:425).",
+    "snapshot_trigger only applies when auto_snapshot=true.",
+    "full_ssh_scp includes SSH client/SCP code; server-only reachable-block calibration is future work.",
+    "addresses are linked VAs unless the key says runtime/phys."
+  ]
+}

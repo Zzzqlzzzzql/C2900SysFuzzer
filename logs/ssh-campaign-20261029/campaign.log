@@ -1,0 +1,61 @@
+== 启动 QEMU（m7，tap=tap1，snapshot=snap_ssh_aflnet） ==
+C2900 fuzz QEMU 已启动（tmux session=c2900fuzz-ssh）
+  固件：<PROJECT_ROOT>/vendor/c2900/firmware/C2900-UN.150.BIN
+  配置：<PROJECT_ROOT>/runtime/protocols/ssh/config/fuzz.aflnet-m7.json
+  串口：<PROJECT_ROOT>/runtime/protocols/ssh/run-aflnet/serial.log
+  控制台：tmux session=console（serial 127.0.0.1:5554，日志 <PROJECT_ROOT>/runtime/protocols/ssh/run-aflnet/console.log）
+  覆盖率：<PROJECT_ROOT>/runtime/protocols/ssh/run-aflnet/Logs/coverage.log
+  监视器：<PROJECT_ROOT>/runtime/protocols/ssh/run-aflnet/monitor.sock（socat - UNIX-CONNECT:<PROJECT_ROOT>/runtime/protocols/ssh/run-aflnet/monitor.sock）
+  forkserver：/tmp/qemu_fuzz_ctl、/tmp/qemu_fuzz_st
+  等待 banner：<PROJECT_ROOT>/runtime/start_c2900_fuzz.sh wait
+  停止：<PROJECT_ROOT>/runtime/start_c2900_fuzz.sh stop
+等待 C2900 banner（最多 1800s）...
+已到达 IOS banner
+== 等待 SSH 真实登录就绪（最多 300s） ==
+== SSH 尚未就绪，console nudge（enable/RSA） ==
+== 保存快照 snap_ssh_aflnet（0x01） ==
+0x01 save snapshot -> status=1
+  bitmap: edges=63312
+警告：QEMU 的 shm 0x2000 带 (deleted) 标记；AFLNet 仍可按 key attach，继续
+edges=63312 sum=3140906 hash=4b1bd6891046d24f exit=0xdeadbeef
+
+快照已保存：snap_ssh_aflnet
+下一步：./runtime/protocols/ssh/campaign.sh aflnet
+警告：QEMU 的 shm 0x2000 带 (deleted) 标记；AFLNet 仍可按 key attach，继续
+AFLNet: <PROJECT_ROOT>/vendor/aflnet/afl-fuzz
+ seeds: <PROJECT_ROOT>/runtime/protocols/ssh/seeds-aflnet
+ out:   <PROJECT_ROOT>/runtime/protocols/ssh/out-aflnet3
+ target: tcp://172.16.100.2/22  protocol=SSH
+[0;36mafl-fuzz [1;97m2.56b[0m by <lcamtuf@google.com>
+[1;92m[+] [0mLooks like we're not running on a tty, so I'll be a bit less verbose.[0m
+[1;92m[+] [0mYou have 16 CPU cores and 1 runnable tasks (utilization: 6%).[0m
+[1;92m[+] [0mTry parallel jobs - see docs/parallel_fuzzing.txt.[0m
+[1;94m[*] [0mChecking CPU core loadout...[0m
+[1;92m[+] [0mFound a free CPU core, binding to #0.[0m
+[1;94m[*] [0mChecking core_pattern...[0m
+[1;94m[*] [0mConnecting to QEMU system forkserver...[0m
+[1;92m[+] [0mQEMU system forkserver connected, snapshot saved.[0m
+[1;94m[*] [0mSetting up output directories...[0m
+[1;92m[+] [0mOutput directory exists but deemed OK to reuse.[0m
+[1;94m[*] [0mDeleting old session data...[0m
+[1;92m[+] [0mOutput dir cleanup successful.[0m
+[1;94m[*] [0mScanning '<PROJECT_ROOT>/runtime/protocols/ssh/seeds-aflnet'...[0m
+[1;92m[+] [0mNo auto-generated dictionary tokens to reuse.[0m
+[1;94m[*] [0mCreating hard links for all input files...[0m
+[1;94m[*] [0mAttempting dry run with 'id:000000,orig:seed_kexinit'...[0m
+[1;90m    len = 205, map size = 8383, exec speed = 6678818 us
+[0m[1;92m[+] [0mAll test cases processed.[0m
+
+[1;93m[!] [1;97mWARNING: [0m[1;91mThe target binary is pretty slow! See docs/perf_tips.txt.[0m
+[1;92m[+] [0mHere are some useful stats:
+
+[1;90m    Test case count : [0m1 favored, 0 variable, 1 total
+[1;90m       Bitmap range : [0m8383 to 8383 bits (average: 8383.00 bits)
+[1;90m        Exec timing : [0m6.68M to 6.68M us (average: 6.68M us)
+[0m
+[1;92m[+] [0mAll set and ready to roll![0m
+[?25h[1;91m
+
++++ Testing aborted by user +++
+[0m[1;92m[+] [0mWe're done here. Have a nice day!
+[0m

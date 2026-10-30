@@ -1,0 +1,21 @@
+skip Gi0/0 configuration (C2900_SSH_SKIP_INTERFACE=1; eval soc-eval has no IOS network interfaces)
+configuration command rejected by IOS platform:
+
+
+Press RETURN to get started!
+
+
+Jan  2 12:00:01.371: %IOS_LICENSE_IMAGE_APPLICATION-6-LICENSE_LEVEL: Module name
+ = c2900 Next reboot level = ipbasek9 and License = No valid license found
+Jan  2 12:00:01.447: %IOS_LICENSE_IMAGE_APPLICATION-6-LICENSE_LEVEL: Module name
+ = c2900 Next reboot level = securityk9 and License = securityk9
+Oct 19 09:19:57.647: %PA-2-UNDEFIO: Unsupported I/O Controller (type 0) in I/O B
+ay. The I/O Controller network interfaces will be unavailable.
+
+检查该板级模型是否提供 IOS 网络接口（Slot 0 type 0 / %PA-2-UNDEFIO 表示 eval soc-eval 缺少 I/O controller 模型）
+skip Gi0/0 configuration (C2900_SSH_SKIP_INTERFACE=1; eval soc-eval has no IOS network interfaces)
+skip RSA key generation (C2900_SSH_GENERATE_RSA=0)
+SSH configuration complete (verified VTY transport ssh; interface setup skipped, no network fuzz path)
+skip Gi0/0 configuration (C2900_SSH_SKIP_INTERFACE=1; eval soc-eval has no IOS network interfaces)
+skip RSA key generation (C2900_SSH_GENERATE_RSA=0)
+SSH configuration complete (verified VTY transport ssh; interface setup skipped, no network fuzz path)

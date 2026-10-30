@@ -1,0 +1,246 @@
+{
+    "test": "c2900-nonet-program-stub",
+    "timestamp": "20261020-175849",
+    "run_dir": "runtime/c2900-program/runs/20261020-175849-stub-m9",
+    "network": "none (C2900_NIC_ARGS=none)",
+    "firmware": {
+        "path": "vendor/c2900/firmware/c2900-universalk9-mz.SPA.150-1.M9.bin",
+        "sha256": "e8c0db800efb5a7bb930ff89277c9906603690e17079033ec3814ddd9639da1a"
+    },
+    "qemu": {
+        "path": "vendor/qemu/bin/qemu-system-mips64",
+        "sha256": "1dc4a998c4b8ec6abe6dfeec4b313451d7b3094596d27ed0aa01ff3cfdf66691"
+    },
+    "config": {
+        "path": "runtime/c2900-program/config/stub-snapshot-m9.json",
+        "effective": {
+            "mode": 3,
+            "target_type": "ios",
+            "debug": true,
+            "auto_snapshot": true,
+            "coverage_types": [
+                "block",
+                "edge"
+            ],
+            "exclude_baseline": true,
+            "inst_ratio": 65536,
+            "addr_mode": "phys",
+            "coverage_start": "0x01000000",
+            "coverage_end": "0x01018000",
+            "text_start": "0x81000000",
+            "text_size": "0x18000",
+            "runtime_delta": "0x60000000",
+            "firmware_entry": "0x81000000",
+            "snapshot_trigger": "0x81000000",
+            "snapshot_name": "snap_stub",
+            "wait_snapshot_restore": 100,
+            "wait_program_done": 300,
+            "crash_mode": "off",
+            "panic_addrs": [],
+            "crash_status": 11,
+            "crash_on_reset": false,
+            "crash_exceptions": []
+        }
+    },
+    "stub": {
+        "va": "0x81000000",
+        "phys": "0x01000000",
+        "outer_elf_offset": "0x194",
+        "size": "0x18000",
+        "coverage_range": [
+            "0x01000000",
+            "0x01018000"
+        ]
+    },
+    "rounds": [
+        {
+            "round": 1,
+            "loadvm_status": 1,
+            "loadvm_seconds": 0.21,
+            "edges_before": 4,
+            "edges_after_loadvm": 26,
+            "end_status": 1,
+            "end_seconds": 0.3,
+            "edges": 26,
+            "bitmap_sum": 259,
+            "exit_status": "0xdeadbeef"
+        },
+        {
+            "round": 2,
+            "loadvm_status": 1,
+            "loadvm_seconds": 0.22,
+            "edges_before": 26,
+            "edges_after_loadvm": 27,
+            "end_status": 1,
+            "end_seconds": 0.3,
+            "edges": 27,
+            "bitmap_sum": 103,
+            "exit_status": "0xdeadbeef"
+        },
+        {
+            "round": 3,
+            "loadvm_status": 1,
+            "loadvm_seconds": 0.22,
+            "edges_before": 27,
+            "edges_after_loadvm": 27,
+            "end_status": 1,
+            "end_seconds": 0.3,
+            "edges": 27,
+            "bitmap_sum": 230,
+            "exit_status": "0xdeadbeef"
+        },
+        {
+            "round": 4,
+            "loadvm_status": 1,
+            "loadvm_seconds": 0.22,
+            "edges_before": 27,
+            "edges_after_loadvm": 27,
+            "end_status": 1,
+            "end_seconds": 0.3,
+            "edges": 27,
+            "bitmap_sum": 164,
+            "exit_status": "0xdeadbeef"
+        },
+        {
+            "round": 5,
+            "loadvm_status": 1,
+            "loadvm_seconds": 0.22,
+            "edges_before": 27,
+            "edges_after_loadvm": 27,
+            "end_status": 1,
+            "end_seconds": 0.3,
+            "edges": 27,
+            "bitmap_sum": 82,
+            "exit_status": "0xdeadbeef"
+        }
+    ],
+    "checks": {
+        "trigger_hit": true,
+        "auto_snapshot_saved": true,
+        "all_rounds_status_ok": true,
+        "edges_nonzero": true,
+        "edges_stable": true,
+        "tb_sets_identical": true,
+        "tb_in_stub_range": true,
+        "hot_loop_seen": true
+    },
+    "trigger": {
+        "virt": "0xffffffff81000000",
+        "phys": "0x0000000001000000",
+        "canon": "0x0000000001000000",
+        "target": "0x0000000081000000"
+    },
+    "snapshot": {
+        "name": "snap_stub",
+        "saved": true
+    },
+    "coverage": {
+        "tb_unique_total": 23,
+        "tb_first_round": 23,
+        "tb_address_ranges": {
+            "min": "0x01000090",
+            "max": "0x01003e48"
+        },
+        "top_tbs": [
+            {
+                "canon": "0x01002cb4",
+                "virt": "0xffffffff81002cb4",
+                "phys": "0x0000000001002cb4",
+                "exec_count": 7344051,
+                "insn_count": 7,
+                "outer_file_offset": "0x2e48"
+            },
+            {
+                "canon": "0x010000d4",
+                "virt": "0xffffffff810000d4",
+                "phys": "0x00000000010000d4",
+                "exec_count": 4,
+                "insn_count": 3,
+                "outer_file_offset": "0x268"
+            },
+            {
+                "canon": "0x01002a88",
+                "virt": "0xffffffff81002a88",
+                "phys": "0x0000000001002a88",
+                "exec_count": 1,
+                "insn_count": 3,
+                "outer_file_offset": "0x2c1c"
+            },
+            {
+                "canon": "0x01002b8c",
+                "virt": "0xffffffff81002b8c",
+                "phys": "0x0000000001002b8c",
+                "exec_count": 1,
+                "insn_count": 4,
+                "outer_file_offset": "0x2d20"
+            },
+            {
+                "canon": "0x01000090",
+                "virt": "0xffffffff81000090",
+                "phys": "0x0000000001000090",
+                "exec_count": 1,
+                "insn_count": 5,
+                "outer_file_offset": "0x224"
+            },
+            {
+                "canon": "0x01002b14",
+                "virt": "0xffffffff81002b14",
+                "phys": "0x0000000001002b14",
+                "exec_count": 1,
+                "insn_count": 3,
+                "outer_file_offset": "0x2ca8"
+            },
+            {
+                "canon": "0x01002c98",
+                "virt": "0xffffffff81002c98",
+                "phys": "0x0000000001002c98",
+                "exec_count": 1,
+                "insn_count": 6,
+                "outer_file_offset": "0x2e2c"
+            },
+            {
+                "canon": "0x01002aa4",
+                "virt": "0xffffffff81002aa4",
+                "phys": "0x0000000001002aa4",
+                "exec_count": 1,
+                "insn_count": 4,
+                "outer_file_offset": "0x2c38"
+            },
+            {
+                "canon": "0x01003d24",
+                "virt": "0xffffffff81003d24",
+                "phys": "0x0000000001003d24",
+                "exec_count": 1,
+                "insn_count": 2,
+                "outer_file_offset": "0x3eb8"
+            },
+            {
+                "canon": "0x010000a4",
+                "virt": "0xffffffff810000a4",
+                "phys": "0x00000000010000a4",
+                "exec_count": 1,
+                "insn_count": 7,
+                "outer_file_offset": "0x238"
+            }
+        ]
+    },
+    "stability": {
+        "edges": [
+            26,
+            27,
+            27,
+            27,
+            27
+        ],
+        "tolerance": 4,
+        "min": 26,
+        "max": 27
+    },
+    "pass": true,
+    "notes": [
+        "M9 \u5916\u5c42\u955c\u50cf\u7531 start_c2900_fuzz.sh \u751f\u6210 e_machine=0x0008 \u7684\u4e34\u65f6\u526f\u672c\uff1b\u539f\u56fa\u4ef6\u4e0d\u6539\u3002",
+        "stub \u5165\u53e3\u7269\u7406\u5730\u5740 0x01000000 \u5bf9\u5e94\u5916\u5c42\u955c\u50cf\u6587\u4ef6\u504f\u79fb 0x194\uff08PT_LOAD\uff09\u3002",
+        "snapshot_trigger \u662f\u672c\u6b21\u5bf9 fuzz/coverage.c \u7684\u5b9e\u73b0\uff1aIOS \u6a21\u5f0f\u4e0b\u547d\u4e2d\u5730\u5740\u7ecf /tmp/qemu_fuzz_auto \u901a\u77e5 forkserver \u81ea\u52a8 savevm\u3002",
+        "\u8f6e\u5185 0x02 \u7b49\u5f85 100ms\u30010x03 \u7b49\u5f85 300ms\uff1bstub \u7684\u89e3\u538b\u4e3b\u5faa\u73af\u8fed\u4ee3\u6b21\u6570\u968f\u8c03\u5ea6\u53d8\u5316\uff0c\u4f46\u6267\u884c\u7684 TB \u96c6\u4e00\u81f4\u3002"
+    ]
+}

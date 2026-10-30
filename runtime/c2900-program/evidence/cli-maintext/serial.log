@@ -1,0 +1,214 @@
+ROMMON emulation microcode.
+
+ROM: Microcode has started.
+
+Launching IOS image at 0x81000000...
+ROM: trying to read bootvar 'DEBUG_INIT'
+
+
+IN PWR ON MAIN
+PCIe RC Reset 0
+PCIe RC Reset 1ROM: trying to read bootvar 'WATCHDOG'
+
+
+IO Controller TLB
+PCIe map Virt:0x10000000 Phys:0x00011B0010000000 
+pfn0: 0x0000046C00400007 pfn1: 0x0000046C00440007, mask 0x1FFE000
+tlb_entries_used 21
+SM TLB
+PCIe map Virt:0x12000000 Phys:0x00011E0012000000 
+pfn0: 0x0000047800480007 pfn1: 0x00000478004C0007, mask 0x1FFE000
+tlb_entries_used 22
+ISM TLB
+PCIe map Virt:0x18000000 Phys:0x00011C0018000000 
+pfn0: 0x0000047000600007 pfn1: 0x0000047000640007, mask 0x1FFE000
+tlb_entries_used 23ROM: trying to read bootvar 'WARM_REBOOT'
+
+ROM: unhandled syscall 0x0000006e at pc=0x819cdc34 (a1=0x278b0000,a2=0xbfc00494,a3=0x00000000)
+
+
+PLAT MAIN
+Layer2 cache flush
+Set platform type
+Get On board memsizeROM: unhandled syscall 0x0000004d at pc=0x219cdc34 (a1=0x00000000,a2=0x00000000,a3=0x00000000)
+
+
+PAS mgmt init
+Get rev
+Sched hook
+CVMX sysinfo
+I2C
+DFLT clk1
+PCIe
+IO Controller
+Plat init
+PWR GPIO
+Voice init
+Init Msg
+FN table
+Reset IMCROM: unhandled syscall 0x00000047 at pc=0x219cdc34 (a1=0x00000002,a2=0x258e1a38,a3=0x00000000)
+
+
+PLAT MAIN DONE
+MEM INITROM: trying to read bootvar 'SECOND_CORE_DISABLED'
+
+ROM: unhandled syscall 0x00000090 at pc=0x219cdc34 (a1=0x0000002e,a2=0xbfc00eb0,a3=0x0000002d)
+
+
+Smart Init is enabled
+smart init is sizing iomem
+                 TYPE      MEMORY_REQ
+          HWIC Slot 0      0x00200000
+          HWIC Slot 1      0x00200000
+          HWIC Slot 2      0x00200000
+          HWIC Slot 3      0x00200000
+               PVDM 0      0x00200000
+               PVDM 1      0x00200000
+            SM Slot 1      0x00600000
+    Onboard devices &
+         buffer pools      0x022F6000 
+-----------------------------------------------
+               TOTAL:      0x034F6000
+
+Rounded IOMEM up to: 56Mb.
+Using 10 percent iomem. [56Mb/512Mb]
+
+Total mem = 536870912, IO mem = 58720256
+TLB entry 23, VA:0x30000000, PA:0x4    - 10000000, SZ:0x10000000, tlbcnt 2
+TLB entry 25, VA:0xC800000 , PA:0x0    - C800000 , SZ:0x3800000, tlbcnt 4
+MEM INIT DONEROM: trying to read bootvar 'RANDOM_NUM'
+
+
+IN EXCPTN INIT
+Init Clk tk
+Resource init
+CIU Init
+DMA,IOB
+MAC Addr init
+PCIe 1
+Console InitROM: unhandled syscall 0x0000003e at pc=0x219cdc34 (a1=0xbfc007c0,a2=0x00000000,a3=0x00000000)
+
+ROM: trying to read bootvar 'LICENSE_BOOT_LEVEL'
+
+ROM: trying to read bootvar 'EULA_ACCEPTED'
+
+ROM: trying to read bootvar 'BOOT'
+
+ROM: trying to read bootvar 'CONFIG_FILE'
+
+ROM: trying to read bootvar 'BOOTLDR'
+
+ROM: trying to read bootvar 'RSHELF'
+
+ROM: trying to read bootvar 'DSHELF'
+
+ROM: trying to read bootvar 'DSHELFINFO'
+
+ROM: trying to read bootvar 'RESET_COUNTER'
+
+ROM: trying to read bootvar 'CHRG_LOCRECSN'
+
+ROM: trying to read bootvar 'CHRG_ID'
+
+ROM: trying to read bootvar 'SLOTCACHE'
+
+ROM: trying to read bootvar 'OVERTEMP'
+
+ROM: trying to read bootvar 'DIAG'
+
+ROM: trying to read bootvar 'DIAMETER_ORIGIN_ID'
+
+ROM: trying to read bootvar 'WARM_REBOOT'
+
+ROM: trying to read bootvar 'PRST_VBL_DEBUG'
+
+ROM: trying to read bootvar 'PRST_IFS_PRFX'
+
+
+3 tuple num
+Ext mem
+EXT MEM INIT
+Extended mem = 0
+EXT MEM DONE
+IO Partpool
+FS Pool
+Head pool
+PAS net, nmi
+Parser, Deb init
+Poll timer
+Watchdog
+Plat IF doneROM: trying to read bootvar 'PRST_VBL_SHOW'
+
+ROM: trying to read bootvar 'PRST_VBL_NUKE'
+
+ROM: trying to read bootvar 'RTC_STAT'
+
+ROM: trying to read bootvar 'BSI'
+
+ROM: trying to read bootvar 'BOOT_GDB'
+
+ROM: unhandled syscall 0x0000006a at pc=0x219cdc34 (a1=0x00000003,a2=0x211440bc,a3=0x29217b98)
+
+
+IO IFS initROM: trying to read bootvar 'CONFIG_FILE'
+
+
+File initROM: trying to read bootvar 'PMDEBUG'
+
+ROM: trying to read bootvar 'MONDEBUG'
+
+ROM: trying to read bootvar 'RELOAD_TYPE'
+
+
+Line init
+Fill line
+AUX init
+VTY initROM: unhandled syscall 0x0000001a at pc=0x219cdc34 (a1=0x2909d68e,a2=0x00000000,a3=0x2282f1a4)
+
+ROM: unhandled syscall 0x00000009 at pc=0x219cdc34 (a1=0x00000000,a2=0x2909d68c,a3=0x0000001a)
+
+ROM: trying to read bootvar 'BSI'
+
+ROM: trying to read bootvar 'BSI'
+
+ROM: trying to set bootvar 'BSI=-1'
+
+ROM: trying to read bootvar 'BSI'
+
+ROM: trying to set bootvar 'BSI=0'
+
+ROM: trying to read bootvar 'RET_2_RCALTS'
+
+ROM: trying to read bootvar 'RET_2_RCALTS'
+
+ROM: trying to read bootvar 'RANDOM_NUM'
+
+
+
+
+Press RETURN to get started!
+
+ROM: trying to read bootvar 'RELOAD_TYPE'
+
+ROM: unhandled syscall 0x00000094 at pc=0x219cdc34 (a1=0x29c68ae8,a2=0x08f31be8,a3=0x11e637d0)
+
+ROM: trying to read bootvar 'CRASHINFO'
+
+ROM: trying to set bootvar 'CRASHINFO=flash:crashinfo_19261020-094113-UTC'
+
+ROM: trying to read bootvar 'RELOAD_TYPE'
+
+ROM: unhandled syscall 0x00000094 at pc=0x219cdc34 (a1=0x29c68ae8,a2=0x08f31be8,a3=0x11e637d0)
+
+ROM: trying to read bootvar 'CRASHINFO'
+
+ROM: trying to read bootvar 'RET_2_RTS'
+
+ROM: trying to set bootvar 'RET_2_RTS=09:41:14 UTC Wed Oct 20 1926'
+
+ROM: trying to read bootvar 'RET_2_RCALTS'
+
+ROM: trying to set bootvar 'RET_2_RCALTS=2931697341'
+
+
+No warm reboot Storage 

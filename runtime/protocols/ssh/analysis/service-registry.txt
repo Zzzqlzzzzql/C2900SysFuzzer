@@ -1,0 +1,468 @@
+# C2900 IOS 内部 Tcl 协议定义表（.data，NBAR/应用识别风格）
+# 注意：这是协议分类/识别定义，不是 SSH 服务启动表；
+#       服务启动代码见 docs/C2900-协议固件逆向-SSH入口与覆盖率范围.md §2.1。
+# 端口定义行 + protocol-id；用于确定每个协议的端口/handler 名。
+# 注意：这是 IOS 内部协议定义，不是 CLI 配置，也不等于服务启动表。
+
+## M9: /tmp/binwalk_m9/_c2900-universalk9-mz.SPA.150-1.M9.bin.extracted/C2900-UN.BIN
+0x88210f66  (register-protocol `sap'
+0x88210f81  (protocol-id 84)
+0x88210fde  (tcp-well-known-port 3200 3300 3600 sap-server sap-client )))
+0x8821236b  (register-protocol `skype'
+0x88212387  (protocol-id 83)
+0x8821f1a6  (register-protocol `fix'
+0x8821f1c2  (protocol-id 74)
+0x8821f890  (register-protocol `hl7'
+0x8821f8ab  (protocol-id 73)
+0x8821ffdd  (register-protocol `directconnect'
+0x88220002  (protocol-id 70)
+0x88220046  (tcp-well-known-port 411 412 413 directconnect-server)
+0x882217a7  (register-protocol `bittorrent'
+0x882217c9  (protocol-id 69)
+0x882217fd  (tcp-well-known-port 6881 6882 6883 6884 6885 6886 6887 6888 6889
+0x8822185b  (tcp-well-known-port 6969 bittorrent-control)
+0x88224278  (register-protocol `winmx'
+0x88224295  (protocol-id 68)
+0x882242dd  (tcp-well-known-port 6699 winmx-wkp-server winmx-wkp-client)
+0x882274c8  (register-protocol `edonkey'
+0x882274e7  (protocol-id 67)
+0x882276ca  (tcp-well-known-port 4662 edonkey-wkp-server)
+0x88229f75  (register-protocol `rtcp'
+0x88229f91  (protocol-id 66)
+0x8822a967  (register-protocol `sip'
+0x8822a982  (protocol-id 65)
+0x8822a9c7  (udp-well-known-port 5060  sip-all sip-all)
+0x8822a9f7  (tcp-well-known-port 5060 sip-all sip-all)))
+0x8822abfa  (register-protocol `h323'
+0x8822ac16  (protocol-id 64)
+0x8822ac4d  (udp-well-known-port 1300 1718 1719 1720 11720 h323-all h323-all)
+0x8822ac93  (tcp-well-known-port range 11000 11999 1300 1718 1719 1720 h323-all h323-all)))
+0x8822aec2  (register-protocol `skinny'
+0x8822aee0  (protocol-id 63)
+0x8822af19  (tcp-well-known-port 2000 2001 2002 skinny-all skinny-all)))
+0x8822b1da  (register-protocol `mgcp'
+0x8822b1f6  (protocol-id 62)
+0x8822b23e  (udp-well-known-port 2427 2727 mgcp-all mgcp-all)
+0x8822b274  (tcp-well-known-port 2427 2428 2727 mgcp-etc mgcp-etc))
+0x8822e82d  (register-protocol `rtp'
+0x8822e848  (protocol-id 61)
+0x8822f639  (register-protocol `rtsp'
+0x8822f655  (protocol-id 60)
+0x8822f69b  (tcp-well-known-port 554 8554 rtsp-server rtsp-client)))
+0x88231c7d  (define (combined-static-port port name msg server)
+0x88231cc5  (register-protocol name
+0x88231cf9  (udp-well-known-port port server server)
+0x88231d28  (tcp-well-known-port port server server))))
+0x88231d7b  (combined-static-port 0 `custom-01' `Custom protocol custom-01' Custom01-Server))
+0x88231df0  (combined-static-port 0 `custom-02' `Custom protocol custom-02' Custom02-Server))
+0x88231e65  (combined-static-port 0 `custom-03' `Custom protocol custom-03' Custom03-Server))
+0x88231eda  (combined-static-port 0 `custom-04' `Custom protocol custom-04' Custom04-Server))
+0x88231f4f  (combined-static-port 0 `custom-05' `Custom protocol custom-05' Custom05-Server))
+0x88231fc4  (combined-static-port 0 `custom-06' `Custom protocol custom-06' Custom06-Server))
+0x88232039  (combined-static-port 0 `custom-07' `Custom protocol custom-07' Custom07-Server))
+0x882320ae  (combined-static-port 0 `custom-08' `Custom protocol custom-08' Custom08-Server))
+0x88232123  (combined-static-port 0 `custom-09' `Custom protocol custom-09' Custom09-Server))
+0x88232198  (combined-static-port 0 `custom-10' `Custom protocol custom-10' Custom10-Server))
+0x882324b6  (register-protocol `kazaa2'
+0x882324d4  (protocol-id 59)
+0x88233470  (register-protocol `gnutella'
+0x88233490  (protocol-id 58)
+0x8823357b  (tcp-well-known-port 6346 6347 6348 6349 6355 5634 Gnutella-handshake-wkp)
+0x882335ca  (udp-well-known-port 6346 6347 6348 Gnutlla-udp-wkp)
+0x882358f9  (register-protocol `fasttrack'
+0x8823591a  (protocol-id 57)
+0x88235a3e  (tcp-well-known-port 1214 FastTrack-known-pull FastTrack-known-push)))
+0x88235a86  (tcp-well-known-port 1214 FastTrack-all FastTrack-all)))
+0x88236ad8  (register-protocol `citrix'
+0x88236af6  (protocol-id 56)
+0x88236d0e  (tcp-well-known-port 1494 citrix-server citrix-i-handler)
+0x88236d51  (tcp-well-known-port 2512 2513 citrix-simple citrix-simple)
+0x88236d96  (tcp-well-known-port 2598 citrix-cgp-ica citrix-nothing)
+0x88236dd8  (udp-well-known-port 1604 citrix-simple citrix-simple))
+0x88236e2e  (tcp-well-known-port 1494 Citrix-tcp-server Citrix-tcp-client)
+0x88236e76  (tcp-well-known-port 2512 2513 citrix-simple citrix-simple)
+0x88236ebb  (tcp-well-known-port 2598 citrix-cgp citrix-nothing)
+0x88236eff  (udp-well-known-port 1604 Citrix-udp-server Citrix-udp-client))
+0x88236f61  (tcp-well-known-port 1494 Citrix-tcp-server Citrix-ai-tcp-client)
+0x88236fac  (tcp-well-known-port 2512 2513 citrix-simple citrix-simple)
+0x88236ff1  (tcp-well-known-port 2598 citrix-cgp-ica citrix-nothing)
+0x88237033  (udp-well-known-port 1604 Citrix-ai-udp-server Citrix-ai-udp-client)))
+0x88237084  (tcp-well-known-port 1494 citrix-server citrix-handler)
+0x882370c2  (tcp-well-known-port 2512 2513 citrix-simple citrix-simple)
+0x88237104  (tcp-well-known-port 2598 citrix-cgp citrix-nothing)
+0x88237145  (udp-well-known-port 1604 citrix-simple citrix-simple)))
+0x8823cd18  (register-protocol `streamwork'
+0x8823cd3a  (protocol-id 55)
+0x8823cd86  (udp-well-known-port 1558 streamwork-Server streamwork-Client)))
+0x8823d217  (register-protocol `sunrpc'
+0x8823d235  (protocol-id 54)
+0x8823d266  (tcp-well-known-port 111 sunrpc-tcp-Server sunrpc-Client)
+0x8823d2a4  (udp-well-known-port 111 sunrpc-udp-Server sunrpc-Client)))
+0x8823e758  (register-protocol `netshow'
+0x8823e777  (protocol-id 53)
+0x8823e7b2  (tcp-well-known-port 1755 netshow-Server netshow-Client)))
+0x8823eede  (register-protocol `rcmd'
+0x8823eefa  (protocol-id 52)
+0x8823ef47  (tcp-well-known-port 512 513 514 rcmd-Server rcmd-Client)))
+0x8823fe7e  (register-protocol `sqlnet'
+0x8823fe9c  (protocol-id 51)
+0x8823fed9  (tcp-well-known-port 1521 sqlnet-Server sqlnet-Client)))
+0x88240f5e  (register-protocol `vdolive'
+0x88240f7d  (protocol-id 50)
+0x88240fbe  (tcp-well-known-port 7000 vdolive-Server vdolive-Client)))
+0x882415bb  (register-protocol `exchange'
+0x882415db  (protocol-id 49)
+0x88241618  (tcp-well-known-port 135 MSRPC-Server MSRPC-Client)))
+0x88242735  (register-protocol `tftp'
+0x88242751  (protocol-id 48)
+0x88242799  (udp-well-known-port 69 TFTP-Server)))
+0x88242f9b  (register-protocol name
+0x88242fb7  (protocol-id id)
+0x88243279  (register-protocol `ipsec'
+0x88243298  (protocol-id 9)
+0x882433e3  (define (combined-static-port port name id msg server)
+0x8824342e  (register-protocol name
+0x88243462  (protocol-id id)
+0x88243479  (udp-well-known-port port server server)
+0x882434a8  (tcp-well-known-port port server server))))
+0x882434db  (define (combined-dual-static-port port1 port2 name id msg server)
+0x88243532  (register-protocol name
+0x88243566  (protocol-id id)
+0x8824357d  (udp-well-known-port port1 port2 server server)
+0x882435b3  (tcp-well-known-port port1 port2 server server))))
+0x882435ed  (define (tcp-static-port port name id msg server)
+0x88243632  (register-protocol name
+0x88243666  (protocol-id id)
+0x8824367d  (tcp-well-known-port port server server))))
+0x88243701  (register-protocol name
+0x88243735  (protocol-id id)
+0x8824374c  (tcp-well-known-port port1 port2 server server))))
+0x88243786  (define (udp-static-port port name id msg server)
+0x882437cb  (register-protocol name
+0x882437e7  (protocol-id id)
+0x88243816  (udp-well-known-port port server server))))
+0x8824389a  (register-protocol name
+0x882438b6  (protocol-id id)
+0x882438e5  (udp-well-known-port port1 port2 server server))))
+0x8824396d  (combined-static-port 179 `bgp' 11 `Border Gateway Protocol' BGP-Server))
+0x88243a3d  (register-protocol `cuseeme'
+0x88243a5e  (protocol-id 12)
+0x88243aad  (udp-well-known-port 7648 7649 24032 CU-SeeMe-Server CU-SeeMe-Server)
+0x88243af9  (tcp-well-known-port 7648 7649 CU-SeeMe-Server CU-SeeMe-Server))))
+0x88243bce  (combined-static-port 53 `dns' 72 `Domain Name Server lookup' DNS-Server))
+0x88243c3a  (tcp-static-port 79 `finger' 14 `Finger' FINGER-Server))
+0x88243c94  (combined-static-port 70 `gopher' 15 `Gopher' GOPHER-Server))
+0x88243cf4  (tcp-static-port 443 `secure-http' 16 `Secured HTTP' HTTPSSL-Server))
+0x88243d59  (combined-dual-static-port 143 220 `imap' 17 `Internet Message Access Protocol'
+0x88243ded  (combined-dual-static-port 585 993 `secure-imap' 18 `Internet Message Access Protocol over TLS/SSL'
+0x88243e95  (combined-static-port 194 `irc' 19 `Internet Relay Chat' IRC-Server))
+0x88243efb  (combined-static-port 994 `secure-irc' 20 `Internet Relay Chat over TLS/SSL' SIRC-Server))
+0x88243f79  (combined-dual-static-port 88 749 `kerberos' 21 `Kerberos' KERBEROS-Server))
+0x88243fe5  (udp-static-port 1701 `l2tp' 22 `L2F/L2TP tunnel' L2TP-Server))
+0x88244044  (combined-static-port 389 `ldap' 23 `Lightweight Directory Access Protocol'
+0x882440d2  (combined-static-port 636 `secure-ldap' 24 `Lightweight Directory Access Protocol over TLS/SSL'
+0x88244175  (tcp-static-port 1433 `sqlserver' 25 `MS SQL Server' MSSQL-Server))
+0x882441ee  (register-protocol `netbios'
+0x8824420f  (protocol-id 26)
+0x88244244  (udp-well-known-port 137 138 NETBIOS-Server NETBIOS-Server)
+0x88244286  (tcp-well-known-port 137 139 NETBIOS-Server NETBIOS-Server))))
+0x882442e7  (combined-static-port 2049 `nfs' 27 `Network File System' NFS-Server))
+0x8824434d  (combined-static-port 119 `nntp' 28 `Network News Transfer Protocol'
+0x882443d9  (combined-static-port 563 `secure-nntp' 29 `Network News Transfer Protocol over TLS/SSL'
+0x8824447b  (combined-static-port 1352 `notes' 30 `Lotus Notes(R)' NOTES-Server))
+0x882444df  (combined-static-port 123 `ntp' 31 `Network Time Protocol' NTP-Server))
+0x8824455f  (register-protocol `pcanywhere'
+0x88244583  (protocol-id 32)
+0x882445c4  (udp-well-known-port 22 5632 PCanywhere-Server PCanywhere-Server)
+0x8824460c  (tcp-well-known-port 65301 5631 PCanywhere-Server PCanywhere-Server))))
+0x8824468a  (combined-static-port 110 `pop3' 33 `Post Office Protocol' POP3-Server))
+0x882446f3  (combined-static-port 995 `secure-pop3' 34 `Post Office Protocol over TLS/SSL' SPOP3-Server))
+0x88244770  (tcp-static-port 1723 `pptp' 35 `Point-to-Point Tunneling Protocol'
+0x882447e6  (udp-static-port 520 `rip' 36 `Routing Information Protocol' RIP-Server))
+0x88244862  (register-protocol `rsvp'
+0x88244880  (protocol-id 37)
+0x882448fa  (udp-well-known-port 1698 1699 RSVP-Server RSVP-Server))))
+0x88244958  (tcp-static-port 25 `smtp' 71 `Simple Mail Transfer Protocol' SMTP-Server))
+0x882449c3  (combined-dual-static-port 161 162 `snmp' 38 `Simple Network Management Protocol'
+0x88244a60  (tcp-static-port 1080 `socks' 39 `SOCKS' SOCKS-Server))
+0x88244ab6  (tcp-static-port 22 `ssh' 40 `Secured Shell' SSH-Server))
+0x88244b11  (udp-static-port 514 `syslog' 41 `System Logging Utility' SYSLOG-Server))
+0x88244b7c  (tcp-static-port 23 `telnet' 42 `Telnet' TELNET-Server))
+0x88244bd7  (tcp-static-port 992 `secure-telnet' 43 `Telnet over TLS/SSL' STELNET-Server))
+0x88244c45  (tcp-static-port 990 `secure-ftp' 44 `FTP over TLS/SSL' SFTP-Server))
+0x88244cba  (register-protocol `xwindows'
+0x88244cdc  (protocol-id 45)
+0x88244d21  (tcp-well-known-port 6000 6001 6002 6003 X-Server X-Server))))
+0x88244d7f  (combined-static-port 515 `printer' 46 `print spooler/lpd' Spooler))
+0x88244dfa  (register-protocol `novadigm'
+0x88244e1c  (protocol-id 47)
+0x88244e56  (tcp-well-known-port 3460 3461 3462 3463 3464 3465
+0x88244ecc  (udp-well-known-port 3460 3461 3462 3463 3464 3465
+0x88244f62  (combined-static-port 63 `whois++' 86 `Whois++ Service' WHOIS-SERVER))
+0x88244fc9  (tcp-static-port 543 `klogin' 87 `Kerberos Authenticated rlogin' KLOGIN-Server))
+0x8824503b  (tcp-static-port 544 `kshell' 88 `Kerberos Authenticated Shell' KSHELL-Server))
+0x882450ac  (tcp-static-port 1525 `ora-srv' 89 `Oracle TCP/IP Listener' ORACLE-Server))
+0x8824511b  (combined-static-port 9088 `sqlexec' 90 `SQL Informix' SQL-EXEC-Server))
+0x88245188  (combined-static-port 371 `clearcase' 91 `Clearcase Server' CLEARCASE-Server))
+0x882451fa  (combined-static-port 458 `appleqtc' 92 `Apple Quick Time' APPLEQTC-Server))
+0x88245265  (combined-static-port 469 `rcp' 93 `Radio Control Protocol' RCP-Server))
+0x882452cf  (combined-static-port 500 `isakmp' 94 `Internet Security Association & Key Management Protocol'
+0x88245360  (combined-static-port 523 `ibm-db2' 95 `IBM DB2' IBMDB2-SERVER))
+0x882453c1  (combined-static-port 4045 `lockd' 96 `NFS Lock Daemon Manager' LOCKD-SERVER))
+0x8824542e  (combined-static-port 92 `npp' 97 `Network Printing Protocol' NPP-SERVER))
+0x88245498  (combined-static-port 666 `doom' 99 `Doom Id Software' DOOM-SERVER))
+0x8824550f  (register-protocol `vnc'
+0x8824552c  (protocol-id 100)
+0x8824557f  (tcp-well-known-port 5800 5900 5901
+0x882455db  (udp-well-known-port 5800 5900 5901
+0x88245657  (combined-static-port 7 `echo' 101 `ICMP ECHO Server' ECHO-SERVER))
+0x882456bc  (combined-static-port 11 `systat' 102 `List Active Users' SYSTAT-SERVER))
+0x88245743  (combined-static-port 13 `daytime' 103 `Daytime Service' DAYTIME-SERVER))
+0x882457af  (combined-static-port 19 `chargen' 104 `Character Generator' CHARGEN-SERVER))
+0x8824581c  (combined-static-port 37 `time' 105 `Time Service' TIME-SERVER))
+0x8824587e  (combined-static-port 55 `isi-gl' 106 `ISI Graphics Language' ISI-GL-SERVER))
+0x882458ee  (combined-static-port 107 `rtelnet' 107 `Remote Telnet' RTELNET-SERVER))
+0x88245955  (combined-static-port 213 `ipx' 108 `Internetwork Packet Exchange Protocol' IPX-SERVER))
+0x882459ce  (combined-static-port 177 `xdmcp' 109 `X Display Manager Control Protocol' XDMCP-SERVER))
+0x88245a4b  (combined-static-port  43  `nicname' 110 `Nicname Protocol ' NICKNAME-SERVER))
+0x88245abf  (combined-dual-static-port 683 684 `corba-iiop' 111 `CORBA Internet Inter-ORB Protocol' CORBA-IIOP-SERVER))
+0x88245b4c  (combined-dual-static-port 49 65 `tacacs' 112 `Login Host Protocol' TACACS-SERVER))
+0x882460dc  (register-protocol `http'
+0x88246933  (`url' (tcp-well-known-port 80 HTTP-url HTTP-url-client)
+0x88246a73  ((tcp-well-known-port 80 HTTP-url-plus HTTP-url-client)
+0x88246b57  (tcp-well-known-port 80 HTTP-fast-server HTTP-fast-client)
+0x8824a76c  (register-protocol `ftp'
+0x8824a787  (protocol-id 2)
+0x8824a7c6  (tcp-well-known-port 21 FTP-Server FTP-Client)))
+
+## M7: vendor/c2900/firmware/C2900-UN.150.BIN
+0x882053ee  (register-protocol `sap'
+0x88205409  (protocol-id 84)
+0x88205466  (tcp-well-known-port 3200 3300 3600 sap-server sap-client )))
+0x882067f3  (register-protocol `skype'
+0x8820680f  (protocol-id 83)
+0x8821362e  (register-protocol `fix'
+0x8821364a  (protocol-id 74)
+0x88213d18  (register-protocol `hl7'
+0x88213d33  (protocol-id 73)
+0x88214465  (register-protocol `directconnect'
+0x8821448a  (protocol-id 70)
+0x882144ce  (tcp-well-known-port 411 412 413 directconnect-server)
+0x88215c2f  (register-protocol `bittorrent'
+0x88215c51  (protocol-id 69)
+0x88215c85  (tcp-well-known-port 6881 6882 6883 6884 6885 6886 6887 6888 6889
+0x88215ce3  (tcp-well-known-port 6969 bittorrent-control)
+0x88218700  (register-protocol `winmx'
+0x8821871d  (protocol-id 68)
+0x88218765  (tcp-well-known-port 6699 winmx-wkp-server winmx-wkp-client)
+0x8821b950  (register-protocol `edonkey'
+0x8821b96f  (protocol-id 67)
+0x8821bb52  (tcp-well-known-port 4662 edonkey-wkp-server)
+0x8821e3fd  (register-protocol `rtcp'
+0x8821e419  (protocol-id 66)
+0x8821edef  (register-protocol `sip'
+0x8821ee0a  (protocol-id 65)
+0x8821ee4f  (udp-well-known-port 5060  sip-all sip-all)
+0x8821ee7f  (tcp-well-known-port 5060 sip-all sip-all)))
+0x8821f082  (register-protocol `h323'
+0x8821f09e  (protocol-id 64)
+0x8821f0d5  (udp-well-known-port 1300 1718 1719 1720 11720 h323-all h323-all)
+0x8821f11b  (tcp-well-known-port range 11000 11999 1300 1718 1719 1720 h323-all h323-all)))
+0x8821f34a  (register-protocol `skinny'
+0x8821f368  (protocol-id 63)
+0x8821f3a1  (tcp-well-known-port 2000 2001 2002 skinny-all skinny-all)))
+0x8821f662  (register-protocol `mgcp'
+0x8821f67e  (protocol-id 62)
+0x8821f6c6  (udp-well-known-port 2427 2727 mgcp-all mgcp-all)
+0x8821f6fc  (tcp-well-known-port 2427 2428 2727 mgcp-etc mgcp-etc))
+0x88222cb5  (register-protocol `rtp'
+0x88222cd0  (protocol-id 61)
+0x88223ac1  (register-protocol `rtsp'
+0x88223add  (protocol-id 60)
+0x88223b23  (tcp-well-known-port 554 8554 rtsp-server rtsp-client)))
+0x88226105  (define (combined-static-port port name msg server)
+0x8822614d  (register-protocol name
+0x88226181  (udp-well-known-port port server server)
+0x882261b0  (tcp-well-known-port port server server))))
+0x88226203  (combined-static-port 0 `custom-01' `Custom protocol custom-01' Custom01-Server))
+0x88226278  (combined-static-port 0 `custom-02' `Custom protocol custom-02' Custom02-Server))
+0x882262ed  (combined-static-port 0 `custom-03' `Custom protocol custom-03' Custom03-Server))
+0x88226362  (combined-static-port 0 `custom-04' `Custom protocol custom-04' Custom04-Server))
+0x882263d7  (combined-static-port 0 `custom-05' `Custom protocol custom-05' Custom05-Server))
+0x8822644c  (combined-static-port 0 `custom-06' `Custom protocol custom-06' Custom06-Server))
+0x882264c1  (combined-static-port 0 `custom-07' `Custom protocol custom-07' Custom07-Server))
+0x88226536  (combined-static-port 0 `custom-08' `Custom protocol custom-08' Custom08-Server))
+0x882265ab  (combined-static-port 0 `custom-09' `Custom protocol custom-09' Custom09-Server))
+0x88226620  (combined-static-port 0 `custom-10' `Custom protocol custom-10' Custom10-Server))
+0x8822693e  (register-protocol `kazaa2'
+0x8822695c  (protocol-id 59)
+0x882278f8  (register-protocol `gnutella'
+0x88227918  (protocol-id 58)
+0x88227a03  (tcp-well-known-port 6346 6347 6348 6349 6355 5634 Gnutella-handshake-wkp)
+0x88227a52  (udp-well-known-port 6346 6347 6348 Gnutlla-udp-wkp)
+0x88229d81  (register-protocol `fasttrack'
+0x88229da2  (protocol-id 57)
+0x88229ec6  (tcp-well-known-port 1214 FastTrack-known-pull FastTrack-known-push)))
+0x88229f0e  (tcp-well-known-port 1214 FastTrack-all FastTrack-all)))
+0x8822af60  (register-protocol `citrix'
+0x8822af7e  (protocol-id 56)
+0x8822b196  (tcp-well-known-port 1494 citrix-server citrix-i-handler)
+0x8822b1d9  (tcp-well-known-port 2512 2513 citrix-simple citrix-simple)
+0x8822b21e  (tcp-well-known-port 2598 citrix-cgp-ica citrix-nothing)
+0x8822b260  (udp-well-known-port 1604 citrix-simple citrix-simple))
+0x8822b2b6  (tcp-well-known-port 1494 Citrix-tcp-server Citrix-tcp-client)
+0x8822b2fe  (tcp-well-known-port 2512 2513 citrix-simple citrix-simple)
+0x8822b343  (tcp-well-known-port 2598 citrix-cgp citrix-nothing)
+0x8822b387  (udp-well-known-port 1604 Citrix-udp-server Citrix-udp-client))
+0x8822b3e9  (tcp-well-known-port 1494 Citrix-tcp-server Citrix-ai-tcp-client)
+0x8822b434  (tcp-well-known-port 2512 2513 citrix-simple citrix-simple)
+0x8822b479  (tcp-well-known-port 2598 citrix-cgp-ica citrix-nothing)
+0x8822b4bb  (udp-well-known-port 1604 Citrix-ai-udp-server Citrix-ai-udp-client)))
+0x8822b50c  (tcp-well-known-port 1494 citrix-server citrix-handler)
+0x8822b54a  (tcp-well-known-port 2512 2513 citrix-simple citrix-simple)
+0x8822b58c  (tcp-well-known-port 2598 citrix-cgp citrix-nothing)
+0x8822b5cd  (udp-well-known-port 1604 citrix-simple citrix-simple)))
+0x882311a0  (register-protocol `streamwork'
+0x882311c2  (protocol-id 55)
+0x8823120e  (udp-well-known-port 1558 streamwork-Server streamwork-Client)))
+0x8823169f  (register-protocol `sunrpc'
+0x882316bd  (protocol-id 54)
+0x882316ee  (tcp-well-known-port 111 sunrpc-tcp-Server sunrpc-Client)
+0x8823172c  (udp-well-known-port 111 sunrpc-udp-Server sunrpc-Client)))
+0x88232be0  (register-protocol `netshow'
+0x88232bff  (protocol-id 53)
+0x88232c3a  (tcp-well-known-port 1755 netshow-Server netshow-Client)))
+0x88233366  (register-protocol `rcmd'
+0x88233382  (protocol-id 52)
+0x882333cf  (tcp-well-known-port 512 513 514 rcmd-Server rcmd-Client)))
+0x88234306  (register-protocol `sqlnet'
+0x88234324  (protocol-id 51)
+0x88234361  (tcp-well-known-port 1521 sqlnet-Server sqlnet-Client)))
+0x882353e6  (register-protocol `vdolive'
+0x88235405  (protocol-id 50)
+0x88235446  (tcp-well-known-port 7000 vdolive-Server vdolive-Client)))
+0x88235a43  (register-protocol `exchange'
+0x88235a63  (protocol-id 49)
+0x88235aa0  (tcp-well-known-port 135 MSRPC-Server MSRPC-Client)))
+0x88236bbd  (register-protocol `tftp'
+0x88236bd9  (protocol-id 48)
+0x88236c21  (udp-well-known-port 69 TFTP-Server)))
+0x88237423  (register-protocol name
+0x8823743f  (protocol-id id)
+0x88237701  (register-protocol `ipsec'
+0x88237720  (protocol-id 9)
+0x8823786b  (define (combined-static-port port name id msg server)
+0x882378b6  (register-protocol name
+0x882378ea  (protocol-id id)
+0x88237901  (udp-well-known-port port server server)
+0x88237930  (tcp-well-known-port port server server))))
+0x88237963  (define (combined-dual-static-port port1 port2 name id msg server)
+0x882379ba  (register-protocol name
+0x882379ee  (protocol-id id)
+0x88237a05  (udp-well-known-port port1 port2 server server)
+0x88237a3b  (tcp-well-known-port port1 port2 server server))))
+0x88237a75  (define (tcp-static-port port name id msg server)
+0x88237aba  (register-protocol name
+0x88237aee  (protocol-id id)
+0x88237b05  (tcp-well-known-port port server server))))
+0x88237b89  (register-protocol name
+0x88237bbd  (protocol-id id)
+0x88237bd4  (tcp-well-known-port port1 port2 server server))))
+0x88237c0e  (define (udp-static-port port name id msg server)
+0x88237c53  (register-protocol name
+0x88237c6f  (protocol-id id)
+0x88237c9e  (udp-well-known-port port server server))))
+0x88237d22  (register-protocol name
+0x88237d3e  (protocol-id id)
+0x88237d6d  (udp-well-known-port port1 port2 server server))))
+0x88237df5  (combined-static-port 179 `bgp' 11 `Border Gateway Protocol' BGP-Server))
+0x88237ec5  (register-protocol `cuseeme'
+0x88237ee6  (protocol-id 12)
+0x88237f35  (udp-well-known-port 7648 7649 24032 CU-SeeMe-Server CU-SeeMe-Server)
+0x88237f81  (tcp-well-known-port 7648 7649 CU-SeeMe-Server CU-SeeMe-Server))))
+0x88238056  (combined-static-port 53 `dns' 72 `Domain Name Server lookup' DNS-Server))
+0x882380c2  (tcp-static-port 79 `finger' 14 `Finger' FINGER-Server))
+0x8823811c  (combined-static-port 70 `gopher' 15 `Gopher' GOPHER-Server))
+0x8823817c  (tcp-static-port 443 `secure-http' 16 `Secured HTTP' HTTPSSL-Server))
+0x882381e1  (combined-dual-static-port 143 220 `imap' 17 `Internet Message Access Protocol'
+0x88238275  (combined-dual-static-port 585 993 `secure-imap' 18 `Internet Message Access Protocol over TLS/SSL'
+0x8823831d  (combined-static-port 194 `irc' 19 `Internet Relay Chat' IRC-Server))
+0x88238383  (combined-static-port 994 `secure-irc' 20 `Internet Relay Chat over TLS/SSL' SIRC-Server))
+0x88238401  (combined-dual-static-port 88 749 `kerberos' 21 `Kerberos' KERBEROS-Server))
+0x8823846d  (udp-static-port 1701 `l2tp' 22 `L2F/L2TP tunnel' L2TP-Server))
+0x882384cc  (combined-static-port 389 `ldap' 23 `Lightweight Directory Access Protocol'
+0x8823855a  (combined-static-port 636 `secure-ldap' 24 `Lightweight Directory Access Protocol over TLS/SSL'
+0x882385fd  (tcp-static-port 1433 `sqlserver' 25 `MS SQL Server' MSSQL-Server))
+0x88238676  (register-protocol `netbios'
+0x88238697  (protocol-id 26)
+0x882386cc  (udp-well-known-port 137 138 NETBIOS-Server NETBIOS-Server)
+0x8823870e  (tcp-well-known-port 137 139 NETBIOS-Server NETBIOS-Server))))
+0x8823876f  (combined-static-port 2049 `nfs' 27 `Network File System' NFS-Server))
+0x882387d5  (combined-static-port 119 `nntp' 28 `Network News Transfer Protocol'
+0x88238861  (combined-static-port 563 `secure-nntp' 29 `Network News Transfer Protocol over TLS/SSL'
+0x88238903  (combined-static-port 1352 `notes' 30 `Lotus Notes(R)' NOTES-Server))
+0x88238967  (combined-static-port 123 `ntp' 31 `Network Time Protocol' NTP-Server))
+0x882389e7  (register-protocol `pcanywhere'
+0x88238a0b  (protocol-id 32)
+0x88238a4c  (udp-well-known-port 22 5632 PCanywhere-Server PCanywhere-Server)
+0x88238a94  (tcp-well-known-port 65301 5631 PCanywhere-Server PCanywhere-Server))))
+0x88238b12  (combined-static-port 110 `pop3' 33 `Post Office Protocol' POP3-Server))
+0x88238b7b  (combined-static-port 995 `secure-pop3' 34 `Post Office Protocol over TLS/SSL' SPOP3-Server))
+0x88238bf8  (tcp-static-port 1723 `pptp' 35 `Point-to-Point Tunneling Protocol'
+0x88238c6e  (udp-static-port 520 `rip' 36 `Routing Information Protocol' RIP-Server))
+0x88238cea  (register-protocol `rsvp'
+0x88238d08  (protocol-id 37)
+0x88238d82  (udp-well-known-port 1698 1699 RSVP-Server RSVP-Server))))
+0x88238de0  (tcp-static-port 25 `smtp' 71 `Simple Mail Transfer Protocol' SMTP-Server))
+0x88238e4b  (combined-dual-static-port 161 162 `snmp' 38 `Simple Network Management Protocol'
+0x88238ee8  (tcp-static-port 1080 `socks' 39 `SOCKS' SOCKS-Server))
+0x88238f3e  (tcp-static-port 22 `ssh' 40 `Secured Shell' SSH-Server))
+0x88238f99  (udp-static-port 514 `syslog' 41 `System Logging Utility' SYSLOG-Server))
+0x88239004  (tcp-static-port 23 `telnet' 42 `Telnet' TELNET-Server))
+0x8823905f  (tcp-static-port 992 `secure-telnet' 43 `Telnet over TLS/SSL' STELNET-Server))
+0x882390cd  (tcp-static-port 990 `secure-ftp' 44 `FTP over TLS/SSL' SFTP-Server))
+0x88239142  (register-protocol `xwindows'
+0x88239164  (protocol-id 45)
+0x882391a9  (tcp-well-known-port 6000 6001 6002 6003 X-Server X-Server))))
+0x88239207  (combined-static-port 515 `printer' 46 `print spooler/lpd' Spooler))
+0x88239282  (register-protocol `novadigm'
+0x882392a4  (protocol-id 47)
+0x882392de  (tcp-well-known-port 3460 3461 3462 3463 3464 3465
+0x88239354  (udp-well-known-port 3460 3461 3462 3463 3464 3465
+0x882393ea  (combined-static-port 63 `whois++' 86 `Whois++ Service' WHOIS-SERVER))
+0x88239451  (tcp-static-port 543 `klogin' 87 `Kerberos Authenticated rlogin' KLOGIN-Server))
+0x882394c3  (tcp-static-port 544 `kshell' 88 `Kerberos Authenticated Shell' KSHELL-Server))
+0x88239534  (tcp-static-port 1525 `ora-srv' 89 `Oracle TCP/IP Listener' ORACLE-Server))
+0x882395a3  (combined-static-port 9088 `sqlexec' 90 `SQL Informix' SQL-EXEC-Server))
+0x88239610  (combined-static-port 371 `clearcase' 91 `Clearcase Server' CLEARCASE-Server))
+0x88239682  (combined-static-port 458 `appleqtc' 92 `Apple Quick Time' APPLEQTC-Server))
+0x882396ed  (combined-static-port 469 `rcp' 93 `Radio Control Protocol' RCP-Server))
+0x88239757  (combined-static-port 500 `isakmp' 94 `Internet Security Association & Key Management Protocol'
+0x882397e8  (combined-static-port 523 `ibm-db2' 95 `IBM DB2' IBMDB2-SERVER))
+0x88239849  (combined-static-port 4045 `lockd' 96 `NFS Lock Daemon Manager' LOCKD-SERVER))
+0x882398b6  (combined-static-port 92 `npp' 97 `Network Printing Protocol' NPP-SERVER))
+0x88239920  (combined-static-port 666 `doom' 99 `Doom Id Software' DOOM-SERVER))
+0x88239997  (register-protocol `vnc'
+0x882399b4  (protocol-id 100)
+0x88239a07  (tcp-well-known-port 5800 5900 5901
+0x88239a63  (udp-well-known-port 5800 5900 5901
+0x88239adf  (combined-static-port 7 `echo' 101 `ICMP ECHO Server' ECHO-SERVER))
+0x88239b44  (combined-static-port 11 `systat' 102 `List Active Users' SYSTAT-SERVER))
+0x88239bcb  (combined-static-port 13 `daytime' 103 `Daytime Service' DAYTIME-SERVER))
+0x88239c37  (combined-static-port 19 `chargen' 104 `Character Generator' CHARGEN-SERVER))
+0x88239ca4  (combined-static-port 37 `time' 105 `Time Service' TIME-SERVER))
+0x88239d06  (combined-static-port 55 `isi-gl' 106 `ISI Graphics Language' ISI-GL-SERVER))
+0x88239d76  (combined-static-port 107 `rtelnet' 107 `Remote Telnet' RTELNET-SERVER))
+0x88239ddd  (combined-static-port 213 `ipx' 108 `Internetwork Packet Exchange Protocol' IPX-SERVER))
+0x88239e56  (combined-static-port 177 `xdmcp' 109 `X Display Manager Control Protocol' XDMCP-SERVER))
+0x88239ed3  (combined-static-port  43  `nicname' 110 `Nicname Protocol ' NICKNAME-SERVER))
+0x88239f47  (combined-dual-static-port 683 684 `corba-iiop' 111 `CORBA Internet Inter-ORB Protocol' CORBA-IIOP-SERVER))
+0x88239fd4  (combined-dual-static-port 49 65 `tacacs' 112 `Login Host Protocol' TACACS-SERVER))
+0x8823a564  (register-protocol `http'
+0x8823adbb  (`url' (tcp-well-known-port 80 HTTP-url HTTP-url-client)
+0x8823aefb  ((tcp-well-known-port 80 HTTP-url-plus HTTP-url-client)
+0x8823afdf  (tcp-well-known-port 80 HTTP-fast-server HTTP-fast-client)
+0x8823ebf4  (register-protocol `ftp'
+0x8823ec0f  (protocol-id 2)
+0x8823ec4e  (tcp-well-known-port 21 FTP-Server FTP-Client)))
+

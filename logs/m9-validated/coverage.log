@@ -1,0 +1,44 @@
+[2026-10-19 14:35:40] [INFO] config loaded: <PROJECT_ROOT>/runtime/c2900-ios.json
+[2026-10-19 14:35:40] [INFO] mode: 3, target: ios, debug: false
+[2026-10-19 14:35:40] [INFO] coverage: range=0x0000000001000000-0x0000000005956000 addr_mode=phys runtime_delta=0x0000000060000000
+[2026-10-19 14:35:40] [INFO] inst_ratio: 65536
+[2026-10-19 14:35:40] [INFO] entry instructions: 
+[2026-10-19 14:35:40] [INFO] entry addr: 0x0000000000000000  text_start: 0x0000000081000000  text_size: 0x0000000004956000
+[2026-10-19 14:37:34] [INFO] alias merge #1: canon=0x0000000001126504 virt 0xffffffff81126504 -> 0x0000000021126504
+[2026-10-19 14:37:34] [INFO] alias merge #2: canon=0x000000000112653c virt 0xffffffff8112653c -> 0x000000002112653c
+[2026-10-19 14:37:34] [INFO] alias merge #3: canon=0x0000000001126564 virt 0xffffffff81126564 -> 0x0000000021126564
+[2026-10-19 14:37:34] [INFO] alias merge #4: canon=0x000000000112656c virt 0xffffffff8112656c -> 0x000000002112656c
+[2026-10-19 14:37:34] [INFO] alias merge #5: canon=0x0000000001126578 virt 0xffffffff81126578 -> 0x0000000021126578
+[2026-10-19 14:37:34] [INFO] alias merge #6: canon=0x0000000001126584 virt 0xffffffff81126584 -> 0x0000000021126584
+[2026-10-19 14:37:34] [INFO] alias merge #7: canon=0x000000000112658c virt 0xffffffff8112658c -> 0x000000002112658c
+[2026-10-19 14:37:34] [INFO] alias merge #8: canon=0x0000000001126598 virt 0xffffffff81126598 -> 0x0000000021126598
+[2026-10-19 14:46:17] [INFO] coverage captured at snapshot save, before any fuzz round
+[2026-10-19 14:46:17] [INFO] ios tb stats: seen=7975134389 phys_missing=0 in_range=7727158809 out_range=247975580 virt[kseg0=0 runtime=6263680614 other=1711453775] alias_merge=58498990 (range 0x0000000001000000-0x0000000005956000)
+[2026-10-19 14:46:17] [INFO] 139539 TB entries collected
+[2026-10-19 14:46:17] [INFO] edge coverage: 62144 edges hit
+[2026-10-19 14:46:17] [INFO] exit status: 0xdeadbeef (timeout sentinel, program did not exit)
+[2026-10-19 14:46:20] [INFO] coverage after fuzz round 1
+[2026-10-19 14:46:20] [INFO] ios tb stats: seen=27793956 phys_missing=0 in_range=27793956 out_range=0 virt[kseg0=0 runtime=27793956 other=0] alias_merge=0 (range 0x0000000001000000-0x0000000005956000)
+[2026-10-19 14:46:20] [INFO] 75 TB entries collected
+[2026-10-19 14:46:20] [INFO] edge coverage: 85 edges hit
+[2026-10-19 14:46:20] [INFO] exit status: 0xdeadbeef (timeout sentinel, program did not exit)
+[2026-10-19 14:46:24] [INFO] coverage captured at snapshot save, before any fuzz round
+[2026-10-19 14:46:24] [INFO] ios tb stats: seen=85701689 phys_missing=0 in_range=85701689 out_range=0 virt[kseg0=0 runtime=85701689 other=0] alias_merge=0 (range 0x0000000001000000-0x0000000005956000)
+[2026-10-19 14:46:24] [INFO] 75 TB entries collected
+[2026-10-19 14:46:24] [INFO] edge coverage: 85 edges hit
+[2026-10-19 14:46:24] [INFO] exit status: 0xdeadbeef (timeout sentinel, program did not exit)
+[2026-10-19 14:46:27] [INFO] coverage after fuzz round 2
+[2026-10-19 14:46:27] [INFO] ios tb stats: seen=26882008 phys_missing=0 in_range=26882008 out_range=0 virt[kseg0=0 runtime=26882008 other=0] alias_merge=0 (range 0x0000000001000000-0x0000000005956000)
+[2026-10-19 14:46:27] [INFO] 75 TB entries collected
+[2026-10-19 14:46:27] [INFO] edge coverage: 85 edges hit
+[2026-10-19 14:46:27] [INFO] exit status: 0xdeadbeef (timeout sentinel, program did not exit)
+[2026-10-19 14:46:29] [INFO] coverage after fuzz round 3
+[2026-10-19 14:46:29] [INFO] ios tb stats: seen=26573820 phys_missing=0 in_range=26573820 out_range=0 virt[kseg0=0 runtime=26573820 other=0] alias_merge=0 (range 0x0000000001000000-0x0000000005956000)
+[2026-10-19 14:46:29] [INFO] 75 TB entries collected
+[2026-10-19 14:46:29] [INFO] edge coverage: 86 edges hit
+[2026-10-19 14:46:29] [INFO] exit status: 0xdeadbeef (timeout sentinel, program did not exit)
+[2026-10-19 14:46:31] [INFO] coverage after fuzz round 4
+[2026-10-19 14:46:31] [INFO] ios tb stats: seen=26623814 phys_missing=0 in_range=26623814 out_range=0 virt[kseg0=0 runtime=26623814 other=0] alias_merge=0 (range 0x0000000001000000-0x0000000005956000)
+[2026-10-19 14:46:31] [INFO] 75 TB entries collected
+[2026-10-19 14:46:31] [INFO] edge coverage: 86 edges hit
+[2026-10-19 14:46:31] [INFO] exit status: 0xdeadbeef (timeout sentinel, program did not exit)

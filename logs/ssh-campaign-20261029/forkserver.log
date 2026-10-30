@@ -1,0 +1,46 @@
+[2026-10-29 19:40:03] [INFO] edge map shared memory created at key 0x2000
+[2026-10-29 19:40:03] [INFO] exit status shared memory created at key 0x2001
+[2026-10-29 19:40:03] [INFO] pipes created: ctl=/tmp/qemu_fuzz_ctl st=/tmp/qemu_fuzz_st
+[2026-10-29 19:40:03] [INFO] enabled, waiting for fuzzer on /tmp/qemu_fuzz_ctl
+[2026-10-29 20:08:16] [INFO] saving snapshot 'snap_ssh_aflnet'
+[2026-10-29 20:08:17] [INFO] snapshot saved: snap_ssh_aflnet
+[2026-10-29 20:08:17] [INFO] coverage state backed up
+[2026-10-29 20:08:17] [INFO] saving snapshot 'snap_ssh_aflnet'
+[2026-10-29 20:08:18] [INFO] snapshot saved: snap_ssh_aflnet
+[2026-10-29 20:08:18] [INFO] coverage state backed up
+[2026-10-29 20:08:18] [INFO] received fuzz command 1
+[2026-10-29 20:08:18] [INFO] snapshot restored
+[2026-10-29 20:08:18] [INFO] coverage reset after snapshot restore
+[2026-10-29 20:08:18] [INFO] vm started
+[2026-10-29 20:08:25] [INFO] received fuzz command 2
+[2026-10-29 20:08:25] [INFO] snapshot restored
+[2026-10-29 20:08:25] [INFO] coverage reset after snapshot restore
+[2026-10-29 20:08:25] [INFO] vm started
+[2026-10-29 20:08:31] [INFO] received fuzz command 3
+[2026-10-29 20:08:32] [INFO] snapshot restored
+[2026-10-29 20:08:32] [INFO] coverage reset after snapshot restore
+[2026-10-29 20:08:32] [INFO] vm started
+[2026-10-29 20:08:38] [INFO] received fuzz command 4
+[2026-10-29 20:08:38] [INFO] snapshot restored
+[2026-10-29 20:08:38] [INFO] coverage reset after snapshot restore
+[2026-10-29 20:08:38] [INFO] vm started
+[2026-10-29 20:08:45] [INFO] received fuzz command 5
+[2026-10-29 20:08:45] [INFO] snapshot restored
+[2026-10-29 20:08:45] [INFO] coverage reset after snapshot restore
+[2026-10-29 20:08:45] [INFO] vm started
+[2026-10-29 20:08:51] [INFO] received fuzz command 6
+[2026-10-29 20:08:52] [INFO] snapshot restored
+[2026-10-29 20:08:52] [INFO] coverage reset after snapshot restore
+[2026-10-29 20:08:52] [INFO] vm started
+[2026-10-29 20:08:58] [INFO] received fuzz command 7
+[2026-10-29 20:08:58] [INFO] snapshot restored
+[2026-10-29 20:08:58] [INFO] coverage reset after snapshot restore
+[2026-10-29 20:08:58] [INFO] vm started
+[2026-10-29 20:09:05] [INFO] received fuzz command 8
+[2026-10-29 20:09:05] [INFO] snapshot restored
+[2026-10-29 20:09:05] [INFO] coverage reset after snapshot restore
+[2026-10-29 20:09:05] [INFO] vm started
+[2026-10-29 20:09:11] [INFO] received fuzz command 9
+[2026-10-29 20:09:11] [INFO] snapshot restored
+[2026-10-29 20:09:11] [INFO] coverage reset after snapshot restore
+[2026-10-29 20:09:11] [INFO] vm started

@@ -1,0 +1,28 @@
+{
+  "protocol": "ssh",
+  "display_name": "SSH",
+  "snapshot_name": "snap_ssh",
+  "created_at": "2026-10-19 17:28:21",
+  "config_script": "<PROJECT_ROOT>/runtime/protocols/ssh/configure.py",
+  "config_exit": 0,
+  "snapshot_status": 1,
+  "kernel_source": "<PROJECT_ROOT>/vendor/c2900/firmware/C2900-UN.150.BIN",
+  "kernel_used": "<PROJECT_ROOT>/vendor/c2900/firmware/C2900-UN.150.BIN",
+  "kernel_sha256": "a398d815722310afc21ab670b0b2101decf587663a21456da4326a939ee9f465",
+  "fuzz_config": "<PROJECT_ROOT>/runtime/protocols/ssh/config/fuzz.json",
+  "fuzz_config_sha256": "d729d6b0b219b60a93677ac7584b1c0d7ee5730a822af0bfcf767b9e51bcff03",
+  "qemu_session": "c2900fuzz-ssh",
+  "coverage_at_snapshot": "edges=20375 sum=408440 hash=0b14b85f2bb4eca3 exit=0xdeadbeef",
+  "aflnet_protocol": "SSH",
+  "network": "tcp://172.16.100.2:22",
+  "net_mode": "socket",
+  "notes": "config_ssh.py \u4f1a\u628a VTY \u4ece Telnet \u5207\u5230 SSH\uff1bC2900 \u4f7f\u7528\u65e7 KEX/cipher\u3002",
+  "logs": {
+    "console": "<PROJECT_ROOT>/runtime/protocols/ssh/logs/console.log",
+    "configure": "<PROJECT_ROOT>/runtime/protocols/ssh/logs/configure.log",
+    "snapshot": "<PROJECT_ROOT>/runtime/protocols/ssh/logs/snapshot.log",
+    "coverage": "<PROJECT_ROOT>/runtime/protocols/ssh/Logs/coverage.log",
+    "forkserver": "<PROJECT_ROOT>/runtime/protocols/ssh/Logs/forkserver.log",
+    "serial": "<PROJECT_ROOT>/runtime/protocols/ssh/serial.log"
+  }
+}

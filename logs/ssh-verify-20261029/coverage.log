@@ -1,0 +1,63 @@
+[2026-10-29 16:29:30] [INFO] config loaded: <PROJECT_ROOT>/runtime/ssh-verify-20261029/fuzz.json
+[2026-10-29 16:29:30] [INFO] mode: 3, target: ios, debug: false
+[2026-10-29 16:29:30] [INFO] coverage: range=0x0000000001000000-0x0000000005950000 addr_mode=phys runtime_delta=0x0000000060000000 exclude_baseline=true
+[2026-10-29 16:29:30] [INFO] inst_ratio: 65536
+[2026-10-29 16:29:30] [INFO] snapshot: name=snap_ssh_verify device=(all devices)
+[2026-10-29 16:29:30] [INFO] crash: mode=on panic_addrs=7 status=11 on_reset=false exc_mask=0x00000000
+[2026-10-29 16:29:30] [INFO] entry instructions: 
+[2026-10-29 16:29:30] [INFO] entry addr: 0x0000000000000000  text_start: 0x0000000081000000  text_size: 0x0000000004950000
+[2026-10-29 16:29:31] [INFO] alias merge #1: canon=0x000000000111c704 virt 0xffffffff8111c704 -> 0x000000002111c704
+[2026-10-29 16:29:31] [INFO] alias merge #2: canon=0x000000000111c73c virt 0xffffffff8111c73c -> 0x000000002111c73c
+[2026-10-29 16:29:31] [INFO] alias merge #3: canon=0x000000000111c764 virt 0xffffffff8111c764 -> 0x000000002111c764
+[2026-10-29 16:29:31] [INFO] alias merge #4: canon=0x000000000111c76c virt 0xffffffff8111c76c -> 0x000000002111c76c
+[2026-10-29 16:29:31] [INFO] alias merge #5: canon=0x000000000111c778 virt 0xffffffff8111c778 -> 0x000000002111c778
+[2026-10-29 16:29:31] [INFO] alias merge #6: canon=0x000000000111c784 virt 0xffffffff8111c784 -> 0x000000002111c784
+[2026-10-29 16:29:31] [INFO] alias merge #7: canon=0x000000000111c78c virt 0xffffffff8111c78c -> 0x000000002111c78c
+[2026-10-29 16:29:31] [INFO] alias merge #8: canon=0x000000000111c798 virt 0xffffffff8111c798 -> 0x000000002111c798
+[2026-10-29 16:55:48] [INFO] crash candidate: reason=panic_addr pc=0x00000000238328b4 mode=on status=0x0000000b
+[2026-10-29 16:55:48] [INFO] crash candidate: reason=panic_addr pc=0x00000000238329f0 mode=on status=0x0000000b
+[2026-10-29 16:56:10] [INFO] crash candidate: reason=panic_addr pc=0x00000000238328b4 mode=on status=0x0000000b
+[2026-10-29 16:56:10] [INFO] crash candidate: reason=panic_addr pc=0x00000000238329f0 mode=on status=0x0000000b
+[2026-10-29 16:56:34] [INFO] crash candidate: reason=panic_addr pc=0x00000000238328b4 mode=on status=0x0000000b
+[2026-10-29 16:56:34] [INFO] crash candidate: reason=panic_addr pc=0x00000000238329f0 mode=on status=0x0000000b
+[2026-10-29 16:58:47] [INFO] crash candidate: reason=panic_addr pc=0x00000000238328b4 mode=on status=0x0000000b
+[2026-10-29 16:58:47] [INFO] crash candidate: reason=panic_addr pc=0x00000000238329f0 mode=on status=0x0000000b
+[2026-10-29 17:01:05] [INFO] coverage captured at snapshot save, before any fuzz round
+[2026-10-29 17:01:05] [INFO] ios tb stats: seen=18471915488 phys_missing=0 in_range=18471711007 out_range=204481 virt[kseg0=0 runtime=18471694977 other=220511] alias_merge=69118995 (range 0x0000000001000000-0x0000000005950000)
+[2026-10-29 17:01:05] [INFO] 178879 TB entries collected
+[2026-10-29 17:01:05] [INFO] edge coverage: 63890 edges hit
+[2026-10-29 17:01:05] [INFO] crash candidate recorded in this round (mode=on, hits=8)
+[2026-10-29 17:01:05] [INFO] exit status: 0x0000000b (signal 11)
+[2026-10-29 17:01:11] [INFO] coverage after fuzz round 1
+[2026-10-29 17:01:11] [INFO] ios tb stats: seen=56057271 phys_missing=0 in_range=56057271 out_range=0 virt[kseg0=0 runtime=56057271 other=0] alias_merge=0 (range 0x0000000001000000-0x0000000005950000)
+[2026-10-29 17:01:11] [INFO] 119 TB entries collected
+[2026-10-29 17:01:11] [INFO] edge coverage: 132 edges hit
+[2026-10-29 17:01:11] [INFO] exit status: 0xdeadbeef (timeout sentinel, program did not exit)
+[2026-10-29 17:01:21] [INFO] crash candidate: reason=panic_addr pc=0x00000000238328b4 mode=on status=0x0000000b
+[2026-10-29 17:01:21] [INFO] crash candidate: reason=panic_addr pc=0x00000000238329f0 mode=on status=0x0000000b
+[2026-10-29 17:01:21] [INFO] crash candidate: reason=panic_addr pc=0x000000002382c5fc mode=on status=0x0000000b
+[2026-10-29 17:01:21] [INFO] crash candidate: reason=panic_addr pc=0x00000000238398a8 mode=on status=0x0000000b
+[2026-10-29 17:01:21] [INFO] crash candidate: reason=panic_addr pc=0x0000000023839458 mode=on status=0x0000000b
+[2026-10-29 17:01:21] [INFO] crash candidate: reason=panic_addr pc=0x000000002382c5fc mode=on status=0x0000000b
+[2026-10-29 17:01:21] [INFO] crash candidate: reason=panic_addr pc=0x0000000023839458 mode=on status=0x0000000b
+[2026-10-29 17:01:21] [INFO] crash candidate: reason=panic_addr pc=0x00000000238398a8 mode=on status=0x0000000b
+[2026-10-29 17:01:30] [INFO] coverage after fuzz round 2
+[2026-10-29 17:01:30] [INFO] ios tb stats: seen=112277770 phys_missing=0 in_range=112277441 out_range=329 virt[kseg0=0 runtime=112277441 other=329] alias_merge=0 (range 0x0000000001000000-0x0000000005950000)
+[2026-10-29 17:01:30] [INFO] 12124 TB entries collected
+[2026-10-29 17:01:30] [INFO] edge coverage: 13115 edges hit
+[2026-10-29 17:01:30] [INFO] crash candidate recorded in this round (mode=on, hits=8)
+[2026-10-29 17:01:30] [INFO] exit status: 0x0000000b (signal 11)
+[2026-10-29 17:01:43] [INFO] crash candidate: reason=panic_addr pc=0x00000000238328b4 mode=on status=0x0000000b
+[2026-10-29 17:01:43] [INFO] crash candidate: reason=panic_addr pc=0x00000000238329f0 mode=on status=0x0000000b
+[2026-10-29 17:01:43] [INFO] crash candidate: reason=panic_addr pc=0x000000002382c5fc mode=on status=0x0000000b
+[2026-10-29 17:01:43] [INFO] crash candidate: reason=panic_addr pc=0x00000000238398a8 mode=on status=0x0000000b
+[2026-10-29 17:01:43] [INFO] crash candidate: reason=panic_addr pc=0x0000000023839458 mode=on status=0x0000000b
+[2026-10-29 17:01:43] [INFO] crash candidate: reason=panic_addr pc=0x000000002382c5fc mode=on status=0x0000000b
+[2026-10-29 17:01:43] [INFO] crash candidate: reason=panic_addr pc=0x0000000023839458 mode=on status=0x0000000b
+[2026-10-29 17:01:43] [INFO] crash candidate: reason=panic_addr pc=0x00000000238398a8 mode=on status=0x0000000b
+[2026-10-29 17:01:52] [INFO] coverage after fuzz round 3
+[2026-10-29 17:01:52] [INFO] ios tb stats: seen=108576779 phys_missing=0 in_range=108576352 out_range=427 virt[kseg0=0 runtime=108576352 other=427] alias_merge=0 (range 0x0000000001000000-0x0000000005950000)
+[2026-10-29 17:01:52] [INFO] 12776 TB entries collected
+[2026-10-29 17:01:52] [INFO] edge coverage: 13784 edges hit
+[2026-10-29 17:01:52] [INFO] crash candidate recorded in this round (mode=on, hits=8)
+[2026-10-29 17:01:52] [INFO] exit status: 0x0000000b (signal 11)

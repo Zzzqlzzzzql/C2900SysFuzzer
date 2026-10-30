@@ -1,0 +1,71 @@
+[2026-10-29 19:40:03] [INFO] config loaded: <PROJECT_ROOT>/runtime/protocols/ssh/config/fuzz.aflnet-m7.json
+[2026-10-29 19:40:03] [INFO] mode: 3, target: ios, debug: false
+[2026-10-29 19:40:03] [INFO] coverage: range=0x0000000001000000-0x0000000005950000 addr_mode=phys runtime_delta=0x0000000060000000 exclude_baseline=true
+[2026-10-29 19:40:03] [INFO] inst_ratio: 65536
+[2026-10-29 19:40:03] [INFO] snapshot: name=snap_ssh_aflnet device=(all devices)
+[2026-10-29 19:40:03] [INFO] crash: mode=off panic_addrs=0 status=11 on_reset=false exc_mask=0x00000000
+[2026-10-29 19:40:03] [INFO] entry instructions: 
+[2026-10-29 19:40:03] [INFO] entry addr: 0x0000000000000000  text_start: 0x0000000081000000  text_size: 0x0000000004950000
+[2026-10-29 19:40:03] [INFO] alias merge #1: canon=0x000000000111c704 virt 0xffffffff8111c704 -> 0x000000002111c704
+[2026-10-29 19:40:03] [INFO] alias merge #2: canon=0x000000000111c73c virt 0xffffffff8111c73c -> 0x000000002111c73c
+[2026-10-29 19:40:03] [INFO] alias merge #3: canon=0x000000000111c764 virt 0xffffffff8111c764 -> 0x000000002111c764
+[2026-10-29 19:40:03] [INFO] alias merge #4: canon=0x000000000111c76c virt 0xffffffff8111c76c -> 0x000000002111c76c
+[2026-10-29 19:40:03] [INFO] alias merge #5: canon=0x000000000111c778 virt 0xffffffff8111c778 -> 0x000000002111c778
+[2026-10-29 19:40:03] [INFO] alias merge #6: canon=0x000000000111c784 virt 0xffffffff8111c784 -> 0x000000002111c784
+[2026-10-29 19:40:03] [INFO] alias merge #7: canon=0x000000000111c78c virt 0xffffffff8111c78c -> 0x000000002111c78c
+[2026-10-29 19:40:03] [INFO] alias merge #8: canon=0x000000000111c798 virt 0xffffffff8111c798 -> 0x000000002111c798
+[2026-10-29 20:08:17] [INFO] coverage captured at snapshot save, before any fuzz round
+[2026-10-29 20:08:17] [INFO] ios tb stats: seen=17595527085 phys_missing=0 in_range=17595334442 out_range=192643 virt[kseg0=0 runtime=17595318412 other=208673] alias_merge=67536633 (range 0x0000000001000000-0x0000000005950000)
+[2026-10-29 20:08:17] [INFO] 164062 TB entries collected
+[2026-10-29 20:08:17] [INFO] edge coverage: 63312 edges hit
+[2026-10-29 20:08:17] [INFO] exit status: 0xdeadbeef (timeout sentinel, program did not exit)
+[2026-10-29 20:08:18] [INFO] coverage captured at snapshot save, before any fuzz round
+[2026-10-29 20:08:18] [INFO] ios tb stats: seen=17595527085 phys_missing=0 in_range=17595334442 out_range=192643 virt[kseg0=0 runtime=17595318412 other=208673] alias_merge=67536633 (range 0x0000000001000000-0x0000000005950000)
+[2026-10-29 20:08:18] [INFO] 164062 TB entries collected
+[2026-10-29 20:08:18] [INFO] edge coverage: 63312 edges hit
+[2026-10-29 20:08:18] [INFO] exit status: 0xdeadbeef (timeout sentinel, program did not exit)
+[2026-10-29 20:08:25] [INFO] coverage after fuzz round 1
+[2026-10-29 20:08:25] [INFO] ios tb stats: seen=75581738 phys_missing=0 in_range=75581682 out_range=56 virt[kseg0=0 runtime=75581682 other=56] alias_merge=0 (range 0x0000000001000000-0x0000000005950000)
+[2026-10-29 20:08:25] [INFO] 7634 TB entries collected
+[2026-10-29 20:08:25] [INFO] edge coverage: 8384 edges hit
+[2026-10-29 20:08:25] [INFO] exit status: 0xdeadbeef (timeout sentinel, program did not exit)
+[2026-10-29 20:08:31] [INFO] coverage after fuzz round 2
+[2026-10-29 20:08:31] [INFO] ios tb stats: seen=76735658 phys_missing=0 in_range=76735602 out_range=56 virt[kseg0=0 runtime=76735602 other=56] alias_merge=0 (range 0x0000000001000000-0x0000000005950000)
+[2026-10-29 20:08:31] [INFO] 7634 TB entries collected
+[2026-10-29 20:08:31] [INFO] edge coverage: 8386 edges hit
+[2026-10-29 20:08:31] [INFO] exit status: 0xdeadbeef (timeout sentinel, program did not exit)
+[2026-10-29 20:08:38] [INFO] coverage after fuzz round 3
+[2026-10-29 20:08:38] [INFO] ios tb stats: seen=75282481 phys_missing=0 in_range=75282425 out_range=56 virt[kseg0=0 runtime=75282425 other=56] alias_merge=0 (range 0x0000000001000000-0x0000000005950000)
+[2026-10-29 20:08:38] [INFO] 7643 TB entries collected
+[2026-10-29 20:08:38] [INFO] edge coverage: 8392 edges hit
+[2026-10-29 20:08:38] [INFO] exit status: 0xdeadbeef (timeout sentinel, program did not exit)
+[2026-10-29 20:08:45] [INFO] coverage after fuzz round 4
+[2026-10-29 20:08:45] [INFO] ios tb stats: seen=76264844 phys_missing=0 in_range=76264774 out_range=70 virt[kseg0=0 runtime=76264774 other=70] alias_merge=0 (range 0x0000000001000000-0x0000000005950000)
+[2026-10-29 20:08:45] [INFO] 7994 TB entries collected
+[2026-10-29 20:08:45] [INFO] edge coverage: 8759 edges hit
+[2026-10-29 20:08:45] [INFO] exit status: 0xdeadbeef (timeout sentinel, program did not exit)
+[2026-10-29 20:08:51] [INFO] coverage after fuzz round 5
+[2026-10-29 20:08:51] [INFO] ios tb stats: seen=75850760 phys_missing=0 in_range=75850697 out_range=63 virt[kseg0=0 runtime=75850697 other=63] alias_merge=0 (range 0x0000000001000000-0x0000000005950000)
+[2026-10-29 20:08:51] [INFO] 7982 TB entries collected
+[2026-10-29 20:08:51] [INFO] edge coverage: 8745 edges hit
+[2026-10-29 20:08:51] [INFO] exit status: 0xdeadbeef (timeout sentinel, program did not exit)
+[2026-10-29 20:08:58] [INFO] coverage after fuzz round 6
+[2026-10-29 20:08:58] [INFO] ios tb stats: seen=76105095 phys_missing=0 in_range=76105039 out_range=56 virt[kseg0=0 runtime=76105039 other=56] alias_merge=0 (range 0x0000000001000000-0x0000000005950000)
+[2026-10-29 20:08:58] [INFO] 7633 TB entries collected
+[2026-10-29 20:08:58] [INFO] edge coverage: 8386 edges hit
+[2026-10-29 20:08:58] [INFO] exit status: 0xdeadbeef (timeout sentinel, program did not exit)
+[2026-10-29 20:09:05] [INFO] coverage after fuzz round 7
+[2026-10-29 20:09:05] [INFO] ios tb stats: seen=75597434 phys_missing=0 in_range=75597371 out_range=63 virt[kseg0=0 runtime=75597371 other=63] alias_merge=0 (range 0x0000000001000000-0x0000000005950000)
+[2026-10-29 20:09:05] [INFO] 7982 TB entries collected
+[2026-10-29 20:09:05] [INFO] edge coverage: 8741 edges hit
+[2026-10-29 20:09:05] [INFO] exit status: 0xdeadbeef (timeout sentinel, program did not exit)
+[2026-10-29 20:09:11] [INFO] coverage after fuzz round 8
+[2026-10-29 20:09:11] [INFO] ios tb stats: seen=77596286 phys_missing=0 in_range=77596230 out_range=56 virt[kseg0=0 runtime=77596230 other=56] alias_merge=0 (range 0x0000000001000000-0x0000000005950000)
+[2026-10-29 20:09:11] [INFO] 7633 TB entries collected
+[2026-10-29 20:09:11] [INFO] edge coverage: 8383 edges hit
+[2026-10-29 20:09:11] [INFO] exit status: 0xdeadbeef (timeout sentinel, program did not exit)
+[2026-10-29 20:09:18] [INFO] coverage after fuzz round 9
+[2026-10-29 20:09:18] [INFO] ios tb stats: seen=83388990 phys_missing=0 in_range=83388934 out_range=56 virt[kseg0=0 runtime=83388934 other=56] alias_merge=0 (range 0x0000000001000000-0x0000000005950000)
+[2026-10-29 20:09:18] [INFO] 5967 TB entries collected
+[2026-10-29 20:09:18] [INFO] edge coverage: 6537 edges hit
+[2026-10-29 20:09:18] [INFO] exit status: 0xdeadbeef (timeout sentinel, program did not exit)

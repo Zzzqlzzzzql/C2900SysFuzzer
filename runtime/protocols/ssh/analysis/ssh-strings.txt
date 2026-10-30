@@ -1,0 +1,131 @@
+# SSH 相关字符串与地址（链接 VA / 运行时别名 / 物理地址）
+# runtime = linked - 0x60000000; phys = linked - 0x80000000
+
+## M9: /tmp/binwalk_m9/_c2900-universalk9-mz.SPA.150-1.M9.bin.extracted/C2900-UN.BIN
+## sha256 2e045a88536b1c247ebd3a988a654f0ee94fbf02f7aeb9ef787d643eadb66a6e
+## .text 0x81000000+0x4956000
+
+- 'SSH Process'
+    linked=0x86b5d2b0 runtime=0x26b5d2b0 phys=0x06b5d2b0 [.rodata]
+- 'SSH Event handler'
+    linked=0x882aa470 runtime=0x282aa470 phys=0x082aa470 [.data]
+- 'tcp_listen_ssh_port'
+    linked=0x86b5d6f4 runtime=0x26b5d6f4 phys=0x06b5d6f4 [.rodata]
+- 'TCP/IP SSH protocol'
+    linked=0x86b5d4c4 runtime=0x26b5d4c4 phys=0x06b5d4c4 [.rodata]
+- 'SSH-Server'
+    linked=0x86b5d708 runtime=0x26b5d708 phys=0x06b5d708 [.rodata]
+- '(define-handler SSH-Server'
+    linked=0x88244a9b runtime=0x28244a9b phys=0x08244a9b [.data]
+- "  (tcp-static-port 22 `ssh' 40 `Secured Shell' SSH-Server))"
+    linked=0x88244ab6 runtime=0x28244ab6 phys=0x08244ab6 [.data]
+- 'ssh_receive: %d bytes received '
+    linked=0x86b5ca64 runtime=0x26b5ca64 phys=0x06b5ca64 [.rodata]
+- 'Cisco-1.25'
+    linked=0x86b5ce58 runtime=0x26b5ce58 phys=0x06b5ce58 [.rodata]
+- '%s-%d.%d-%s'
+    linked=0x86b5ce48 runtime=0x26b5ce48 phys=0x06b5ce48 [.rodata]
+- 'SSH%s%d: sent protocol version id %s-%d.%d-%s'
+    linked=0x86b5ce65 runtime=0x26b5ce65 phys=0x06b5ce65 [.rodata]
+- 'SSH%s%d: sent protocol version id %s-%d.%d-%s'
+    linked=0x86b5ce65 runtime=0x26b5ce65 phys=0x06b5ce65 [.rodata]
+- 'diffie-hellman-group-exchange-sha1,diffie-hellman-group14-sha1,diffie-hellman-group1-sha1'
+    linked=0x86b5db50 runtime=0x26b5db50 phys=0x06b5db50 [.rodata]
+- 'IOS Keys in SECSH format(ssh-rsa, base64 encoded): NONE'
+    linked=0x86b5d349 runtime=0x26b5d349 phys=0x06b5d349 [.rodata]
+- 'ssh-rsa'
+    linked=0x86b5dbac runtime=0x26b5dbac phys=0x06b5dbac [.rodata]
+- 'IOS Keys in SECSH format(ssh-rsa, base64 encoded):'
+    linked=0x86b5eb3d runtime=0x26b5eb3d phys=0x06b5eb3d [.rodata]
+- 'ssh-rsa %s'
+    linked=0x86b5eb71 runtime=0x26b5eb71 phys=0x06b5eb71 [.rodata]
+- '%%SSH: Only ssh-rsa type is supported'
+    linked=0x86b5ee11 runtime=0x26b5ee11 phys=0x06b5ee11 [.rodata]
+- 'aes128-cbc,3des-cbc,aes192-cbc,aes256-cbc'
+    linked=0x86b5dbb4 runtime=0x26b5dbb4 phys=0x06b5dbb4 [.rodata]
+- 'hmac-sha1,hmac-sha1-96,hmac-md5,hmac-md5-96'
+    linked=0x86b5dbe0 runtime=0x26b5dbe0 phys=0x06b5dbe0 [.rodata]
+- 'ip ssh version %d'
+    linked=0x86b5d8d0 runtime=0x26b5d8d0 phys=0x06b5d8d0 [.rodata]
+- 'ip ssh time-out 60'
+    linked=0x86b5ae1b runtime=0x26b5ae1b phys=0x06b5ae1b [.rodata]
+- 'ip ssh authentication-retries 2'
+    linked=0x86b5ae2e runtime=0x26b5ae2e phys=0x06b5ae2e [.rodata]
+- ' transport input ssh telnet'
+    linked=0x86b5adcb runtime=0x26b5adcb phys=0x06b5adcb [.rodata]
+- 'SSH2_MSG_KEXINIT sent'
+    linked=0x86b5dcb4 runtime=0x26b5dcb4 phys=0x06b5dcb4 [.rodata]
+- 'SSH2_MSG_KEXINIT received'
+    linked=0x86b5dee4 runtime=0x26b5dee4 phys=0x06b5dee4 [.rodata]
+- 'invalid response to SSH2_MSG_USERAUTH_REQUEST - type 0x%02x, code=%d'
+    linked=0x86b5f388 runtime=0x26b5f388 phys=0x06b5f388 [.rodata]
+- 'Missing fields in SSH2_MSG_USERAUTH_REQUEST'
+    linked=0x86b5f5f8 runtime=0x26b5f5f8 phys=0x06b5f5f8 [.rodata]
+- 'Wrong fields in SSH2_MSG_USERAUTH_REQUEST'
+    linked=0x86b5f624 runtime=0x26b5f624 phys=0x06b5f624 [.rodata]
+- 'SSH_MSG_KEXINIT': (not found)
+
+## M7: vendor/c2900/firmware/C2900-UN.150.BIN
+## sha256 a398d815722310afc21ab670b0b2101decf587663a21456da4326a939ee9f465
+## .text 0x81000000+0x4950000
+
+- 'SSH Process'
+    linked=0x86b562f4 runtime=0x26b562f4 phys=0x06b562f4 [.rodata]
+- 'SSH Event handler'
+    linked=0x8829e8f8 runtime=0x2829e8f8 phys=0x0829e8f8 [.data]
+- 'tcp_listen_ssh_port'
+    linked=0x86b56738 runtime=0x26b56738 phys=0x06b56738 [.rodata]
+- 'TCP/IP SSH protocol'
+    linked=0x86b56508 runtime=0x26b56508 phys=0x06b56508 [.rodata]
+- 'SSH-Server'
+    linked=0x86b5674c runtime=0x26b5674c phys=0x06b5674c [.rodata]
+- '(define-handler SSH-Server'
+    linked=0x88238f23 runtime=0x28238f23 phys=0x08238f23 [.data]
+- "  (tcp-static-port 22 `ssh' 40 `Secured Shell' SSH-Server))"
+    linked=0x88238f3e runtime=0x28238f3e phys=0x08238f3e [.data]
+- 'ssh_receive: %d bytes received '
+    linked=0x86b55aa8 runtime=0x26b55aa8 phys=0x06b55aa8 [.rodata]
+- 'Cisco-1.25'
+    linked=0x86b55e9c runtime=0x26b55e9c phys=0x06b55e9c [.rodata]
+- '%s-%d.%d-%s'
+    linked=0x86b55e8c runtime=0x26b55e8c phys=0x06b55e8c [.rodata]
+- 'SSH%s%d: sent protocol version id %s-%d.%d-%s'
+    linked=0x86b55ea9 runtime=0x26b55ea9 phys=0x06b55ea9 [.rodata]
+- 'SSH%s%d: sent protocol version id %s-%d.%d-%s'
+    linked=0x86b55ea9 runtime=0x26b55ea9 phys=0x06b55ea9 [.rodata]
+- 'diffie-hellman-group-exchange-sha1,diffie-hellman-group14-sha1,diffie-hellman-group1-sha1'
+    linked=0x86b56b94 runtime=0x26b56b94 phys=0x06b56b94 [.rodata]
+- 'IOS Keys in SECSH format(ssh-rsa, base64 encoded): NONE'
+    linked=0x86b5638d runtime=0x26b5638d phys=0x06b5638d [.rodata]
+- 'ssh-rsa'
+    linked=0x86b56bf0 runtime=0x26b56bf0 phys=0x06b56bf0 [.rodata]
+- 'IOS Keys in SECSH format(ssh-rsa, base64 encoded):'
+    linked=0x86b57b81 runtime=0x26b57b81 phys=0x06b57b81 [.rodata]
+- 'ssh-rsa %s'
+    linked=0x86b57bb5 runtime=0x26b57bb5 phys=0x06b57bb5 [.rodata]
+- '%%SSH: Only ssh-rsa type is supported'
+    linked=0x86b57e55 runtime=0x26b57e55 phys=0x06b57e55 [.rodata]
+- 'aes128-cbc,3des-cbc,aes192-cbc,aes256-cbc'
+    linked=0x86b56bf8 runtime=0x26b56bf8 phys=0x06b56bf8 [.rodata]
+- 'hmac-sha1,hmac-sha1-96,hmac-md5,hmac-md5-96'
+    linked=0x86b56c24 runtime=0x26b56c24 phys=0x06b56c24 [.rodata]
+- 'ip ssh version %d'
+    linked=0x86b56914 runtime=0x26b56914 phys=0x06b56914 [.rodata]
+- 'ip ssh time-out 60'
+    linked=0x86b53e5f runtime=0x26b53e5f phys=0x06b53e5f [.rodata]
+- 'ip ssh authentication-retries 2'
+    linked=0x86b53e72 runtime=0x26b53e72 phys=0x06b53e72 [.rodata]
+- ' transport input ssh telnet'
+    linked=0x86b53e0f runtime=0x26b53e0f phys=0x06b53e0f [.rodata]
+- 'SSH2_MSG_KEXINIT sent'
+    linked=0x86b56cf8 runtime=0x26b56cf8 phys=0x06b56cf8 [.rodata]
+- 'SSH2_MSG_KEXINIT received'
+    linked=0x86b56f28 runtime=0x26b56f28 phys=0x06b56f28 [.rodata]
+- 'invalid response to SSH2_MSG_USERAUTH_REQUEST - type 0x%02x, code=%d'
+    linked=0x86b583cc runtime=0x26b583cc phys=0x06b583cc [.rodata]
+- 'Missing fields in SSH2_MSG_USERAUTH_REQUEST'
+    linked=0x86b5863c runtime=0x26b5863c phys=0x06b5863c [.rodata]
+- 'Wrong fields in SSH2_MSG_USERAUTH_REQUEST'
+    linked=0x86b58668 runtime=0x26b58668 phys=0x06b58668 [.rodata]
+- 'SSH_MSG_KEXINIT': (not found)
+

@@ -1,0 +1,179 @@
+
+              Restricted Rights Legend
+
+Use, duplication, or disclosure by the Government is
+subject to restrictions as set forth in subparagraph
+(c) of the Commercial Computer Software - Restricted
+Rights clause at FAR sec. 52.227-19 and subparagraph
+(c) (1) (ii) of the Rights in Technical Data and Computer
+Software clause at DFARS sec. 252.227-7013.
+
+           cisco Systems, Inc.
+           170 West Tasman Drive
+           San Jose, California 95134-1706
+
+
+
+Cisco IOS Software, C2900 Software (C2900-UNIVERSALK9-M), Version 15.0(1)M7, REL
+EASE SOFTWARE (fc2)
+Technical Support: http://www.cisco.com/techsupport
+Copyright (c) 1986-2011 by Cisco Systems, Inc.
+Compiled Thu 04-Aug-11 21:40 by prod_rel_team
+Image text-base: 0x210008D8, data-base: 0x25950000
+
+
+
+This product contains cryptographic features and is subject to United
+States and local country laws governing import, export, transfer and
+use. Delivery of Cisco cryptographic products does not imply
+third-party authority to import, export, distribute or use encryption.
+Importers, exporters, distributors and users are responsible for
+compliance with U.S. and local country laws. By using this product you
+agree to comply with applicable laws and regulations. If you are unable
+to comply with U.S. and local laws, return this product immediately.
+
+A summary of U.S. laws governing Cisco cryptographic products may be found at:
+http://www.cisco.com/wwl/export/crypto/tool/stqrg.html
+
+If you require further assistance please contact us by sending email to
+export@cisco.com.
+
+Installed image archive
+Cisco BOARD2911/K9 (revision 1.0) with 466944K/57344K bytes of memory.
+Processor board ID FGL1840102Y
+1 Virtual Private Network (VPN) Module
+DRAM configuration is 64 bits wide with parity enabled.
+255K bytes of non-volatile configuration memory.
+255488K bytes of ATA System CompactFlash 0 (Read/Write)
+
+interface GigabitEthernet0/0
+           ^
+% Invalid input detected at '^' marker.
+
+ ip address 172.16.100.2 255.255.255.0
+           ^
+% Invalid input detected at '^' marker.
+
+ duplex auto
+  ^
+% Invalid input detected at '^' marker.
+
+ speed auto
+   ^
+% Invalid input detected at '^' marker.
+
+interface GigabitEthernet0/1
+           ^
+% Invalid input detected at '^' marker.
+
+ ip address 172.16.200.2 255.255.255.0
+           ^
+% Invalid input detected at '^' marker.
+
+ duplex auto
+  ^
+% Invalid input detected at '^' marker.
+
+ speed auto
+   ^
+% Invalid input detected at '^' marker.
+
+interface GigabitEthernet0/2
+           ^
+% Invalid input detected at '^' marker.
+
+ no ip address
+% Incomplete command.
+
+ shutdown
+% Incomplete command.
+
+ duplex auto
+  ^
+% Invalid input detected at '^' marker.
+
+ speed auto
+   ^
+% Invalid input detected at '^' marker.
+
+
+
+Press RETURN to get started!
+
+
+Jan  2 12:00:01.371: %IOS_LICENSE_IMAGE_APPLICATION-6-LICENSE_LEVEL: Module name
+ = c2900 Next reboot level = ipbasek9 and License = No valid license found
+Jan  2 12:00:01.447: %IOS_LICENSE_IMAGE_APPLICATION-6-LICENSE_LEVEL: Module name
+ = c2900 Next reboot level = securityk9 and License = securityk9
+Oct 19 09:19:57.647: %PA-2-UNDEFIO: Unsupported I/O Controller (type 0) in I/O B
+ay. The I/O Controller network interfaces will be unavailable.
+Oct 19 09:19:57.647: %PA-3-NOTSUPPORTED: PA in slot1 (Unknown (type 0)) is not s
+upported on this image/licenses enabled. Please issue "show diag" CLI command to
+ display the PA information, verify it is supported and, if applicable, ensure t
+he correct license key is installed. A newer image version or license key may be
+ needed.
+Oct 19 09:19:57.647: %LINK-4-NOMAC: A random default MAC address of 0000.0cbd.b7
+64 has
+  been chosen.  Ensure that this address is unique, or specify MAC
+  addresses for commands (such as 'novell routing') that allow the
+  use of this address as a default.
+Oct 19 09:19:58.611: WDC retrieval from quack chip failed
+
+Oct 19 09:20:02.651: %VPN_HW-6-INFO_LOC: Crypto engine: onboard 0  State changed
+ to: Initialized
+Oct 19 09:20:02.655: %VPN_HW-6-INFO_LOC: Crypto engine: onboard 0  State changed
+ to: Enabled
+Oct 19 09:20:03.835: %LICENSE-4-UDI_MISMATCH: The source license udi(CISCO2911/K
+9:FGL1840102Y) differs from the platform udi(BOARD2911/K9:FGL1840102Y), please s
+ave the running config.
+Oct 19 09:20:03.891: %SYS-5-CONFIG_I: Configured from memory by console
+Oct 19 09:20:04.419: %SYS-5-RESTART: System restarted --
+Cisco IOS Software, C2900 Software (C2900-UNIVERSALK9-M), Version 15.0(1)M7, REL
+EASE SOFTWARE (fc2)
+Technical Support: http://www.cisco.com/techsupport
+Copyright (c) 1986-2011 by Cisco Systems, Inc.
+Compiled Thu 04-Aug-11 21:40 by prod_rel_team
+Oct 19 09:20:04.419: %SNMP-5-COLDSTART: SNMP agent on host c2900 is undergoing a
+ cold start
+Oct 19 09:20:04.419: %IP_SNMP-3-SOCKET: can't open UDP socket
+Oct 19 09:20:04.419: %IP_SNMP-3-SOCKET: can't open UDP socket
+Oct 19 09:20:04.419: Unable to open socket on port 161
+Oct 19 09:20:04.435: %SSH-5-ENABLED: SSH 1.99 has been enabled
+Oct 19 09:20:04.439: %CRYPTO-6-ISAKMP_ON_OFF: ISAKMP is OFF
+Oct 19 09:20:04.439: %CRYPTO-6-GDOI_ON_OFF: GDOI is OFF
+Oct 19 09:20:04.439: %CRYPTO-6-ISAKMP_ON_OFF: ISAKMP is OFF
+Oct 19 09:20:04.439: %CRYPTO-6-GDOI_ON_OFF: GDOI is OFF
+c2900>
+c2900>
+c2900>
+c2900>enable
+Password:
+c2900#clock set 17:27:14 Oct 19 2026
+c2900#configure terminal
+Enter configuration commands, one per line.  End with CNTL/Z.
+c2900(config)#hostname c2900
+c2900(config)#ip domain-name local.test
+c2900(config)#username admin secret cisco
+c2900(config)#line vty 0 4
+c2900(config-line)#transport input ssh
+c2900(config-line)#login local
+c2900(config-line)#end
+c2900#show running-config | include transport input
+ transport input ssh
+c2900#disable
+c2900>enable
+Password:
+c2900#clock set 17:28:15 Oct 19 2026
+c2900#configure terminal
+Enter configuration commands, one per line.  End with CNTL/Z.
+c2900(config)#hostname c2900
+c2900(config)#ip domain-name local.test
+c2900(config)#username admin secret cisco
+c2900(config)#line vty 0 4
+c2900(config-line)#transport input ssh
+c2900(config-line)#login local
+c2900(config-line)#end
+c2900#show running-config | include transport input
+ transport input ssh
+c2900#disable
+c2900>

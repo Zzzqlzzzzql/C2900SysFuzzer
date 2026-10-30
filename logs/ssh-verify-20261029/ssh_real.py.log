@@ -1,0 +1,63 @@
+=== 2026-10-29 17:00:19 connect 172.16.100.2:22 ===
+set kex=('diffie-hellman-group14-sha1',)
+set ciphers=('aes128-cbc',)
+set digests=('hmac-sha1',)
+set key_types=('ssh-rsa',)
+server banner: SSH-1.99-Cisco-1.25
+host key: ssh-rsa 1024
+auth_password OK
+>>> terminal length 0
+
+c2900#terminal length 0
+c2900#
+>>> show clock
+show clock
+08:32:07.423 UTC Thu Oct 29 2026
+c2900#
+>>> exit
+exit
+
+done
+=== 2026-10-29 17:01:21 connect 172.16.100.2:22 ===
+set kex=('diffie-hellman-group14-sha1',)
+set ciphers=('aes128-cbc',)
+set digests=('hmac-sha1',)
+set key_types=('ssh-rsa',)
+server banner: SSH-1.99-Cisco-1.25
+host key: ssh-rsa 1024
+auth_password OK
+>>> terminal length 0
+
+c2900#terminal length 0
+c2900#
+>>> show clock
+show clock
+08:32:09.491 UTC Thu Oct 29 2026
+c2900#
+>>> exit
+exit
+
+done
+=== 2026-10-29 17:01:43 connect 172.16.100.2:22 ===
+set kex=('diffie-hellman-group14-sha1',)
+set ciphers=('aes128-cbc',)
+set digests=('hmac-sha1',)
+set key_types=('ssh-rsa',)
+server banner: SSH-1.99-Cisco-1.25
+host key: ssh-rsa 1024
+auth_password OK
+>>> terminal length 0
+
+c2900#terminal length 0
+c2900#
+>>> show ip interface brief
+show ip interface brief
+Interface                  IP-Address      OK? Method Status                Protocol
+GigabitEthernet0/0         172.16.100.2    YES NVRAM  up                    up      
+GigabitEthernet0/1         172.16.200.2    YES NVRAM  up                    up      
+GigabitEthernet0/2         unassigned      YES NVRAM  administratively down down    
+c2900#
+>>> exit
+exit
+
+done

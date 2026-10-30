@@ -1,0 +1,27 @@
+{
+    "mode": 3,
+    "target_type": "ios",
+    "debug": false,
+    "auto_snapshot": false,
+    "coverage_types": [
+        "block",
+        "edge"
+    ],
+    "exclude_baseline": true,
+    "inst_ratio": 65536,
+    "addr_mode": "phys",
+    "coverage_start": "0x01000000",
+    "coverage_end": "0x05956000",
+    "text_start": "0x81000000",
+    "text_size": "0x4956000",
+    "runtime_delta": "0x60000000",
+    "firmware_entry": "0x81000000",
+    "wait_snapshot_restore": 1000,
+    "wait_program_done": 1000,
+    "snapshot_name": "snap_telnet",
+    "crash_mode": "off",
+    "panic_addrs": [],
+    "crash_status": 11,
+    "crash_on_reset": false,
+    "crash_exceptions": []
+}

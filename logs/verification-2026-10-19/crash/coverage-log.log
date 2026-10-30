@@ -1,0 +1,17 @@
+[2026-10-19 17:43:44] [INFO] config loaded: <PROJECT_ROOT>/runtime/test-configs/crash-log-m7.json
+[2026-10-19 17:43:44] [INFO] mode: 3, target: ios, debug: false
+[2026-10-19 17:43:44] [INFO] coverage: range=0x0000000001000000-0x0000000005950000 addr_mode=phys runtime_delta=0x0000000060000000 exclude_baseline=true
+[2026-10-19 17:43:44] [INFO] inst_ratio: 65536
+[2026-10-19 17:43:44] [INFO] snapshot: name=crash_sentinel device=(all devices)
+[2026-10-19 17:43:44] [INFO] crash: mode=log panic_addrs=1 status=11 on_reset=false exc_mask=0x00000000
+[2026-10-19 17:43:44] [INFO] entry instructions: 
+[2026-10-19 17:43:44] [INFO] entry addr: 0x0000000000000000  text_start: 0x0000000081000000  text_size: 0x0000000004950000
+[2026-10-19 17:43:46] [INFO] crash candidate: reason=panic_addr pc=0xffffffff81000000 mode=log status=0x00000000
+[2026-10-19 17:43:46] [INFO] alias merge #1: canon=0x000000000111c704 virt 0xffffffff8111c704 -> 0x000000002111c704
+[2026-10-19 17:43:46] [INFO] alias merge #2: canon=0x000000000111c73c virt 0xffffffff8111c73c -> 0x000000002111c73c
+[2026-10-19 17:43:46] [INFO] alias merge #3: canon=0x000000000111c764 virt 0xffffffff8111c764 -> 0x000000002111c764
+[2026-10-19 17:43:46] [INFO] alias merge #4: canon=0x000000000111c76c virt 0xffffffff8111c76c -> 0x000000002111c76c
+[2026-10-19 17:43:46] [INFO] alias merge #5: canon=0x000000000111c778 virt 0xffffffff8111c778 -> 0x000000002111c778
+[2026-10-19 17:43:46] [INFO] alias merge #6: canon=0x000000000111c784 virt 0xffffffff8111c784 -> 0x000000002111c784
+[2026-10-19 17:43:46] [INFO] alias merge #7: canon=0x000000000111c78c virt 0xffffffff8111c78c -> 0x000000002111c78c
+[2026-10-19 17:43:46] [INFO] alias merge #8: canon=0x000000000111c798 virt 0xffffffff8111c798 -> 0x000000002111c798

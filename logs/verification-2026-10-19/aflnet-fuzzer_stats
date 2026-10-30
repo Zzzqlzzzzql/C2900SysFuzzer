@@ -1,0 +1,30 @@
+start_time        : 1792393304
+last_update       : 1792393330
+fuzzer_pid        : 874280
+cycles_done       : 0
+execs_done        : 11
+execs_per_sec     : 0.42
+paths_total       : 1
+paths_favored     : 1
+paths_found       : 0
+paths_imported    : 0
+max_depth         : 1
+cur_path          : 0
+pending_favs      : 1
+pending_total     : 1
+variable_paths    : 0
+stability         : 100.00%
+bitmap_cvg        : 2.36%
+unique_crashes    : 0
+unique_hangs      : 0
+last_path         : 0
+last_crash        : 0
+last_hang         : 0
+execs_since_crash : 11
+exec_timeout      : 8000
+afl_banner        : dummy
+afl_version       : 2.56b
+target_mode       : no_forksrv 
+command_line      : <QEMU_SYS_FUZZER>/Aflnet/afl-fuzz -Z -d -i seeds -o out -m none -t 8000 -N tcp://127.0.0.1/19080 -P HTTP -E -K -q 3 -s 3 -D 1000 -W 100 -- dummy
+slowest_exec_ms   : 1
+peak_rss_mb       : not available while afl is running

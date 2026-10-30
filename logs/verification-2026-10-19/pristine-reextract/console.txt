@@ -1,0 +1,19 @@
+Failed to generate persistent self-signed certificate.
+    Secure server will use temporary self-signed certificate.
+
+c2900>show ip interface brief
+Interface                  IP-Address      OK? Method Status                Protocol
+c2900>show diag
+Slot 0:
+	Unknown (type 0) Port adapter
+	Port adapter is disabled 
+	Port adapter insertion time unknown
+	EEPROM contents at hardware discovery:
+	Hardware revision 0.0         	Board revision UNKNOWN
+	Serial number     0         	Part number    00-0000-00
+	Version Identifier         	FRU Part Number                       
+	Test history      0x0         	RMA number     00-00-00
+	EEPROM format version 0
+	EEPROM contents (hex):
+	  0x00: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+	  0x10: 00 00 

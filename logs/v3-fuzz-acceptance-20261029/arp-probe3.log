@@ -1,0 +1,5 @@
+[    0.0] connected
+[    3.0] sent ARP who-has 172.16.100.2
+[    3.0] frame 1 len=60 et=0x0806 src=6c:20:56:10:08:28
+[    3.0] GOT ARP reply sender=172.16.100.2 mac=6c:20:56:10:08:28
+[   23.2] done

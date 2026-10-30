@@ -1,0 +1,26 @@
+[2026-10-20 17:28:30] [INFO] config loaded: <PROJECT_ROOT>/runtime/c2900-program/config/monlib-kseg0-m7.json
+[2026-10-20 17:28:30] [INFO] mode: 3, target: ios, debug: true
+[2026-10-20 17:28:30] [INFO] coverage: range=0x0000000080008000-0x00000000800200a4 addr_mode=kseg0 runtime_delta=0x0000000060000000 exclude_baseline=true
+[2026-10-20 17:28:30] [INFO] inst_ratio: 65536
+[2026-10-20 17:28:30] [INFO] snapshot: name=(default fuzz_snapshot) device=(all devices)
+[2026-10-20 17:28:30] [INFO] crash: mode=off panic_addrs=0 status=11 on_reset=false exc_mask=0x00000000
+[2026-10-20 17:28:30] [INFO] entry instructions: 
+[2026-10-20 17:28:30] [INFO] entry addr: 0x0000000000000000  text_start: 0x0000000080008000  text_size: 0x00000000000180a4
+[2026-10-20 17:37:04] [INFO] coverage captured at snapshot save, before any fuzz round
+[2026-10-20 17:37:04] [INFO] ios tb stats: seen=7620049628 phys_missing=0 in_range=0 out_range=7620049628 virt[kseg0=0 runtime=7619898895 other=150733] alias_merge=0 (range 0x0000000080008000-0x00000000800200a4)
+[2026-10-20 17:37:04] [DEBUG] canon_addr,virt_addr,phys_addr,asid,exec_count,insn_count
+[2026-10-20 17:37:04] [INFO] 0 TB entries collected
+[2026-10-20 17:37:04] [INFO] edge coverage: 0 edges hit
+[2026-10-20 17:37:04] [INFO] exit status: 0xdeadbeef (timeout sentinel, program did not exit)
+[2026-10-20 17:37:43] [INFO] coverage after fuzz round 1
+[2026-10-20 17:37:43] [INFO] ios tb stats: seen=623545821 phys_missing=0 in_range=0 out_range=623545821 virt[kseg0=0 runtime=623545247 other=574] alias_merge=0 (range 0x0000000080008000-0x00000000800200a4)
+[2026-10-20 17:37:43] [DEBUG] canon_addr,virt_addr,phys_addr,asid,exec_count,insn_count
+[2026-10-20 17:37:43] [INFO] 0 TB entries collected
+[2026-10-20 17:37:43] [INFO] edge coverage: 0 edges hit
+[2026-10-20 17:37:43] [INFO] exit status: 0xdeadbeef (timeout sentinel, program did not exit)
+[2026-10-20 17:38:57] [INFO] coverage after fuzz round 2
+[2026-10-20 17:38:57] [INFO] ios tb stats: seen=1100180242 phys_missing=0 in_range=0 out_range=1100180242 virt[kseg0=0 runtime=1100179892 other=350] alias_merge=0 (range 0x0000000080008000-0x00000000800200a4)
+[2026-10-20 17:38:57] [DEBUG] canon_addr,virt_addr,phys_addr,asid,exec_count,insn_count
+[2026-10-20 17:38:57] [INFO] 0 TB entries collected
+[2026-10-20 17:38:57] [INFO] edge coverage: 0 edges hit
+[2026-10-20 17:38:57] [INFO] exit status: 0xdeadbeef (timeout sentinel, program did not exit)

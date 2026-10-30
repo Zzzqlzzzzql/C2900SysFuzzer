@@ -1,0 +1,5 @@
+GET / HTTP/1.1
+Host: 172.16.100.2
+Authorization: Basic YWRtaW46Y2lzY28=
+Connection: close
+

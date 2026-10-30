@@ -1,0 +1,530 @@
+diff --git a/afl-fuzz.c b/afl-fuzz.c
+index 93b3548..ea791fd 100644
+--- a/afl-fuzz.c
++++ b/afl-fuzz.c
+@@ -134,6 +134,7 @@ EXP_ST u8  skip_deterministic,        /* Skip deterministic stages?       */
+            shuffle_queue,             /* Shuffle input queue?             */
+            bitmap_changed = 1,        /* Time to update bitmap?           */
+            qemu_mode,                 /* Running in QEMU mode?            */
++           qemu_system_mode,          /* External QEMU system forkserver?  */
+            skip_requested,            /* Skip request, via SIGUSR1        */
+            run_over10m,               /* Run time over 10 minutes?        */
+            persistent_mode,           /* Running in persistent mode?      */
+@@ -150,6 +151,30 @@ static s32 forksrv_pid,               /* PID of the fork server           */
+            child_pid = -1,            /* PID of the fuzzed program        */
+            out_dir_fd = -1;           /* FD of the lock file              */
+ 
++static u32* qemu_exit_status_ptr;    /* Exit status SHM from QEMU (0x2001)*/
++
++/* Sentinel exit status written by QEMU when the program is still running
++   (see FUZZ_EXIT_TIMEOUT in Qemu/include/fuzz/coverage.h). Reading it after
++   the 0x03 ack means the round timed out: the snapshot is restored again on
++   the next round, which doubles as killing the program. */
++#define FUZZ_EXIT_TIMEOUT 0xDEADBEEF
++
++/* QEMU system-mode forkserver protocol (see Qemu/fuzz/forkserver.c):
++   - 0x01: save snapshot of the current VM state
++   - 0x02: start a test round (load snapshot, run guest, ack on status FIFO)
++   - 0x03: end the test round (optional delayed ack, no data copied — the
++     edge map and exit status are written to SHM in real time and read
++     directly after this round's network interaction)
++   Every command is acked with a 4-byte status on the status FIFO. */
++
++#define QEMU_FUZZ_CTL_PIPE      "/tmp/qemu_fuzz_ctl"
++#define QEMU_FUZZ_ST_PIPE       "/tmp/qemu_fuzz_st"
++#define QEMU_FUZZ_SHM_KEY       0x2000
++#define QEMU_FUZZ_EXIT_SHM_KEY  0x2001
++#define QEMU_CMD_SAVE_SNAPSHOT  0x01
++#define QEMU_CMD_START_TEST     0x02
++#define QEMU_CMD_END_TEST       0x03
++
+ EXP_ST u8* trace_bits;                /* SHM with instrumentation bitmap  */
+ 
+ EXP_ST u8  virgin_bits[MAP_SIZE],     /* Regions yet untouched by fuzzing */
+@@ -992,6 +1017,8 @@ int send_over_network()
+   if (cleanup_script) system(cleanup_script);
+ 
+   //Wait a bit for the server initialization
++  // QEMU 模式: 快照恢复后目标已监听,-D 作为本轮程序处理时间窗口,
++  // usleep 期间程序处理输入并退出;窗口不足则 0x03 时点读到哨兵值 → 超时
+   usleep(server_wait_usecs);
+ 
+   //Clear the response buffer and reset the response buffer size
+@@ -1047,6 +1074,7 @@ int send_over_network()
+   if(connect(sockfd, (struct sockaddr *)&serv_addr, sizeof(serv_addr)) < 0) {
+     //If it cannot connect to the server under test
+     //try it again as the server initial startup time is varied
++    // QEMU 模式同样适用: -D usleep 之后连接应成功,失败时重试兜底
+     for (n=0; n < 1000; n++) {
+       if (connect(sockfd, (struct sockaddr *)&serv_addr, sizeof(serv_addr)) == 0) break;
+       usleep(1000);
+@@ -1100,11 +1128,32 @@ HANDLE_RESPONSES:
+   }
+ 
+   //wait a bit letting the server to complete its remaining task(s)
++  // bitmap 实时写共享内存: 循环等待服务器不再产生新边。
++  // QEMU 模式: 慢速 TCG 执行使单次"无新边"扫描产生竞态早退(备份残留边被第一遍
++  // 扫描清空后,新边未及写出) — 改为连续 10 次扫描无新边才视为程序完成。
++  // 死循环目标仍会忙等,超时兜底由 -D 窗口 + 0x03 哨兵承担
+   memset(session_virgin_bits, 255, MAP_SIZE);
+-  while(1) {
+-    if (has_new_bits(session_virgin_bits) != 2) break;
++  if (qemu_system_mode) {
++    u32 idle_scans = 0;
++    while (1) {
++      if (has_new_bits(session_virgin_bits) != 2) {
++        if (++idle_scans >= 10) break;
++      } else {
++        idle_scans = 0;
++        usleep(100000);  // 给慢速 QEMU 目标执行留出写边窗口, 避免忙等空转
++      }
++    }
++  } else {
++    while (1) {
++      if (has_new_bits(session_virgin_bits) != 2) break;
++    }
+   }
+-
++  // 输出共享内存 edge 数量（QEMU 模式下 trace_bits 即 0x2000 共享内存）
++  // u32 shm_edge_cnt = 0;
++  // for (u32 i = 0; i < MAP_SIZE; i++)
++  //   if (trace_bits[i]) shm_edge_cnt++;
++  // fprintf(stderr, "[fuzzer] round: shared-memory edges = %u\n", shm_edge_cnt);
++  
+   close(sockfd);
+ 
+   if (likely_buggy && false_negative_reduction) return 0;
+@@ -1112,9 +1161,11 @@ HANDLE_RESPONSES:
+   if (terminate_child && (child_pid > 0)) kill(child_pid, SIGTERM);
+ 
+   //give the server a bit more time to gracefully terminate
+-  while(1) {
+-    int status = kill(child_pid, 0);
+-    if ((status != 0) && (errno == ESRCH)) break;
++  if (child_pid > 0) {
++    while(1) {
++      int status = kill(child_pid, 0);
++      if ((status != 0) && (errno == ESRCH)) break;
++    }
+   }
+ 
+   return 0;
+@@ -1619,7 +1670,7 @@ static void add_to_queue(u8* fname, u32 len, u8 passed_det) {
+     u32 byte_count = fread(buf, 1, len, fp);
+     fclose(fp);
+ 
+-    if (byte_count != len) PFATAL("AFLNet - Inconsistent file length '%s'", fname);
++    if (byte_count != len) PFATAL("fuzzer - Inconsistent file length '%s'", fname);
+     q->regions = (*extract_requests)(buf, len, &q->region_count);
+     ck_free(buf);
+ 
+@@ -2047,7 +2098,8 @@ static inline void classify_counts(u32* mem) {
+ 
+ static void remove_shm(void) {
+ 
+-  shmctl(shm_id, IPC_RMID, NULL);
++  /* In QEMU system mode the segment belongs to QEMU, not to us. */
++  if (!qemu_system_mode) shmctl(shm_id, IPC_RMID, NULL);
+ 
+ }
+ 
+@@ -2199,6 +2251,30 @@ EXP_ST void setup_shm(void) {
+ 
+   u8* shm_str;
+ 
++  if (qemu_system_mode) {
++
++    /* QEMU creates the segment (key 0x2000); we only attach to it. */
++    shm_id = shmget(QEMU_FUZZ_SHM_KEY, MAP_SIZE, 0666);
++
++    if (shm_id < 0)
++      PFATAL("shmget(0x%x) failed - is QEMU running with -fuzz?", QEMU_FUZZ_SHM_KEY);
++
++    trace_bits = shmat(shm_id, NULL, 0);
++
++    if (!trace_bits) PFATAL("shmat() failed");
++
++    /* QEMU 模式提前返回会绕过下方 virgin_* 的初始化,导致
++       virgin_bits/virgin_tmout/virgin_crash 保持全零:
++       has_new_bits(virgin_crash) 恒为 0,崩溃/hang/新路径全部不被保存。
++       必须在返回前完成同样的初始化。 */
++    if (!in_bitmap) memset(virgin_bits, 255, MAP_SIZE);
++    memset(virgin_tmout, 255, MAP_SIZE);
++    memset(virgin_crash, 255, MAP_SIZE);
++
++    return;
++
++  }
++
+   if (!in_bitmap) memset(virgin_bits, 255, MAP_SIZE);
+ 
+   memset(virgin_tmout, 255, MAP_SIZE);
+@@ -3141,6 +3217,67 @@ EXP_ST void init_forkserver(char** argv) {
+ }
+ 
+ 
++/* Connect to the external QEMU system-mode forkserver (-Z mode). The
++   pipes and shared memory are created by QEMU; we only open/attach them,
++   then ask QEMU to snapshot the current (stable) VM state. */
++
++EXP_ST void init_forkserver_qemu(void) {
++
++  ACTF("Connecting to QEMU system forkserver...");
++
++  /* Edge bitmap SHM - already attached by setup_shm(). */
++
++  /* Exit status SHM (waitpid-format, published by QEMU at end of test). */
++
++  {
++    s32 s_id = shmget(QEMU_FUZZ_EXIT_SHM_KEY, sizeof(u32), 0666);
++
++    if (s_id < 0)
++      PFATAL("shmget(0x%x) failed - is QEMU running with -fuzz?", QEMU_FUZZ_EXIT_SHM_KEY);
++
++    qemu_exit_status_ptr = shmat(s_id, NULL, 0);
++
++    if (qemu_exit_status_ptr == (u32*)-1) PFATAL("shmat() failed for exit status");
++
++  }
++
++  fsrv_ctl_fd = open(QEMU_FUZZ_CTL_PIPE, O_WRONLY);
++
++  if (fsrv_ctl_fd < 0)
++    PFATAL("Unable to open %s - is QEMU running with -fuzz?", QEMU_FUZZ_CTL_PIPE);
++
++  fsrv_st_fd = open(QEMU_FUZZ_ST_PIPE, O_RDONLY);
++
++  if (fsrv_st_fd < 0)
++    PFATAL("Unable to open %s", QEMU_FUZZ_ST_PIPE);
++
++  /* No real forkserver process: use a sentinel no kill() path touches. */
++
++  forksrv_pid = -1;
++
++  /* Ask QEMU to save the snapshot of the current stable VM state. */
++
++  {
++
++    u8 cmd = QEMU_CMD_SAVE_SNAPSHOT;
++    s32 status;
++
++    if (write(fsrv_ctl_fd, &cmd, 1) != 1)
++      PFATAL("Unable to request snapshot save from QEMU");
++
++    if (read(fsrv_st_fd, &status, 4) != 4)
++      PFATAL("No reply from QEMU forkserver on snapshot save");
++
++    if (status != 1)
++      FATAL("QEMU forkserver failed to save snapshot (status %d)", status);
++
++  }
++
++  OKF("QEMU system forkserver connected, snapshot saved.");
++
++}
++
++
+ /* Execute target application, monitoring for timeouts. Return status
+    information. The called program will update trace_bits[]. */
+ 
+@@ -3167,7 +3304,113 @@ static u8 run_target(char** argv, u32 timeout) {
+      execve(). There is a bit of code duplication between here and
+      init_forkserver(), but c'est la vie. */
+ 
+-  if (dumb_mode == 1 || no_forkserver) {
++  if (qemu_system_mode) {
++
++    /* External QEMU system forkserver: drive one round via the FIFOs.
++       Shared memory (edge map + exit status) is written by QEMU in real
++       time. The -t timeout window spans from just before the 0x02 write
++       to just after the 0x03 reply is read: the blocking reads are
++       trusted to complete (the forkserver always acks), so a timeout
++       only marks child_timed_out via SIGALRM; the outcome is decided
++       after the 0x03 ack. */
++
++    struct itimerval it;
++
++    it.it_value.tv_sec = (timeout / 1000);
++    it.it_value.tv_usec = (timeout % 1000) * 1000;
++    it.it_interval.tv_sec = 0;
++    it.it_interval.tv_usec = 0;
++
++    setitimer(ITIMER_REAL, &it, NULL);
++
++    unsigned char cmd = QEMU_CMD_START_TEST;
++    s32 res;
++
++    if (write(fsrv_ctl_fd, &cmd, 1) != 1) {
++
++      if (stop_soon) return 0;
++      RPFATAL(0, "Unable to start test in QEMU forkserver");
++
++    }
++
++    if ((res = read(fsrv_st_fd, &status, 4)) != 4) {
++
++      if (stop_soon) return 0;
++      RPFATAL(res, "Unable to communicate with QEMU forkserver");
++
++    }
++
++    if (status != 1) {
++
++      if (stop_soon) return 0;
++      FATAL("QEMU forkserver failed to start test (status %d)", status);
++
++    }
++
++    if (use_net) send_over_network();
++
++    /* Signal the end of this round: the forkserver sleeps for the
++       configured program-processing time, prints the round's final state
++       (edge coverage + exit status) and acks. Shared memory (edge map +
++       exit status) is written by QEMU in real time. */
++
++    cmd = QEMU_CMD_END_TEST;
++
++    if (write(fsrv_ctl_fd, &cmd, 1) != 1) {
++
++      if (stop_soon) return 0;
++      RPFATAL(0, "Unable to end test in QEMU forkserver");
++
++    }
++
++    if ((res = read(fsrv_st_fd, &status, 4)) != 4) {
++
++      if (stop_soon) return 0;
++      RPFATAL(res, "Unable to communicate with QEMU forkserver");
++
++    }
++
++    if (status != 1) {
++
++      if (stop_soon) return 0;
++      FATAL("QEMU forkserver failed to end test (status %d)", status);
++
++    }
++
++    /* waitpid-style exit status published by QEMU in shared memory. The
++       sentinel value means the program had not finished by the time we read
++       it after sending. Without -K this is a timeout (mirroring the native
++       model where the SIGALRM handler kills the child with SIGKILL). With
++       -K the sentinel is not a timeout: -K means the program is killed to
++       deal with looping programs, and in QEMU system mode nothing needs to
++       be killed - the next round's snapshot restore replaces it. The status
++       then mirrors what native aflnet reports after the -K SIGTERM kill:
++       WIFSIGNALED(SIGTERM) -> FAULT_NONE. */
++
++    status = qemu_exit_status_ptr ? *qemu_exit_status_ptr : 0;
++
++    if (status == FUZZ_EXIT_TIMEOUT) {
++
++      if (terminate_child) {
++
++        status = (SIGTERM & 0x7f);
++
++      } else {
++
++        child_timed_out = 1;
++        status = (SIGKILL & 0x7f);
++
++      }
++
++    }
++
++    /* The -t window expired (SIGALRM set child_timed_out while we were
++       blocked on the reads above, which are trusted to complete): force
++       the native timeout outcome regardless of the real exit status. */
++
++    if (child_timed_out) status = (SIGKILL & 0x7f);
++
++  } else if (dumb_mode == 1 || no_forkserver) {
+ 
+     child_pid = fork();
+ 
+@@ -3283,11 +3526,11 @@ static u8 run_target(char** argv, u32 timeout) {
+ 
+   /* The SIGALRM handler simply kills the child_pid and sets child_timed_out. */
+ 
+-  if (dumb_mode == 1 || no_forkserver) {
++  if (!qemu_system_mode && (dumb_mode == 1 || no_forkserver)) {
+     if (use_net) send_over_network();
+     if (waitpid(child_pid, &status, 0) <= 0) PFATAL("waitpid() failed");
+ 
+-  } else {
++  } else if (!qemu_system_mode) {
+     if (use_net) send_over_network();
+     s32 res;
+ 
+@@ -3407,7 +3650,7 @@ static u8 calibrate_case(char** argv, struct queue_entry* q, u8* use_mem,
+   q->cal_failed++;
+ 
+   stage_name = "calibration";
+-  stage_max  = fast_cal ? 3 : CAL_CYCLES;
++  stage_max  = qemu_system_mode ? 8 : (fast_cal ? 3 : CAL_CYCLES);
+ 
+   /* Make sure the forkserver is up before we do anything, and let's not
+      count its spin-up time toward binary calibration. */
+@@ -3446,7 +3689,7 @@ static u8 calibrate_case(char** argv, struct queue_entry* q, u8* use_mem,
+       u8 hnb = has_new_bits(virgin_bits);
+       if (hnb > new_bits) new_bits = hnb;
+ 
+-      if (q->exec_cksum) {
++      if (q->exec_cksum && !qemu_system_mode) {
+ 
+         u32 i;
+ 
+@@ -7799,8 +8042,12 @@ static void handle_stop_sig(int sig) {
+ 
+   stop_soon = 1;
+ 
+-  if (child_pid > 0) kill(child_pid, SIGKILL);
+-  if (forksrv_pid > 0) kill(forksrv_pid, SIGKILL);
++  if (!qemu_system_mode) {
++
++    if (child_pid > 0) kill(child_pid, SIGKILL);
++    if (forksrv_pid > 0) kill(forksrv_pid, SIGKILL);
++
++  }
+ 
+ }
+ 
+@@ -7817,6 +8064,16 @@ static void handle_skipreq(int sig) {
+ 
+ static void handle_timeout(int sig) {
+ 
++  /* In QEMU system mode there is no child to kill: just record the
++     timeout; run_target() will end the round via the 0x03 command. */
++
++  if (qemu_system_mode) {
++
++    child_timed_out = 1;
++    return;
++
++  }
++
+   if (child_pid > 0) {
+ 
+     child_timed_out = 1;
+@@ -8089,7 +8346,9 @@ static void usage(u8* argv0) {
+        "  -f file       - location read by the fuzzed program (stdin)\n"
+        "  -t msec       - timeout for each run (auto-scaled, 50-%u ms)\n"
+        "  -m megs       - memory limit for child process (%u MB)\n"
+-       "  -Q            - use binary-only instrumentation (QEMU mode)\n\n"
++       "  -Q            - use binary-only instrumentation (QEMU mode)\n"
++       "  -Z            - drive an external QEMU system-mode forkserver\n"
++       "                  (run QEMU with -fuzz first, then connect to it)\n\n"
+ 
+        "Fuzzing behavior settings:\n\n"
+ 
+@@ -8838,7 +9097,7 @@ int main(int argc, char** argv) {
+   gettimeofday(&tv, &tz);
+   srandom(tv.tv_sec ^ tv.tv_usec ^ getpid());
+ 
+-  while ((opt = getopt(argc, argv, "+i:o:f:m:t:T:dnCB:S:M:x:QN:D:W:w:e:P:KEq:s:RFc:l:b:h:")) > 0)
++  while ((opt = getopt(argc, argv, "+i:o:f:m:t:T:dnCB:S:M:x:QZN:D:W:w:e:P:KEq:s:RFc:l:b:h:")) > 0)
+ 
+     switch (opt) {
+ 
+@@ -9006,6 +9265,14 @@ int main(int argc, char** argv) {
+ 
+         break;
+ 
++      case 'Z': /* External QEMU system-mode forkserver */
++
++        if (qemu_system_mode) FATAL("Multiple -Z options not supported");
++        qemu_system_mode = 1;
++        no_forkserver = 1;
++
++        break;
++
+       case 'N': /* Network configuration */
+         if (use_net) FATAL("Multiple -N options not supported");
+         if (parse_net_config(optarg, &net_protocol, &net_ip, &net_port)) FATAL("Bad syntax used for -N. Check the network setting. [tcp/udp]://127.0.0.1/port");
+@@ -9235,6 +9502,9 @@ int main(int argc, char** argv) {
+   setup_shm();
+   init_count_class16();
+ 
++  if (qemu_system_mode)
++    init_forkserver_qemu();
++
+   setup_ipsm();
+ 
+   init_message_code_map();
+@@ -9247,13 +9517,13 @@ int main(int argc, char** argv) {
+ 
+   if (extras_dir) load_extras(extras_dir);
+ 
+-  if (!timeout_given) find_timeout();
++  if (!timeout_given && !qemu_system_mode) find_timeout();
+ 
+   detect_file_args(argv + optind + 1);
+ 
+   if (!out_file) setup_stdio_file();
+ 
+-  check_binary(argv[optind]);
++  if (!qemu_system_mode) check_binary(argv[optind]);
+ 
+   start_time = get_cur_time();
+ 
+@@ -9530,7 +9800,7 @@ int main(int argc, char** argv) {
+       if (forksrv_pid > 0) kill(forksrv_pid, SIGKILL);
+   }
+   /* Now that we've killed the forkserver, we wait for it to be able to get rusage stats. */
+-  if (waitpid(forksrv_pid, NULL, 0) <= 0) {
++  if (!qemu_system_mode && waitpid(forksrv_pid, NULL, 0) <= 0) {
+     WARNF("error waitpid\n");
+   }
+ 
+diff --git a/afl-replay.c b/afl-replay.c
+index 9179234..bdf59f4 100644
+--- a/afl-replay.c
++++ b/afl-replay.c
+@@ -34,8 +34,9 @@ char *get_test_case(char* packet_file, int *fsize)
+ 2. Application protocol (e.g., RTSP, FTP)
+ 3. Server's network port
+ Optional:
+-4. First response timeout (ms), default 1
+-5. Follow-up responses timeout (us), default 1000
++4. Server's IP address, default 127.0.0.1
++5. First response timeout (us), default 1
++6. Follow-up responses timeout (ms), default 1000
+ */
+ 
+ int main(int argc, char* argv[])
+@@ -49,9 +50,10 @@ int main(int argc, char* argv[])
+   unsigned int *state_sequence;
+   unsigned int socket_timeout = 1000;
+   unsigned int poll_timeout = 1;
++  const char *server_ip = "127.0.0.1";
+ 
+   if (argc < 4) {
+-    PFATAL("Usage: ./afl-replay packet_file protocol port [first_resp_timeout(us) [follow-up_resp_timeout(ms)]]");
++    PFATAL("Usage: ./afl-replay packet_file protocol port [ip [first_resp_timeout(us) [follow-up_resp_timeout(ms)]]]");
+   }
+ 
+   if (!strcmp(argv[2], "RTSP")) extract_response_codes = &extract_response_codes_rtsp;
+@@ -70,9 +72,12 @@ int main(int argc, char* argv[])
+   portno = atoi(argv[3]);
+ 
+   if (argc > 4) {
+-    poll_timeout = atoi(argv[4]);
++    server_ip = argv[4];
+     if (argc > 5) {
+-      socket_timeout = atoi(argv[5]);
++      poll_timeout = atoi(argv[5]);
++      if (argc > 6) {
++        socket_timeout = atoi(argv[6]);
++      }
+     }
+   }
+ 
+@@ -103,7 +108,7 @@ int main(int argc, char* argv[])
+ 
+   serv_addr.sin_family = AF_INET;
+   serv_addr.sin_port = htons(portno);
+-  serv_addr.sin_addr.s_addr = inet_addr("127.0.0.1");
++  serv_addr.sin_addr.s_addr = inet_addr(server_ip);
+ 
+   if(connect(sockfd, (struct sockaddr *)&serv_addr, sizeof(serv_addr)) < 0) {
+     //If it cannot connect to the server under test

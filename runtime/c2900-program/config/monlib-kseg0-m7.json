@@ -1,0 +1,23 @@
+{
+    "mode": 3,
+    "target_type": "ios",
+    "debug": true,
+    "auto_snapshot": false,
+    "coverage_types": ["block", "edge"],
+    "exclude_baseline": true,
+    "inst_ratio": 65536,
+    "addr_mode": "kseg0",
+    "coverage_start": "0x80008000",
+    "coverage_end": "0x800200a4",
+    "text_start": "0x80008000",
+    "text_size": "0x180a4",
+    "runtime_delta": "0x60000000",
+    "firmware_entry": "0x81000000",
+    "wait_snapshot_restore": 1000,
+    "wait_program_done": 1000,
+    "crash_mode": "off",
+    "panic_addrs": [],
+    "crash_status": 11,
+    "crash_on_reset": false,
+    "crash_exceptions": []
+}

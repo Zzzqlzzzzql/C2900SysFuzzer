@@ -1,0 +1,1498 @@
+# M7 内层镜像 SSH 关键函数反汇编（capstone, MIPS64 BE）
+# image: vendor/c2900/firmware/C2900-UN.150.BIN
+# linked->runtime = -0x60000000; linked->phys = -0x80000000
+
+==============================================================================
+## SSH 进程创建：process_create("SSH Process", entry=0x23834838)
+## 0x83830d30-0x83830dec  rt 0x23830d30
+## M9 对应 0x83835590；入口 M7=0x23834838。
+==============================================================================
+0x83830d30 (rt 0x23830d30): addiu      $sp, $sp, -0x20
+0x83830d34 (rt 0x23830d34): sw         $ra, 0x18($sp)
+0x83830d38 (rt 0x23830d38): sw         $s1, 0x14($sp)
+0x83830d3c (rt 0x23830d3c): sw         $s0, 0x10($sp)
+0x83830d40 (rt 0x23830d40): move       $s1, $a0
+0x83830d44 (rt 0x23830d44): jal        0x858f19d8
+0x83830d48 (rt 0x23830d48): lw         $s0, 0xdc($a0)
+0x83830d4c (rt 0x23830d4c): lw         $a3, ($v0)
+0x83830d50 (rt 0x23830d50): move       $a0, $s0
+0x83830d54 (rt 0x23830d54): jalr       $a3
+0x83830d58 (rt 0x23830d58): addiu      $s0, $zero, 1
+0x83830d5c (rt 0x23830d5c): lui        $a2, 0x28d4
+0x83830d60 (rt 0x23830d60): addiu      $v0, $a2, -0x82c
+0x83830d64 (rt 0x23830d64): lui        $a0, 0x2383
+0x83830d68 (rt 0x23830d68): lui        $a1, 0x26b5
+0x83830d6c (rt 0x23830d6c): addiu      $a0, $a0, 0x4838
+0x83830d70 (rt 0x23830d70): addiu      $a1, $a1, 0x62f4
+0x83830d74 (rt 0x23830d74): addiu      $a2, $zero, 0x2ee0
+0x83830d78 (rt 0x23830d78): sw         $v0, 0x34($s1)
+0x83830d7c (rt 0x23830d7c): sw         $s0, 0xe14($s1)
+0x83830d80 (rt 0x23830d80): jal        0x8344f4e4
+0x83830d84 (rt 0x23830d84): addiu      $a3, $zero, 4
+0x83830d88 (rt 0x23830d88): addiu      $v1, $zero, -1
+0x83830d8c (rt 0x23830d8c): move       $a1, $v0
+0x83830d90 (rt 0x23830d90): addiu      $a0, $zero, 0xd
+0x83830d94 (rt 0x23830d94): move       $a2, $s1
+0x83830d98 (rt 0x23830d98): beq        $v0, $v1, 0x83830db8
+0x83830d9c (rt 0x23830d9c): sw         $v0, 0xd8($s1)
+0x83830da0 (rt 0x23830da0): jal        0x8344e4f0
+0x83830da4 (rt 0x23830da4): nop        
+0x83830da8 (rt 0x23830da8): bnez       $v0, 0x83830ddc
+0x83830dac (rt 0x23830dac): lw         $ra, 0x18($sp)
+0x83830db0 (rt 0x23830db0): jal        0x8344f7d8
+0x83830db4 (rt 0x23830db4): lw         $a0, 0xd8($s1)
+0x83830db8 (rt 0x23830db8): lui        $t1, 0x282a
+0x83830dbc (rt 0x23830dbc): lw         $t0, -0x1728($t1)
+0x83830dc0 (rt 0x23830dc0): bne        $t0, $s0, 0x83830dd8
+0x83830dc4 (rt 0x23830dc4): lui        $a0, 0x282a
+0x83830dc8 (rt 0x23830dc8): lw         $t2, -0x16d8($a0)
+0x83830dcc (rt 0x23830dcc): blez       $t2, 0x83830dd8
+0x83830dd0 (rt 0x23830dd0): addiu      $v1, $t2, -1
+0x83830dd4 (rt 0x23830dd4): sw         $v1, -0x16d8($a0)
+0x83830dd8 (rt 0x23830dd8): lw         $ra, 0x18($sp)
+0x83830ddc (rt 0x23830ddc): lw         $s1, 0x14($sp)
+0x83830de0 (rt 0x23830de0): lw         $s0, 0x10($sp)
+0x83830de4 (rt 0x23830de4): jr         $ra
+0x83830de8 (rt 0x23830de8): addiu      $sp, $sp, 0x20
+
+==============================================================================
+## SSH 服务启动：tcp_listen_ssh_port(22) + process_create("SSH Event handler", entry=0x23844144)
+## 0x83833430-0x83833858  rt 0x23833430
+## 端口 22 引用 0x83833734/0x83833764；入口 0x23844144 在 0x8383370c 加载。
+==============================================================================
+0x83833430 (rt 0x23833430): addiu      $sp, $sp, -0x20
+0x83833434 (rt 0x23833434): sw         $s0, 0x10($sp)
+0x83833438 (rt 0x23833438): sw         $ra, 0x1c($sp)
+0x8383343c (rt 0x2383343c): sw         $s2, 0x18($sp)
+0x83833440 (rt 0x23833440): sw         $s1, 0x14($sp)
+0x83833444 (rt 0x23833444): bnez       $a0, 0x83833474
+0x83833448 (rt 0x23833448): move       $s0, $a0
+0x8383344c (rt 0x2383344c): lui        $v0, 0x2861
+0x83833450 (rt 0x23833450): lw         $v1, 0xd74($v0)
+0x83833454 (rt 0x23833454): bnez       $v1, 0x83833468
+0x83833458 (rt 0x23833458): lui        $a1, 0x2861
+0x8383345c (rt 0x2383345c): lw         $a0, 0xd84($a1)
+0x83833460 (rt 0x23833460): beqz       $a0, 0x83833844
+0x83833464 (rt 0x23833464): lw         $ra, 0x1c($sp)
+0x83833468 (rt 0x23833468): lui        $a2, 0x26b5
+0x8383346c (rt 0x2383346c): j          0x838334a4
+0x83833470 (rt 0x23833470): addiu      $a0, $a2, 0x6758
+0x83833474 (rt 0x23833474): addiu      $a3, $zero, 1
+0x83833478 (rt 0x23833478): bne        $a1, $a3, 0x838334bc
+0x8383347c (rt 0x2383347c): lui        $s1, 0x282a
+0x83833480 (rt 0x23833480): lui        $t1, 0x2861
+0x83833484 (rt 0x23833484): lw         $t0, 0xd74($t1)
+0x83833488 (rt 0x23833488): bnez       $t0, 0x8383349c
+0x8383348c (rt 0x2383348c): lui        $t3, 0x2861
+0x83833490 (rt 0x23833490): lw         $t2, 0xd84($t3)
+0x83833494 (rt 0x23833494): beqz       $t2, 0x83833844
+0x83833498 (rt 0x23833498): lw         $ra, 0x1c($sp)
+0x8383349c (rt 0x2383349c): lui        $t4, 0x26b5
+0x838334a0 (rt 0x238334a0): addiu      $a0, $t4, 0x6778
+0x838334a4 (rt 0x238334a4): lw         $ra, 0x1c($sp)
+0x838334a8 (rt 0x238334a8): lw         $s2, 0x18($sp)
+0x838334ac (rt 0x238334ac): lw         $s1, 0x14($sp)
+0x838334b0 (rt 0x238334b0): lw         $s0, 0x10($sp)
+0x838334b4 (rt 0x238334b4): j          0x8225327c
+0x838334b8 (rt 0x238334b8): addiu      $sp, $sp, 0x20
+0x838334bc (rt 0x238334bc): lw         $a0, -0x1710($s1)
+0x838334c0 (rt 0x238334c0): beqz       $a0, 0x838334f4
+0x838334c4 (rt 0x238334c4): lui        $t6, 0x282a
+0x838334c8 (rt 0x238334c8): lw         $a0, ($a0)
+0x838334cc (rt 0x238334cc): jal        0x85934708
+0x838334d0 (rt 0x238334d0): move       $a1, $s0
+0x838334d4 (rt 0x238334d4): bnez       $v0, 0x83833844
+0x838334d8 (rt 0x238334d8): lw         $ra, 0x1c($sp)
+0x838334dc (rt 0x238334dc): lw         $t5, -0x1710($s1)
+0x838334e0 (rt 0x238334e0): jal        0x82280598
+0x838334e4 (rt 0x238334e4): lw         $a0, ($t5)
+0x838334e8 (rt 0x238334e8): jal        0x83833208
+0x838334ec (rt 0x238334ec): move       $a0, $v0
+0x838334f0 (rt 0x238334f0): lui        $t6, 0x282a
+0x838334f4 (rt 0x238334f4): lw         $a0, -0x16e4($t6)
+0x838334f8 (rt 0x238334f8): beqz       $a0, 0x83833550
+0x838334fc (rt 0x238334fc): lui        $ra, 0x26b5
+0x83833500 (rt 0x23833500): jal        0x85934708
+0x83833504 (rt 0x23833504): move       $a1, $s0
+0x83833508 (rt 0x23833508): beqz       $v0, 0x83833550
+0x8383350c (rt 0x2383350c): lui        $ra, 0x26b5
+0x83833510 (rt 0x23833510): lui        $s1, 0x2861
+0x83833514 (rt 0x23833514): lw         $t7, 0xd74($s1)
+0x83833518 (rt 0x23833518): bnez       $t7, 0x8383352c
+0x8383351c (rt 0x2383351c): lui        $t8, 0x2861
+0x83833520 (rt 0x23833520): lw         $s2, 0xd84($t8)
+0x83833524 (rt 0x23833524): beqz       $s2, 0x83833840
+0x83833528 (rt 0x23833528): nop        
+0x8383352c (rt 0x2383352c): lui        $t9, 0x26b5
+0x83833530 (rt 0x23833530): move       $a1, $s0
+0x83833534 (rt 0x23833534): lw         $ra, 0x1c($sp)
+0x83833538 (rt 0x23833538): lw         $s2, 0x18($sp)
+0x8383353c (rt 0x2383353c): lw         $s1, 0x14($sp)
+0x83833540 (rt 0x23833540): lw         $s0, 0x10($sp)
+0x83833544 (rt 0x23833544): addiu      $a0, $t9, 0x67b0
+0x83833548 (rt 0x23833548): j          0x8225327c
+0x8383354c (rt 0x2383354c): addiu      $sp, $sp, 0x20
+0x83833550 (rt 0x23833550): addiu      $a1, $ra, 0x67a4
+0x83833554 (rt 0x23833554): jal        0x8340b248
+0x83833558 (rt 0x23833558): addiu      $a0, $zero, 0x200c
+0x8383355c (rt 0x2383355c): sw         $v0, -0x1710($s1)
+0x83833560 (rt 0x23833560): beqz       $v0, 0x83833840
+0x83833564 (rt 0x23833564): lui        $s2, 0x282a
+0x83833568 (rt 0x23833568): move       $a0, $v0
+0x8383356c (rt 0x2383356c): jal        0x8343fc5c
+0x83833570 (rt 0x23833570): move       $a1, $s0
+0x83833574 (rt 0x23833574): lw         $a0, -0x1710($s1)
+0x83833578 (rt 0x23833578): lw         $s0, ($a0)
+0x8383357c (rt 0x2383357c): beqz       $s0, 0x838335d4
+0x83833580 (rt 0x23833580): nop        
+0x83833584 (rt 0x23833584): jal        0x83843d2c
+0x83833588 (rt 0x23833588): nop        
+0x8383358c (rt 0x2383358c): bnez       $v0, 0x838335e4
+0x83833590 (rt 0x23833590): lw         $t3, -0x1710($s2)
+0x83833594 (rt 0x23833594): lui        $v0, 0x2861
+0x83833598 (rt 0x23833598): lw         $v1, 0xd74($v0)
+0x8383359c (rt 0x2383359c): bnez       $v1, 0x838335b0
+0x838335a0 (rt 0x238335a0): lui        $a1, 0x2861
+0x838335a4 (rt 0x238335a4): lw         $a0, 0xd84($a1)
+0x838335a8 (rt 0x238335a8): beqz       $a0, 0x838335c8
+0x838335ac (rt 0x238335ac): lw         $t0, -0x1710($s1)
+0x838335b0 (rt 0x238335b0): lw         $a2, -0x1710($s2)
+0x838335b4 (rt 0x238335b4): lui        $a3, 0x26b5
+0x838335b8 (rt 0x238335b8): addiu      $a0, $a3, 0x67e4
+0x838335bc (rt 0x238335bc): jal        0x8225327c
+0x838335c0 (rt 0x238335c0): lw         $a1, ($a2)
+0x838335c4 (rt 0x238335c4): lw         $t0, -0x1710($s1)
+0x838335c8 (rt 0x238335c8): jal        0x85932f70
+0x838335cc (rt 0x238335cc): lw         $a0, ($t0)
+0x838335d0 (rt 0x238335d0): lw         $a0, -0x1710($s1)
+0x838335d4 (rt 0x238335d4): jal        0x85932f70
+0x838335d8 (rt 0x238335d8): nop        
+0x838335dc (rt 0x238335dc): j          0x83833840
+0x838335e0 (rt 0x238335e0): sw         $zero, -0x1710($s1)
+0x838335e4 (rt 0x238335e4): lw         $t2, 0x2008($t3)
+0x838335e8 (rt 0x238335e8): slti       $t1, $t2, 0x60
+0x838335ec (rt 0x238335ec): beqz       $t1, 0x83833624
+0x838335f0 (rt 0x238335f0): lui        $s2, 0x26b5
+0x838335f4 (rt 0x238335f4): addiu      $a0, $s2, 0x6814
+0x838335f8 (rt 0x238335f8): jal        0x8225327c
+0x838335fc (rt 0x238335fc): addiu      $a1, $zero, 0x300
+0x83833600 (rt 0x23833600): lui        $s1, 0x2861
+0x83833604 (rt 0x23833604): addiu      $t5, $zero, 1
+0x83833608 (rt 0x23833608): addiu      $t7, $zero, 5
+0x8383360c (rt 0x2383360c): lui        $t6, 0x2861
+0x83833610 (rt 0x23833610): lui        $t4, 0x2861
+0x83833614 (rt 0x23833614): sw         $t5, 0xd7c($s1)
+0x83833618 (rt 0x23833618): sw         $t7, 0xd78($t6)
+0x8383361c (rt 0x2383361c): j          0x8383365c
+0x83833620 (rt 0x23833620): sw         $t5, 0xd70($t4)
+0x83833624 (rt 0x23833624): jal        0x83775068
+0x83833628 (rt 0x23833628): nop        
+0x8383362c (rt 0x2383362c): addiu      $t8, $zero, 3
+0x83833630 (rt 0x23833630): bne        $v0, $t8, 0x83833660
+0x83833634 (rt 0x23833634): lui        $a1, 0x2861
+0x83833638 (rt 0x23833638): lui        $ra, 0x2861
+0x8383363c (rt 0x2383363c): lw         $v1, 0xd70($ra)
+0x83833640 (rt 0x23833640): lui        $a1, 0x2861
+0x83833644 (rt 0x23833644): lw         $t9, 0xd78($a1)
+0x83833648 (rt 0x23833648): ori        $s0, $v1, 4
+0x8383364c (rt 0x2383364c): beqz       $t9, 0x8383365c
+0x83833650 (rt 0x23833650): sw         $s0, 0xd70($ra)
+0x83833654 (rt 0x23833654): addiu      $v0, $zero, 0x63
+0x83833658 (rt 0x23833658): sw         $v0, 0xd78($a1)
+0x8383365c (rt 0x2383365c): lui        $a1, 0x2861
+0x83833660 (rt 0x23833660): lw         $a0, 0xd74($a1)
+0x83833664 (rt 0x23833664): bnez       $a0, 0x83833678
+0x83833668 (rt 0x23833668): lui        $a3, 0x2861
+0x8383366c (rt 0x2383366c): lw         $a2, 0xd84($a3)
+0x83833670 (rt 0x23833670): beqz       $a2, 0x83833688
+0x83833674 (rt 0x23833674): lui        $s0, 0x282a
+0x83833678 (rt 0x23833678): lui        $t0, 0x26b5
+0x8383367c (rt 0x2383367c): jal        0x8225327c
+0x83833680 (rt 0x23833680): addiu      $a0, $t0, 0x6854
+0x83833684 (rt 0x23833684): lui        $s0, 0x282a
+0x83833688 (rt 0x23833688): lw         $t1, -0x1718($s0)
+0x8383368c (rt 0x2383368c): beqz       $t1, 0x838336c0
+0x83833690 (rt 0x23833690): lui        $t9, 0x26b5
+0x83833694 (rt 0x23833694): addiu      $t3, $zero, 4
+0x83833698 (rt 0x23833698): lui        $s1, 0x282a
+0x8383369c (rt 0x2383369c): jal        0x83775068
+0x838336a0 (rt 0x238336a0): sw         $t3, -0x171c($s1)
+0x838336a4 (rt 0x238336a4): addiu      $t2, $zero, 3
+0x838336a8 (rt 0x238336a8): bne        $v0, $t2, 0x838336b8
+0x838336ac (rt 0x238336ac): lw         $t5, -0x171c($s1)
+0x838336b0 (rt 0x238336b0): ori        $t4, $t5, 8
+0x838336b4 (rt 0x238336b4): sw         $t4, -0x171c($s1)
+0x838336b8 (rt 0x238336b8): sw         $zero, -0x1718($s0)
+0x838336bc (rt 0x238336bc): lui        $t9, 0x26b5
+0x838336c0 (rt 0x238336c0): addiu      $a0, $t9, 0x6870
+0x838336c4 (rt 0x238336c4): jal        0x8344b404
+0x838336c8 (rt 0x238336c8): move       $a1, $zero
+0x838336cc (rt 0x238336cc): lui        $t8, 0x26b5
+0x838336d0 (rt 0x238336d0): addiu      $a0, $t8, 0x6884
+0x838336d4 (rt 0x238336d4): lui        $s1, 0x2861
+0x838336d8 (rt 0x238336d8): move       $a1, $zero
+0x838336dc (rt 0x238336dc): jal        0x8344b404
+0x838336e0 (rt 0x238336e0): sw         $v0, 0xd54($s1)
+0x838336e4 (rt 0x238336e4): lw         $a0, 0xd54($s1)
+0x838336e8 (rt 0x238336e8): lui        $s0, 0x2861
+0x838336ec (rt 0x238336ec): move       $a1, $zero
+0x838336f0 (rt 0x238336f0): jal        0x8344b588
+0x838336f4 (rt 0x238336f4): sw         $v0, 0xd6c($s0)
+0x838336f8 (rt 0x238336f8): lw         $a0, 0xd6c($s0)
+0x838336fc (rt 0x238336fc): addiu      $a1, $zero, 1
+0x83833700 (rt 0x23833700): lui        $s2, 0x2384
+0x83833704 (rt 0x23833704): jal        0x8344b588
+0x83833708 (rt 0x23833708): lui        $s1, 0x282a
+0x8383370c (rt 0x2383370c): addiu      $a0, $s2, 0x4144
+0x83833710 (rt 0x23833710): addiu      $a1, $s1, -0x1708
+0x83833714 (rt 0x23833714): addiu      $a2, $zero, 0x1770
+0x83833718 (rt 0x23833718): jal        0x8344f4e4
+0x8383371c (rt 0x2383371c): addiu      $a3, $zero, 4
+0x83833720 (rt 0x23833720): lui        $t7, 0x28d4
+0x83833724 (rt 0x23833724): lw         $s0, -0x734($t7)
+0x83833728 (rt 0x23833728): lui        $t6, 0x282a
+0x8383372c (rt 0x2383372c): beqz       $s0, 0x83833760
+0x83833730 (rt 0x23833730): sw         $v0, -0x16f4($t6)
+0x83833734 (rt 0x23833734): addiu      $s1, $zero, 0x16
+0x83833738 (rt 0x23833738): lw         $ra, 8($s0)
+0x8383373c (rt 0x2383373c): beq        $ra, $s1, 0x83833754
+0x83833740 (rt 0x23833740): move       $a0, $ra
+0x83833744 (rt 0x23833744): jal        0x83832c60
+0x83833748 (rt 0x23833748): nop        
+0x8383374c (rt 0x2383374c): beqz       $v0, 0x83833844
+0x83833750 (rt 0x23833750): lw         $ra, 0x1c($sp)
+0x83833754 (rt 0x23833754): lw         $s0, ($s0)
+0x83833758 (rt 0x23833758): bnez       $s0, 0x83833738
+0x8383375c (rt 0x2383375c): nop        
+0x83833760 (rt 0x23833760): jal        0x83832c60
+0x83833764 (rt 0x23833764): addiu      $a0, $zero, 0x16
+0x83833768 (rt 0x23833768): beqz       $v0, 0x83833844
+0x8383376c (rt 0x2383376c): lw         $ra, 0x1c($sp)
+0x83833770 (rt 0x23833770): jal        0x85896424
+0x83833774 (rt 0x23833774): nop        
+0x83833778 (rt 0x23833778): lui        $t0, 0x2383
+0x8383377c (rt 0x2383377c): addiu      $a1, $t0, -0x2330
+0x83833780 (rt 0x23833780): move       $a2, $v0
+0x83833784 (rt 0x23833784): jal        0x834520c0
+0x83833788 (rt 0x23833788): addiu      $a0, $zero, 3
+0x8383378c (rt 0x2383378c): jal        0x85896434
+0x83833790 (rt 0x23833790): nop        
+0x83833794 (rt 0x23833794): lui        $a3, 0x2383
+0x83833798 (rt 0x23833798): addiu      $a1, $a3, 0x1ac8
+0x8383379c (rt 0x2383379c): move       $a2, $v0
+0x838337a0 (rt 0x238337a0): jal        0x834520c0
+0x838337a4 (rt 0x238337a4): addiu      $a0, $zero, 3
+0x838337a8 (rt 0x238337a8): jal        0x8347abe4
+0x838337ac (rt 0x238337ac): nop        
+0x838337b0 (rt 0x238337b0): lui        $a2, 0x2383
+0x838337b4 (rt 0x238337b4): addiu      $a0, $a2, 0x47b8
+0x838337b8 (rt 0x238337b8): jal        0x83451acc
+0x838337bc (rt 0x238337bc): move       $a1, $v0
+0x838337c0 (rt 0x238337c0): jal        0x85864a84
+0x838337c4 (rt 0x238337c4): nop        
+0x838337c8 (rt 0x238337c8): lui        $a1, 0x2383
+0x838337cc (rt 0x238337cc): addiu      $a0, $a1, 0x3858
+0x838337d0 (rt 0x238337d0): jal        0x83451acc
+0x838337d4 (rt 0x238337d4): move       $a1, $v0
+0x838337d8 (rt 0x238337d8): jal        0x85864a64
+0x838337dc (rt 0x238337dc): nop        
+0x838337e0 (rt 0x238337e0): lui        $a0, 0x2383
+0x838337e4 (rt 0x238337e4): addiu      $a0, $a0, 0x43c0
+0x838337e8 (rt 0x238337e8): jal        0x83451acc
+0x838337ec (rt 0x238337ec): move       $a1, $v0
+0x838337f0 (rt 0x238337f0): lui        $v1, 0x282a
+0x838337f4 (rt 0x238337f4): lw         $v0, -0x1720($v1)
+0x838337f8 (rt 0x238337f8): beqz       $v0, 0x8383380c
+0x838337fc (rt 0x238337fc): lui        $a1, 0x282a
+0x83833800 (rt 0x23833800): jal        0x83832e10
+0x83833804 (rt 0x23833804): nop        
+0x83833808 (rt 0x23833808): lui        $a1, 0x282a
+0x8383380c (rt 0x2383380c): lw         $t1, -0x16e8($a1)
+0x83833810 (rt 0x23833810): bnez       $t1, 0x83833838
+0x83833814 (rt 0x23833814): addiu      $t6, $zero, 1
+0x83833818 (rt 0x23833818): lui        $t4, 0x282a
+0x8383381c (rt 0x2383381c): lw         $t3, -0x16ec($t4)
+0x83833820 (rt 0x23833820): move       $a0, $t3
+0x83833824 (rt 0x23833824): jal        0x8593518c
+0x83833828 (rt 0x23833828): sw         $t3, -0x16e8($a1)
+0x8383382c (rt 0x2383382c): lui        $t2, 0x282a
+0x83833830 (rt 0x23833830): sw         $v0, -0x16f0($t2)
+0x83833834 (rt 0x23833834): addiu      $t6, $zero, 1
+0x83833838 (rt 0x23833838): lui        $t5, 0x282a
+0x8383383c (rt 0x2383383c): sw         $t6, -0x1714($t5)
+0x83833840 (rt 0x23833840): lw         $ra, 0x1c($sp)
+0x83833844 (rt 0x23833844): lw         $s2, 0x18($sp)
+0x83833848 (rt 0x23833848): lw         $s1, 0x14($sp)
+0x8383384c (rt 0x2383384c): lw         $s0, 0x10($sp)
+0x83833850 (rt 0x23833850): jr         $ra
+0x83833854 (rt 0x23833854): addiu      $sp, $sp, 0x20
+
+==============================================================================
+## TCP 监听注册
+## 0x83832c60-0x83832e10  rt 0x23832c60
+## M9 对应 0x838374c0。
+==============================================================================
+0x83832c60 (rt 0x23832c60): addiu      $sp, $sp, -0x30
+0x83832c64 (rt 0x23832c64): sw         $ra, 0x2c($sp)
+0x83832c68 (rt 0x23832c68): sw         $s4, 0x28($sp)
+0x83832c6c (rt 0x23832c6c): sw         $s3, 0x24($sp)
+0x83832c70 (rt 0x23832c70): move       $s4, $a0
+0x83832c74 (rt 0x23832c74): andi       $s3, $a0, 0xffff
+0x83832c78 (rt 0x23832c78): sw         $s2, 0x20($sp)
+0x83832c7c (rt 0x23832c7c): sw         $s1, 0x1c($sp)
+0x83832c80 (rt 0x23832c80): jal        0x85898814
+0x83832c84 (rt 0x23832c84): sw         $s0, 0x18($sp)
+0x83832c88 (rt 0x23832c88): move       $a1, $v0
+0x83832c8c (rt 0x23832c8c): jal        0x834518b4
+0x83832c90 (rt 0x23832c90): move       $a0, $s3
+0x83832c94 (rt 0x23832c94): bnez       $v0, 0x83832dec
+0x83832c98 (rt 0x23832c98): move       $v1, $zero
+0x83832c9c (rt 0x23832c9c): lui        $s0, 0x2383
+0x83832ca0 (rt 0x23832ca0): lui        $s1, 0x26b5
+0x83832ca4 (rt 0x23832ca4): addiu      $s2, $zero, -1
+0x83832ca8 (rt 0x23832ca8): addiu      $a1, $s0, 0x29f0
+0x83832cac (rt 0x23832cac): addiu      $a2, $s1, 0x6738
+0x83832cb0 (rt 0x23832cb0): move       $a0, $s4
+0x83832cb4 (rt 0x23832cb4): addiu      $a3, $zero, 1
+0x83832cb8 (rt 0x23832cb8): sw         $s2, 0x10($sp)
+0x83832cbc (rt 0x23832cbc): jal        0x82bdc7d8
+0x83832cc0 (rt 0x23832cc0): sw         $zero, 0x14($sp)
+0x83832cc4 (rt 0x23832cc4): addiu      $a1, $s0, 0x29f0
+0x83832cc8 (rt 0x23832cc8): addiu      $a2, $s1, 0x6738
+0x83832ccc (rt 0x23832ccc): addiu      $a3, $zero, 0x14
+0x83832cd0 (rt 0x23832cd0): move       $a0, $s4
+0x83832cd4 (rt 0x23832cd4): sw         $s2, 0x10($sp)
+0x83832cd8 (rt 0x23832cd8): jal        0x82bdc7d8
+0x83832cdc (rt 0x23832cdc): sw         $zero, 0x14($sp)
+0x83832ce0 (rt 0x23832ce0): jal        0x859117dc
+0x83832ce4 (rt 0x23832ce4): nop        
+0x83832ce8 (rt 0x23832ce8): lui        $t0, 0x2383
+0x83832cec (rt 0x23832cec): addiu      $a0, $t0, 0x2804
+0x83832cf0 (rt 0x23832cf0): jal        0x85898824
+0x83832cf4 (rt 0x23832cf4): sw         $a0, ($v0)
+0x83832cf8 (rt 0x23832cf8): lui        $a3, 0x2383
+0x83832cfc (rt 0x23832cfc): addiu      $a1, $a3, 0x1adc
+0x83832d00 (rt 0x23832d00): move       $a0, $s3
+0x83832d04 (rt 0x23832d04): jal        0x834520c0
+0x83832d08 (rt 0x23832d08): move       $a2, $v0
+0x83832d0c (rt 0x23832d0c): jal        0x85898774
+0x83832d10 (rt 0x23832d10): nop        
+0x83832d14 (rt 0x23832d14): lui        $a2, 0x2383
+0x83832d18 (rt 0x23832d18): addiu      $a1, $a2, 0x28b4
+0x83832d1c (rt 0x23832d1c): move       $a0, $s3
+0x83832d20 (rt 0x23832d20): jal        0x834520c0
+0x83832d24 (rt 0x23832d24): move       $a2, $v0
+0x83832d28 (rt 0x23832d28): lui        $v1, 0x2383
+0x83832d2c (rt 0x23832d2c): jal        0x8231b458
+0x83832d30 (rt 0x23832d30): addiu      $s0, $v1, 0xd30
+0x83832d34 (rt 0x23832d34): move       $a2, $v0
+0x83832d38 (rt 0x23832d38): move       $a0, $s3
+0x83832d3c (rt 0x23832d3c): jal        0x834520c0
+0x83832d40 (rt 0x23832d40): move       $a1, $s0
+0x83832d44 (rt 0x23832d44): jal        0x8231b478
+0x83832d48 (rt 0x23832d48): nop        
+0x83832d4c (rt 0x23832d4c): move       $a2, $v0
+0x83832d50 (rt 0x23832d50): move       $a0, $s3
+0x83832d54 (rt 0x23832d54): jal        0x834520c0
+0x83832d58 (rt 0x23832d58): move       $a1, $s0
+0x83832d5c (rt 0x23832d5c): jal        0x8588d8e4
+0x83832d60 (rt 0x23832d60): nop        
+0x83832d64 (rt 0x23832d64): lui        $a1, 0x2383
+0x83832d68 (rt 0x23832d68): move       $a2, $v0
+0x83832d6c (rt 0x23832d6c): move       $a0, $s3
+0x83832d70 (rt 0x23832d70): jal        0x834520c0
+0x83832d74 (rt 0x23832d74): addiu      $a1, $a1, 0x191c
+0x83832d78 (rt 0x23832d78): lui        $v0, 0x26b5
+0x83832d7c (rt 0x23832d7c): jal        0x814d686c
+0x83832d80 (rt 0x23832d80): addiu      $s2, $v0, 0x674c
+0x83832d84 (rt 0x23832d84): lw         $v1, ($v0)
+0x83832d88 (rt 0x23832d88): beqz       $v1, 0x83832de8
+0x83832d8c (rt 0x23832d8c): move       $s1, $v0
+0x83832d90 (rt 0x23832d90): lw         $t2, 4($v1)
+0x83832d94 (rt 0x23832d94): addiu      $t1, $t2, 1
+0x83832d98 (rt 0x23832d98): sw         $t1, 4($v1)
+0x83832d9c (rt 0x23832d9c): lw         $a0, ($v0)
+0x83832da0 (rt 0x23832da0): lw         $s0, ($a0)
+0x83832da4 (rt 0x23832da4): beqz       $s0, 0x83832de0
+0x83832da8 (rt 0x23832da8): nop        
+0x83832dac (rt 0x23832dac): lw         $t3, 4($s0)
+0x83832db0 (rt 0x23832db0): addiu      $a0, $zero, 6
+0x83832db4 (rt 0x23832db4): addiu      $a1, $zero, 3
+0x83832db8 (rt 0x23832db8): move       $a2, $s2
+0x83832dbc (rt 0x23832dbc): bnez       $t3, 0x83832dd0
+0x83832dc0 (rt 0x23832dc0): move       $a3, $s3
+0x83832dc4 (rt 0x23832dc4): lw         $t4, 8($s0)
+0x83832dc8 (rt 0x23832dc8): jalr       $t4
+0x83832dcc (rt 0x23832dcc): nop        
+0x83832dd0 (rt 0x23832dd0): lw         $s0, ($s0)
+0x83832dd4 (rt 0x23832dd4): bnez       $s0, 0x83832dac
+0x83832dd8 (rt 0x23832dd8): nop        
+0x83832ddc (rt 0x23832ddc): lw         $a0, ($s1)
+0x83832de0 (rt 0x23832de0): jal        0x83451d00
+0x83832de4 (rt 0x23832de4): nop        
+0x83832de8 (rt 0x23832de8): addiu      $v1, $zero, 1
+0x83832dec (rt 0x23832dec): lw         $ra, 0x2c($sp)
+0x83832df0 (rt 0x23832df0): lw         $s4, 0x28($sp)
+0x83832df4 (rt 0x23832df4): lw         $s3, 0x24($sp)
+0x83832df8 (rt 0x23832df8): lw         $s2, 0x20($sp)
+0x83832dfc (rt 0x23832dfc): lw         $s1, 0x1c($sp)
+0x83832e00 (rt 0x23832e00): lw         $s0, 0x18($sp)
+0x83832e04 (rt 0x23832e04): move       $v0, $v1
+0x83832e08 (rt 0x23832e08): jr         $ra
+0x83832e0c (rt 0x23832e0c): addiu      $sp, $sp, 0x30
+
+==============================================================================
+## TCP 回调（端口 22）
+## 0x838329f0-0x83832c60  rt 0x238329f0
+## M9 对应 0x83837250。
+==============================================================================
+0x838329f0 (rt 0x238329f0): addiu      $sp, $sp, -0x50
+0x838329f4 (rt 0x238329f4): sw         $ra, 0x48($sp)
+0x838329f8 (rt 0x238329f8): sw         $s5, 0x3c($sp)
+0x838329fc (rt 0x238329fc): sw         $s4, 0x38($sp)
+0x83832a00 (rt 0x23832a00): sw         $s2, 0x30($sp)
+0x83832a04 (rt 0x23832a04): sw         $s7, 0x44($sp)
+0x83832a08 (rt 0x23832a08): sw         $s6, 0x40($sp)
+0x83832a0c (rt 0x23832a0c): sw         $s3, 0x34($sp)
+0x83832a10 (rt 0x23832a10): sw         $s1, 0x2c($sp)
+0x83832a14 (rt 0x23832a14): sw         $s0, 0x28($sp)
+0x83832a18 (rt 0x23832a18): sw         $zero, 0x20($sp)
+0x83832a1c (rt 0x23832a1c): lhu        $s1, 4($a0)
+0x83832a20 (rt 0x23832a20): move       $s4, $a0
+0x83832a24 (rt 0x23832a24): jal        0x85894600
+0x83832a28 (rt 0x23832a28): lw         $s0, 0xc($a0)
+0x83832a2c (rt 0x23832a2c): lw         $v0, ($v0)
+0x83832a30 (rt 0x23832a30): move       $a0, $s0
+0x83832a34 (rt 0x23832a34): jalr       $v0
+0x83832a38 (rt 0x23832a38): move       $a1, $s1
+0x83832a3c (rt 0x23832a3c): jal        0x8588d8e4
+0x83832a40 (rt 0x23832a40): move       $s2, $v0
+0x83832a44 (rt 0x23832a44): move       $a1, $v0
+0x83832a48 (rt 0x23832a48): jal        0x83451934
+0x83832a4c (rt 0x23832a4c): addiu      $a0, $zero, 0x16
+0x83832a50 (rt 0x23832a50): beqz       $v0, 0x83832a64
+0x83832a54 (rt 0x23832a54): move       $s5, $zero
+0x83832a58 (rt 0x23832a58): jalr       $v0
+0x83832a5c (rt 0x23832a5c): nop        
+0x83832a60 (rt 0x23832a60): move       $s5, $v0
+0x83832a64 (rt 0x23832a64): lui        $s7, 0x282a
+0x83832a68 (rt 0x23832a68): lw         $v1, -0x1728($s7)
+0x83832a6c (rt 0x23832a6c): addiu      $a0, $zero, 1
+0x83832a70 (rt 0x23832a70): bne        $v1, $a0, 0x83832ae0
+0x83832a74 (rt 0x23832a74): lui        $a0, 0x282a
+0x83832a78 (rt 0x23832a78): lui        $a3, 0x282a
+0x83832a7c (rt 0x23832a7c): lw         $a2, -0x16dc($a3)
+0x83832a80 (rt 0x23832a80): lw         $v1, -0x16d8($a0)
+0x83832a84 (rt 0x23832a84): slt        $a1, $a2, $v1
+0x83832a88 (rt 0x23832a88): bnez       $a1, 0x83832a9c
+0x83832a8c (rt 0x23832a8c): lui        $t2, 0x2861
+0x83832a90 (rt 0x23832a90): addiu      $t0, $v1, 1
+0x83832a94 (rt 0x23832a94): j          0x83832ae0
+0x83832a98 (rt 0x23832a98): sw         $t0, -0x16d8($a0)
+0x83832a9c (rt 0x23832a9c): lw         $t1, 0xd74($t2)
+0x83832aa0 (rt 0x23832aa0): bnez       $t1, 0x83832ab4
+0x83832aa4 (rt 0x23832aa4): lui        $t4, 0x2861
+0x83832aa8 (rt 0x23832aa8): lw         $t3, 0xd84($t4)
+0x83832aac (rt 0x23832aac): beqz       $t3, 0x83832ac0
+0x83832ab0 (rt 0x23832ab0): nop        
+0x83832ab4 (rt 0x23832ab4): lui        $t5, 0x26b5
+0x83832ab8 (rt 0x23832ab8): jal        0x8225327c
+0x83832abc (rt 0x23832abc): addiu      $a0, $t5, 0x66cc
+0x83832ac0 (rt 0x23832ac0): sw         $zero, 0x40($s4)
+0x83832ac4 (rt 0x23832ac4): jal        0x82bdb64c
+0x83832ac8 (rt 0x23832ac8): move       $a0, $s4
+0x83832acc (rt 0x23832acc): j          0x83832c38
+0x83832ad0 (rt 0x23832ad0): lw         $ra, 0x48($sp)
+0x83832ad4 (rt 0x23832ad4): lw         $a0, ($s1)
+0x83832ad8 (rt 0x23832ad8): j          0x83832b60
+0x83832adc (rt 0x23832adc): addiu      $s6, $zero, 1
+0x83832ae0 (rt 0x23832ae0): jal        0x858987c4
+0x83832ae4 (rt 0x23832ae4): move       $s6, $zero
+0x83832ae8 (rt 0x23832ae8): lw         $v1, ($v0)
+0x83832aec (rt 0x23832aec): move       $s1, $v0
+0x83832af0 (rt 0x23832af0): beqz       $v1, 0x83832b70
+0x83832af4 (rt 0x23832af4): addiu      $s3, $sp, 0x20
+0x83832af8 (rt 0x23832af8): lw         $t7, 4($v1)
+0x83832afc (rt 0x23832afc): addiu      $t6, $t7, 1
+0x83832b00 (rt 0x23832b00): sw         $t6, 4($v1)
+0x83832b04 (rt 0x23832b04): lw         $a0, ($v0)
+0x83832b08 (rt 0x23832b08): lw         $s0, ($a0)
+0x83832b0c (rt 0x23832b0c): beqz       $s0, 0x83832b60
+0x83832b10 (rt 0x23832b10): nop        
+0x83832b14 (rt 0x23832b14): lw         $t8, 4($s0)
+0x83832b18 (rt 0x23832b18): move       $a0, $s3
+0x83832b1c (rt 0x23832b1c): move       $a1, $s2
+0x83832b20 (rt 0x23832b20): move       $a2, $zero
+0x83832b24 (rt 0x23832b24): bnez       $t8, 0x83832b50
+0x83832b28 (rt 0x23832b28): move       $a3, $zero
+0x83832b2c (rt 0x23832b2c): sw         $s5, 0x10($sp)
+0x83832b30 (rt 0x23832b30): sw         $zero, 0x14($sp)
+0x83832b34 (rt 0x23832b34): sw         $zero, 0x18($sp)
+0x83832b38 (rt 0x23832b38): sw         $zero, 0x1c($sp)
+0x83832b3c (rt 0x23832b3c): lw         $v0, 8($s0)
+0x83832b40 (rt 0x23832b40): jalr       $v0
+0x83832b44 (rt 0x23832b44): nop        
+0x83832b48 (rt 0x23832b48): bnez       $v0, 0x83832ad4
+0x83832b4c (rt 0x23832b4c): nop        
+0x83832b50 (rt 0x23832b50): lw         $s0, ($s0)
+0x83832b54 (rt 0x23832b54): bnez       $s0, 0x83832b14
+0x83832b58 (rt 0x23832b58): nop        
+0x83832b5c (rt 0x23832b5c): lw         $a0, ($s1)
+0x83832b60 (rt 0x23832b60): jal        0x83451d00
+0x83832b64 (rt 0x23832b64): nop        
+0x83832b68 (rt 0x23832b68): bnez       $s6, 0x83832b98
+0x83832b6c (rt 0x23832b6c): lw         $v1, 0x20($sp)
+0x83832b70 (rt 0x23832b70): move       $a0, $s2
+0x83832b74 (rt 0x23832b74): jal        0x83832804
+0x83832b78 (rt 0x23832b78): move       $a1, $s5
+0x83832b7c (rt 0x23832b7c): bgtz       $v0, 0x83832ba0
+0x83832b80 (rt 0x23832b80): sw         $v0, 0x20($sp)
+0x83832b84 (rt 0x23832b84): move       $a0, $s2
+0x83832b88 (rt 0x23832b88): jal        0x82278ec0
+0x83832b8c (rt 0x23832b8c): move       $a1, $s5
+0x83832b90 (rt 0x23832b90): move       $v1, $v0
+0x83832b94 (rt 0x23832b94): sw         $v0, 0x20($sp)
+0x83832b98 (rt 0x23832b98): blez       $v1, 0x83832be4
+0x83832b9c (rt 0x23832b9c): lui        $s5, 0x2861
+0x83832ba0 (rt 0x23832ba0): move       $a0, $s4
+0x83832ba4 (rt 0x23832ba4): addiu      $a2, $gp, -0x7afb
+0x83832ba8 (rt 0x23832ba8): addiu      $a1, $zero, 0xb
+0x83832bac (rt 0x23832bac): jal        0x82bdab0c
+0x83832bb0 (rt 0x23832bb0): addiu      $a3, $zero, 1
+0x83832bb4 (rt 0x23832bb4): lw         $a0, 0x20($sp)
+0x83832bb8 (rt 0x23832bb8): addiu      $s2, $zero, 1
+0x83832bbc (rt 0x23832bbc): move       $a1, $s4
+0x83832bc0 (rt 0x23832bc0): move       $a2, $zero
+0x83832bc4 (rt 0x23832bc4): move       $a3, $zero
+0x83832bc8 (rt 0x23832bc8): sw         $s2, 0x10($sp)
+0x83832bcc (rt 0x23832bcc): sw         $s4, 0x14($sp)
+0x83832bd0 (rt 0x23832bd0): sw         $zero, 0x18($sp)
+0x83832bd4 (rt 0x23832bd4): jal        0x82bd3c5c
+0x83832bd8 (rt 0x23832bd8): sw         $zero, 0x1c($sp)
+0x83832bdc (rt 0x23832bdc): j          0x83832c38
+0x83832be0 (rt 0x23832be0): lw         $ra, 0x48($sp)
+0x83832be4 (rt 0x23832be4): lw         $s3, 0xd74($s5)
+0x83832be8 (rt 0x23832be8): bnez       $s3, 0x83832bfc
+0x83832bec (rt 0x23832bec): lui        $t9, 0x2861
+0x83832bf0 (rt 0x23832bf0): lw         $s6, 0xd84($t9)
+0x83832bf4 (rt 0x23832bf4): beqz       $s6, 0x83832c10
+0x83832bf8 (rt 0x23832bf8): lw         $s1, -0x1728($s7)
+0x83832bfc (rt 0x23832bfc): lui        $ra, 0x26b5
+0x83832c00 (rt 0x23832c00): addiu      $a0, $ra, 0x6704
+0x83832c04 (rt 0x23832c04): jal        0x8225327c
+0x83832c08 (rt 0x23832c08): nop        
+0x83832c0c (rt 0x23832c0c): lw         $s1, -0x1728($s7)
+0x83832c10 (rt 0x23832c10): addiu      $s7, $zero, 1
+0x83832c14 (rt 0x23832c14): bne        $s1, $s7, 0x83832c2c
+0x83832c18 (rt 0x23832c18): lui        $v1, 0x282a
+0x83832c1c (rt 0x23832c1c): lw         $v0, -0x16d8($v1)
+0x83832c20 (rt 0x23832c20): blez       $v0, 0x83832c2c
+0x83832c24 (rt 0x23832c24): addiu      $s0, $v0, -1
+0x83832c28 (rt 0x23832c28): sw         $s0, -0x16d8($v1)
+0x83832c2c (rt 0x23832c2c): jal        0x82bdb3c8
+0x83832c30 (rt 0x23832c30): move       $a0, $s4
+0x83832c34 (rt 0x23832c34): lw         $ra, 0x48($sp)
+0x83832c38 (rt 0x23832c38): lw         $s7, 0x44($sp)
+0x83832c3c (rt 0x23832c3c): lw         $s6, 0x40($sp)
+0x83832c40 (rt 0x23832c40): lw         $s5, 0x3c($sp)
+0x83832c44 (rt 0x23832c44): lw         $s4, 0x38($sp)
+0x83832c48 (rt 0x23832c48): lw         $s3, 0x34($sp)
+0x83832c4c (rt 0x23832c4c): lw         $s2, 0x30($sp)
+0x83832c50 (rt 0x23832c50): lw         $s1, 0x2c($sp)
+0x83832c54 (rt 0x23832c54): lw         $s0, 0x28($sp)
+0x83832c58 (rt 0x23832c58): jr         $ra
+0x83832c5c (rt 0x23832c5c): addiu      $sp, $sp, 0x50
+
+==============================================================================
+## SSH 进程事件循环入口 0x83834838
+## 0x83834838-0x83834b64  rt 0x23834838
+## M9 对应 0x83839098。
+==============================================================================
+0x83834838 (rt 0x23834838): addiu      $sp, $sp, -0x30
+0x8383483c (rt 0x2383483c): addiu      $v0, $zero, 1
+0x83834840 (rt 0x23834840): sw         $ra, 0x2c($sp)
+0x83834844 (rt 0x23834844): sw         $s2, 0x28($sp)
+0x83834848 (rt 0x23834848): sw         $s1, 0x24($sp)
+0x8383484c (rt 0x2383484c): sw         $s0, 0x20($sp)
+0x83834850 (rt 0x23834850): sw         $v0, 0x18($sp)
+0x83834854 (rt 0x23834854): jal        0x82273f44
+0x83834858 (rt 0x23834858): sw         $zero, 0x14($sp)
+0x8383485c (rt 0x2383485c): j          0x8383486c
+0x83834860 (rt 0x23834860): nop        
+0x83834864 (rt 0x23834864): jal        0x83448e58
+0x83834868 (rt 0x23834868): nop        
+0x8383486c (rt 0x2383486c): jal        0x836ade60
+0x83834870 (rt 0x23834870): nop        
+0x83834874 (rt 0x23834874): beqz       $v0, 0x83834864
+0x83834878 (rt 0x23834878): addiu      $a0, $zero, 0x3e8
+0x8383487c (rt 0x2383487c): addiu      $a0, $zero, 5
+0x83834880 (rt 0x23834880): addiu      $a1, $zero, -1
+0x83834884 (rt 0x23834884): jal        0x8344db1c
+0x83834888 (rt 0x23834888): addiu      $a2, $sp, 0x10
+0x8383488c (rt 0x2383488c): bnez       $v0, 0x838348a0
+0x83834890 (rt 0x23834890): lw         $a1, 0x10($sp)
+0x83834894 (rt 0x23834894): jal        0x8344f7d8
+0x83834898 (rt 0x23834898): addiu      $a0, $zero, -1
+0x8383489c (rt 0x2383489c): lw         $a1, 0x10($sp)
+0x838348a0 (rt 0x238348a0): addiu      $a0, $zero, 0xd
+0x838348a4 (rt 0x238348a4): jal        0x8344db1c
+0x838348a8 (rt 0x238348a8): addiu      $a2, $sp, 0x14
+0x838348ac (rt 0x238348ac): bnez       $v0, 0x838348c0
+0x838348b0 (rt 0x238348b0): lw         $a0, 0x14($sp)
+0x838348b4 (rt 0x238348b4): jal        0x8344f7d8
+0x838348b8 (rt 0x238348b8): addiu      $a0, $zero, -1
+0x838348bc (rt 0x238348bc): lw         $a0, 0x14($sp)
+0x838348c0 (rt 0x238348c0): lw         $s1, 0xdc($a0)
+0x838348c4 (rt 0x238348c4): beqz       $s1, 0x83834b44
+0x838348c8 (rt 0x238348c8): lui        $a2, 0x28d4
+0x838348cc (rt 0x238348cc): lw         $v1, 8($s1)
+0x838348d0 (rt 0x238348d0): addiu      $a1, $a2, -0x794
+0x838348d4 (rt 0x238348d4): bne        $v1, $a1, 0x83834b44
+0x838348d8 (rt 0x238348d8): nop        
+0x838348dc (rt 0x238348dc): lw         $s2, 0xc($s1)
+0x838348e0 (rt 0x238348e0): beqz       $s2, 0x83834b44
+0x838348e4 (rt 0x238348e4): addiu      $s0, $zero, 1
+0x838348e8 (rt 0x238348e8): sw         $s0, 0x40($s2)
+0x838348ec (rt 0x238348ec): addiu      $a0, $s1, 0x13c
+0x838348f0 (rt 0x238348f0): move       $a1, $zero
+0x838348f4 (rt 0x238348f4): jal        0x8343bed8
+0x838348f8 (rt 0x238348f8): sw         $s0, 0xc4($s1)
+0x838348fc (rt 0x238348fc): lui        $t1, 0x26b5
+0x83834900 (rt 0x23834900): addiu      $a0, $t1, 0x6984
+0x83834904 (rt 0x23834904): jal        0x8344b404
+0x83834908 (rt 0x23834908): move       $a1, $zero
+0x8383490c (rt 0x2383490c): move       $a0, $v0
+0x83834910 (rt 0x23834910): sw         $v0, 0x138($s1)
+0x83834914 (rt 0x23834914): jal        0x8344b588
+0x83834918 (rt 0x23834918): addiu      $a1, $zero, 1
+0x8383491c (rt 0x2383491c): lui        $t0, 0x26b5
+0x83834920 (rt 0x23834920): addiu      $a0, $t0, 0x6998
+0x83834924 (rt 0x23834924): jal        0x8344b404
+0x83834928 (rt 0x23834928): move       $a1, $zero
+0x8383492c (rt 0x2383492c): move       $a0, $v0
+0x83834930 (rt 0x23834930): sw         $v0, 0x158($s1)
+0x83834934 (rt 0x23834934): jal        0x8344b588
+0x83834938 (rt 0x23834938): addiu      $a1, $zero, 1
+0x8383493c (rt 0x2383493c): sw         $s0, 0x154($s1)
+0x83834940 (rt 0x23834940): sw         $zero, 0x15c($s1)
+0x83834944 (rt 0x23834944): sw         $zero, 0x160($s1)
+0x83834948 (rt 0x23834948): lui        $a3, 0x2861
+0x8383494c (rt 0x2383494c): lw         $a0, 0xd74($a3)
+0x83834950 (rt 0x23834950): bnez       $a0, 0x83834964
+0x83834954 (rt 0x23834954): lui        $t3, 0x2861
+0x83834958 (rt 0x23834958): lw         $t2, 0xd84($t3)
+0x8383495c (rt 0x2383495c): beqz       $t2, 0x838349ac
+0x83834960 (rt 0x23834960): addiu      $a0, $zero, 5
+0x83834964 (rt 0x23834964): lw         $t4, 0x124($s1)
+0x83834968 (rt 0x23834968): lui        $t5, 0x26b5
+0x8383496c (rt 0x2383496c): bnez       $t4, 0x8383497c
+0x83834970 (rt 0x23834970): addiu      $a1, $t5, 0x595c
+0x83834974 (rt 0x23834974): lui        $t6, 0x26b5
+0x83834978 (rt 0x23834978): addiu      $a1, $t6, 0x41b4
+0x8383497c (rt 0x2383497c): lw         $t9, 0x14($sp)
+0x83834980 (rt 0x23834980): addiu      $t7, $zero, 3
+0x83834984 (rt 0x23834984): lw         $t8, ($t9)
+0x83834988 (rt 0x23834988): bne        $t8, $t7, 0x8383499c
+0x8383498c (rt 0x2383498c): lw         $a2, 4($t9)
+0x83834990 (rt 0x23834990): lui        $v0, 0x28bc
+0x83834994 (rt 0x23834994): lw         $ra, 0x66b4($v0)
+0x83834998 (rt 0x23834998): subu       $a2, $a2, $ra
+0x8383499c (rt 0x2383499c): lui        $v1, 0x26b5
+0x838349a0 (rt 0x238349a0): jal        0x8225327c
+0x838349a4 (rt 0x238349a4): addiu      $a0, $v1, 0x69a8
+0x838349a8 (rt 0x238349a8): addiu      $a0, $zero, 5
+0x838349ac (rt 0x238349ac): addiu      $a1, $zero, -1
+0x838349b0 (rt 0x238349b0): jal        0x8344db1c
+0x838349b4 (rt 0x238349b4): addiu      $a2, $s2, 0x54
+0x838349b8 (rt 0x238349b8): beqz       $v0, 0x838349d8
+0x838349bc (rt 0x238349bc): nop        
+0x838349c0 (rt 0x238349c0): lw         $a1, 0x54($s2)
+0x838349c4 (rt 0x238349c4): addiu      $a0, $zero, 4
+0x838349c8 (rt 0x238349c8): jal        0x8344db1c
+0x838349cc (rt 0x238349cc): addiu      $a2, $s2, 0x50
+0x838349d0 (rt 0x238349d0): bnez       $v0, 0x838349e4
+0x838349d4 (rt 0x238349d4): addiu      $a3, $zero, 4
+0x838349d8 (rt 0x238349d8): sw         $zero, 0x40($s2)
+0x838349dc (rt 0x238349dc): j          0x83834b44
+0x838349e0 (rt 0x238349e0): lw         $a0, 0x14($sp)
+0x838349e4 (rt 0x238349e4): move       $a0, $s2
+0x838349e8 (rt 0x238349e8): addiu      $a1, $zero, 8
+0x838349ec (rt 0x238349ec): jal        0x82bdab0c
+0x838349f0 (rt 0x238349f0): addiu      $a2, $sp, 0x18
+0x838349f4 (rt 0x238349f4): lui        $t3, 0x2383
+0x838349f8 (rt 0x238349f8): lui        $a0, 0x2383
+0x838349fc (rt 0x238349fc): addiu      $a1, $t3, 0xc70
+0x83834a00 (rt 0x23834a00): addiu      $a2, $a0, 0xcfc
+0x83834a04 (rt 0x23834a04): sw         $s1, 0x68($s2)
+0x83834a08 (rt 0x23834a08): jal        0x82bd80d0
+0x83834a0c (rt 0x23834a0c): move       $a0, $s2
+0x83834a10 (rt 0x23834a10): lw         $t0, 0x14($sp)
+0x83834a14 (rt 0x23834a14): lui        $a3, 0x2861
+0x83834a18 (rt 0x23834a18): lui        $s0, 0x2861
+0x83834a1c (rt 0x23834a1c): lw         $t2, 0x72c($t0)
+0x83834a20 (rt 0x23834a20): move       $a1, $s1
+0x83834a24 (rt 0x23834a24): move       $a0, $s2
+0x83834a28 (rt 0x23834a28): ori        $t1, $t2, 0x400
+0x83834a2c (rt 0x23834a2c): sw         $t1, 0x72c($t0)
+0x83834a30 (rt 0x23834a30): sw         $zero, 0x128($s1)
+0x83834a34 (rt 0x23834a34): lw         $a2, 0xd7c($a3)
+0x83834a38 (rt 0x23834a38): jal        0x8382f6c4
+0x83834a3c (rt 0x23834a3c): lw         $a3, 0xd78($s0)
+0x83834a40 (rt 0x23834a40): lw         $a2, 0xc4($s1)
+0x83834a44 (rt 0x23834a44): addiu      $a1, $zero, 2
+0x83834a48 (rt 0x23834a48): bne        $a2, $a1, 0x83834a90
+0x83834a4c (rt 0x23834a4c): lui        $t8, 0x282a
+0x83834a50 (rt 0x23834a50): lw         $t4, 0x128($s1)
+0x83834a54 (rt 0x23834a54): beqz       $t4, 0x83834a74
+0x83834a58 (rt 0x23834a58): move       $a0, $s2
+0x83834a5c (rt 0x23834a5c): lui        $t5, 0x282a
+0x83834a60 (rt 0x23834a60): addiu      $a1, $t5, -0x36c
+0x83834a64 (rt 0x23834a64): jal        0x83836cf4
+0x83834a68 (rt 0x23834a68): move       $a0, $s1
+0x83834a6c (rt 0x23834a6c): j          0x83834a80
+0x83834a70 (rt 0x23834a70): lw         $a2, 0x14($sp)
+0x83834a74 (rt 0x23834a74): jal        0x8382f798
+0x83834a78 (rt 0x23834a78): move       $a1, $s1
+0x83834a7c (rt 0x23834a7c): lw         $a2, 0x14($sp)
+0x83834a80 (rt 0x23834a80): move       $a0, $zero
+0x83834a84 (rt 0x23834a84): jal        0x838344c0
+0x83834a88 (rt 0x23834a88): move       $a1, $s1
+0x83834a8c (rt 0x23834a8c): lui        $t8, 0x282a
+0x83834a90 (rt 0x23834a90): lw         $t7, -0x1728($t8)
+0x83834a94 (rt 0x23834a94): addiu      $t6, $zero, 1
+0x83834a98 (rt 0x23834a98): bne        $t7, $t6, 0x83834ab0
+0x83834a9c (rt 0x23834a9c): lui        $v1, 0x282a
+0x83834aa0 (rt 0x23834aa0): lw         $v0, -0x16d8($v1)
+0x83834aa4 (rt 0x23834aa4): blez       $v0, 0x83834ab0
+0x83834aa8 (rt 0x23834aa8): addiu      $t9, $v0, -1
+0x83834aac (rt 0x23834aac): sw         $t9, -0x16d8($v1)
+0x83834ab0 (rt 0x23834ab0): lw         $v1, 0xc4($s1)
+0x83834ab4 (rt 0x23834ab4): addiu      $ra, $zero, 4
+0x83834ab8 (rt 0x23834ab8): bne        $v1, $ra, 0x83834afc
+0x83834abc (rt 0x23834abc): addiu      $a1, $zero, 5
+0x83834ac0 (rt 0x23834ac0): lw         $v0, 0x128($s1)
+0x83834ac4 (rt 0x23834ac4): beqz       $v0, 0x83834adc
+0x83834ac8 (rt 0x23834ac8): move       $a0, $s2
+0x83834acc (rt 0x23834acc): jal        0x8383f800
+0x83834ad0 (rt 0x23834ad0): move       $a1, $s1
+0x83834ad4 (rt 0x23834ad4): j          0x83834ae8
+0x83834ad8 (rt 0x23834ad8): lw         $a2, 0x14($sp)
+0x83834adc (rt 0x23834adc): jal        0x83831b40
+0x83834ae0 (rt 0x23834ae0): move       $a1, $s1
+0x83834ae4 (rt 0x23834ae4): lw         $a2, 0x14($sp)
+0x83834ae8 (rt 0x23834ae8): addiu      $a0, $zero, 1
+0x83834aec (rt 0x23834aec): jal        0x838344c0
+0x83834af0 (rt 0x23834af0): move       $a1, $s1
+0x83834af4 (rt 0x23834af4): lw         $v1, 0xc4($s1)
+0x83834af8 (rt 0x23834af8): addiu      $a1, $zero, 5
+0x83834afc (rt 0x23834afc): bne        $v1, $a1, 0x83834b40
+0x83834b00 (rt 0x23834b00): addiu      $a2, $zero, 0x1000
+0x83834b04 (rt 0x23834b04): lw         $s0, 0x58($s2)
+0x83834b08 (rt 0x23834b08): lw         $t0, 0x190($s0)
+0x83834b0c (rt 0x23834b0c): ori        $a3, $t0, 0x40
+0x83834b10 (rt 0x23834b10): sw         $a3, 0x190($s0)
+0x83834b14 (rt 0x23834b14): lw         $v1, 0x128($s1)
+0x83834b18 (rt 0x23834b18): beqz       $v1, 0x83834b34
+0x83834b1c (rt 0x23834b1c): sw         $a2, 0xe0($s1)
+0x83834b20 (rt 0x23834b20): move       $a1, $s1
+0x83834b24 (rt 0x23834b24): jal        0x8383dcd8
+0x83834b28 (rt 0x23834b28): move       $a0, $s2
+0x83834b2c (rt 0x23834b2c): j          0x83834b44
+0x83834b30 (rt 0x23834b30): lw         $a0, 0x58($s2)
+0x83834b34 (rt 0x23834b34): move       $a1, $s1
+0x83834b38 (rt 0x23834b38): jal        0x83830398
+0x83834b3c (rt 0x23834b3c): move       $a0, $s2
+0x83834b40 (rt 0x23834b40): lw         $a0, 0x58($s2)
+0x83834b44 (rt 0x23834b44): jal        0x8223cde4
+0x83834b48 (rt 0x23834b48): nop        
+0x83834b4c (rt 0x23834b4c): lw         $ra, 0x2c($sp)
+0x83834b50 (rt 0x23834b50): lw         $s2, 0x28($sp)
+0x83834b54 (rt 0x23834b54): lw         $s1, 0x24($sp)
+0x83834b58 (rt 0x23834b58): lw         $s0, 0x20($sp)
+0x83834b5c (rt 0x23834b5c): jr         $ra
+0x83834b60 (rt 0x23834b60): addiu      $sp, $sp, 0x30
+
+==============================================================================
+## ssh_receive：读取字节
+## 0x8382c5fc-0x8382c900  rt 0x2382c5fc
+## 字符串 ssh_receive 在 0x8382c898 引用。
+==============================================================================
+0x8382c5fc (rt 0x2382c5fc): addiu      $sp, $sp, -0x48
+0x8382c600 (rt 0x2382c600): addiu      $v0, $zero, 1
+0x8382c604 (rt 0x2382c604): sw         $fp, 0x40($sp)
+0x8382c608 (rt 0x2382c608): sw         $s6, 0x38($sp)
+0x8382c60c (rt 0x2382c60c): sw         $s2, 0x28($sp)
+0x8382c610 (rt 0x2382c610): sw         $ra, 0x44($sp)
+0x8382c614 (rt 0x2382c614): sw         $s7, 0x3c($sp)
+0x8382c618 (rt 0x2382c618): sw         $s5, 0x34($sp)
+0x8382c61c (rt 0x2382c61c): sw         $s4, 0x30($sp)
+0x8382c620 (rt 0x2382c620): sw         $s3, 0x2c($sp)
+0x8382c624 (rt 0x2382c624): sw         $s1, 0x24($sp)
+0x8382c628 (rt 0x2382c628): sw         $s0, 0x20($sp)
+0x8382c62c (rt 0x2382c62c): move       $s2, $a0
+0x8382c630 (rt 0x2382c630): sw         $v0, 0x14($sp)
+0x8382c634 (rt 0x2382c634): sw         $a1, 0x4c($sp)
+0x8382c638 (rt 0x2382c638): sw         $a2, 0x50($sp)
+0x8382c63c (rt 0x2382c63c): sw         $a3, 0x54($sp)
+0x8382c640 (rt 0x2382c640): lw         $fp, 0x58($sp)
+0x8382c644 (rt 0x2382c644): sw         $zero, 0x1c($sp)
+0x8382c648 (rt 0x2382c648): bnez       $a0, 0x8382c680
+0x8382c64c (rt 0x2382c64c): move       $s6, $zero
+0x8382c650 (rt 0x2382c650): lui        $a0, 0x2861
+0x8382c654 (rt 0x2382c654): lw         $v1, 0xd74($a0)
+0x8382c658 (rt 0x2382c658): bnez       $v1, 0x8382c66c
+0x8382c65c (rt 0x2382c65c): lui        $a2, 0x2861
+0x8382c660 (rt 0x2382c660): lw         $a1, 0xd4c($a2)
+0x8382c664 (rt 0x2382c664): beqz       $a1, 0x8382c6f4
+0x8382c668 (rt 0x2382c668): nop        
+0x8382c66c (rt 0x2382c66c): lui        $a3, 0x26b5
+0x8382c670 (rt 0x2382c670): jal        0x8225327c
+0x8382c674 (rt 0x2382c674): addiu      $a0, $a3, 0x5a60
+0x8382c678 (rt 0x2382c678): j          0x8382cb50
+0x8382c67c (rt 0x2382c67c): move       $v0, $zero
+0x8382c680 (rt 0x2382c680): lw         $s7, 0xc($a0)
+0x8382c684 (rt 0x2382c684): bnez       $s7, 0x8382c6fc
+0x8382c688 (rt 0x2382c688): lw         $t8, 0x4c($sp)
+0x8382c68c (rt 0x2382c68c): lui        $t1, 0x2861
+0x8382c690 (rt 0x2382c690): lw         $t0, 0xd74($t1)
+0x8382c694 (rt 0x2382c694): bnez       $t0, 0x8382c6a8
+0x8382c698 (rt 0x2382c698): lui        $t3, 0x2861
+0x8382c69c (rt 0x2382c69c): lw         $t2, 0xd4c($t3)
+0x8382c6a0 (rt 0x2382c6a0): beqz       $t2, 0x8382cb50
+0x8382c6a4 (rt 0x2382c6a4): move       $v0, $zero
+0x8382c6a8 (rt 0x2382c6a8): lw         $v0, 0x14($s2)
+0x8382c6ac (rt 0x2382c6ac): beqz       $v0, 0x8382c6d0
+0x8382c6b0 (rt 0x2382c6b0): move       $a2, $zero
+0x8382c6b4 (rt 0x2382c6b4): lw         $t5, ($v0)
+0x8382c6b8 (rt 0x2382c6b8): addiu      $t4, $zero, 3
+0x8382c6bc (rt 0x2382c6bc): bne        $t5, $t4, 0x8382c6d0
+0x8382c6c0 (rt 0x2382c6c0): lw         $a2, 4($v0)
+0x8382c6c4 (rt 0x2382c6c4): lui        $t7, 0x28bc
+0x8382c6c8 (rt 0x2382c6c8): lw         $t6, 0x66b4($t7)
+0x8382c6cc (rt 0x2382c6cc): subu       $a2, $a2, $t6
+0x8382c6d0 (rt 0x2382c6d0): lw         $s0, 0x124($s2)
+0x8382c6d4 (rt 0x2382c6d4): lui        $s1, 0x26b5
+0x8382c6d8 (rt 0x2382c6d8): bnez       $s0, 0x8382c6e8
+0x8382c6dc (rt 0x2382c6dc): addiu      $a1, $s1, 0x595c
+0x8382c6e0 (rt 0x2382c6e0): lui        $s2, 0x26b5
+0x8382c6e4 (rt 0x2382c6e4): addiu      $a1, $s2, 0x41b4
+0x8382c6e8 (rt 0x2382c6e8): lui        $s3, 0x26b5
+0x8382c6ec (rt 0x2382c6ec): jal        0x8225327c
+0x8382c6f0 (rt 0x2382c6f0): addiu      $a0, $s3, 0x5a88
+0x8382c6f4 (rt 0x2382c6f4): j          0x8382cb50
+0x8382c6f8 (rt 0x2382c6f8): move       $v0, $zero
+0x8382c6fc (rt 0x2382c6fc): sw         $zero, ($t8)
+0x8382c700 (rt 0x2382c700): lw         $s5, 0x50($sp)
+0x8382c704 (rt 0x2382c704): sw         $zero, ($s5)
+0x8382c708 (rt 0x2382c708): lw         $s4, 0x54($sp)
+0x8382c70c (rt 0x2382c70c): beqz       $s4, 0x8382c73c
+0x8382c710 (rt 0x2382c710): nop        
+0x8382c714 (rt 0x2382c714): jal        0x8382c59c
+0x8382c718 (rt 0x2382c718): move       $s5, $zero
+0x8382c71c (rt 0x2382c71c): j          0x8382c748
+0x8382c720 (rt 0x2382c720): move       $s3, $zero
+0x8382c724 (rt 0x2382c724): lw         $s7, 0x4c($sp)
+0x8382c728 (rt 0x2382c728): sw         $t9, 0x1c($sp)
+0x8382c72c (rt 0x2382c72c): sw         $s1, ($s7)
+0x8382c730 (rt 0x2382c730): lw         $s6, 0x50($sp)
+0x8382c734 (rt 0x2382c734): j          0x8382cb38
+0x8382c738 (rt 0x2382c738): sw         $s0, ($s6)
+0x8382c73c (rt 0x2382c73c): sw         $zero, 0xe4($a0)
+0x8382c740 (rt 0x2382c740): move       $s5, $zero
+0x8382c744 (rt 0x2382c744): move       $s3, $zero
+0x8382c748 (rt 0x2382c748): beqz       $fp, 0x8382c77c
+0x8382c74c (rt 0x2382c74c): sw         $zero, 0x18($sp)
+0x8382c750 (rt 0x2382c750): lw         $a1, 0x150($s2)
+0x8382c754 (rt 0x2382c754): bnez       $a1, 0x8382c774
+0x8382c758 (rt 0x2382c758): lui        $a2, 0x2861
+0x8382c75c (rt 0x2382c75c): lw         $a0, 0xd48($a2)
+0x8382c760 (rt 0x2382c760): sll        $a1, $a0, 5
+0x8382c764 (rt 0x2382c764): subu       $v1, $a1, $a0
+0x8382c768 (rt 0x2382c768): sll        $v0, $v1, 2
+0x8382c76c (rt 0x2382c76c): addu       $ra, $v0, $a0
+0x8382c770 (rt 0x2382c770): sll        $a1, $ra, 3
+0x8382c774 (rt 0x2382c774): jal        0x83443ea4
+0x8382c778 (rt 0x2382c778): move       $a0, $fp
+0x8382c77c (rt 0x2382c77c): j          0x8382cb0c
+0x8382c780 (rt 0x2382c780): addiu      $s4, $s2, 0x13c
+0x8382c784 (rt 0x2382c784): beqz       $fp, 0x8382c7bc
+0x8382c788 (rt 0x2382c788): nop        
+0x8382c78c (rt 0x2382c78c): jal        0x83444e68
+0x8382c790 (rt 0x2382c790): move       $a0, $fp
+0x8382c794 (rt 0x2382c794): bnez       $v0, 0x8382c7bc
+0x8382c798 (rt 0x2382c798): lui        $t4, 0x2861
+0x8382c79c (rt 0x2382c79c): lw         $t1, 0xd48($t4)
+0x8382c7a0 (rt 0x2382c7a0): move       $a0, $fp
+0x8382c7a4 (rt 0x2382c7a4): sll        $t3, $t1, 5
+0x8382c7a8 (rt 0x2382c7a8): subu       $t2, $t3, $t1
+0x8382c7ac (rt 0x2382c7ac): sll        $t0, $t2, 2
+0x8382c7b0 (rt 0x2382c7b0): addu       $a3, $t0, $t1
+0x8382c7b4 (rt 0x2382c7b4): jal        0x83443ea4
+0x8382c7b8 (rt 0x2382c7b8): sll        $a1, $a3, 3
+0x8382c7bc (rt 0x2382c7bc): lw         $a1, 0xe4($s2)
+0x8382c7c0 (rt 0x2382c7c0): beqz       $a1, 0x8382c7d0
+0x8382c7c4 (rt 0x2382c7c4): move       $s1, $a1
+0x8382c7c8 (rt 0x2382c7c8): j          0x8382c8d4
+0x8382c7cc (rt 0x2382c7cc): lw         $s0, 0xe8($s2)
+0x8382c7d0 (rt 0x2382c7d0): lw         $v0, 0x14c($s2)
+0x8382c7d4 (rt 0x2382c7d4): beqz       $v0, 0x8382c800
+0x8382c7d8 (rt 0x2382c7d8): nop        
+0x8382c7dc (rt 0x2382c7dc): bnez       $s6, 0x8382c7e8
+0x8382c7e0 (rt 0x2382c7e0): nop        
+0x8382c7e4 (rt 0x2382c7e4): move       $s6, $v0
+0x8382c7e8 (rt 0x2382c7e8): jal        0x8144df00
+0x8382c7ec (rt 0x2382c7ec): lw         $a0, 0xc($s6)
+0x8382c7f0 (rt 0x2382c7f0): jal        0x85932f70
+0x8382c7f4 (rt 0x2382c7f4): move       $a0, $s6
+0x8382c7f8 (rt 0x2382c7f8): move       $s6, $zero
+0x8382c7fc (rt 0x2382c7fc): sw         $zero, 0x14c($s2)
+0x8382c800 (rt 0x2382c800): lw         $t5, ($s4)
+0x8382c804 (rt 0x2382c804): bnez       $t5, 0x8382c858
+0x8382c808 (rt 0x2382c808): nop        
+0x8382c80c (rt 0x2382c80c): lw         $t7, 4($s2)
+0x8382c810 (rt 0x2382c810): andi       $t6, $t7, 2
+0x8382c814 (rt 0x2382c814): bnez       $t6, 0x8382c834
+0x8382c818 (rt 0x2382c818): move       $a0, $s2
+0x8382c81c (rt 0x2382c81c): move       $a1, $fp
+0x8382c820 (rt 0x2382c820): jal        0x8382bbdc
+0x8382c824 (rt 0x2382c824): addiu      $a2, $sp, 0x10
+0x8382c828 (rt 0x2382c828): jal        0x8344d830
+0x8382c82c (rt 0x2382c82c): nop        
+0x8382c830 (rt 0x2382c830): move       $a0, $s2
+0x8382c834 (rt 0x2382c834): jal        0x8382c074
+0x8382c838 (rt 0x2382c838): addiu      $a1, $sp, 0x14
+0x8382c83c (rt 0x2382c83c): bnez       $v0, 0x8382cb0c
+0x8382c840 (rt 0x2382c840): nop        
+0x8382c844 (rt 0x2382c844): lw         $s0, ($s4)
+0x8382c848 (rt 0x2382c848): bnez       $s0, 0x8382cb0c
+0x8382c84c (rt 0x2382c84c): nop        
+0x8382c850 (rt 0x2382c850): j          0x8382cb38
+0x8382c854 (rt 0x2382c854): sw         $zero, 0x1c($sp)
+0x8382c858 (rt 0x2382c858): jal        0x8343c780
+0x8382c85c (rt 0x2382c85c): move       $a0, $s4
+0x8382c860 (rt 0x2382c860): lw         $t8, 0x128($s2)
+0x8382c864 (rt 0x2382c864): lw         $s1, 4($v0)
+0x8382c868 (rt 0x2382c868): lw         $s0, 8($v0)
+0x8382c86c (rt 0x2382c86c): move       $s6, $v0
+0x8382c870 (rt 0x2382c870): beqz       $t8, 0x8382c8d4
+0x8382c874 (rt 0x2382c874): sw         $v0, 0x14c($s2)
+0x8382c878 (rt 0x2382c878): lui        $s4, 0x2861
+0x8382c87c (rt 0x2382c87c): lw         $s3, 0xd74($s4)
+0x8382c880 (rt 0x2382c880): bnez       $s3, 0x8382c894
+0x8382c884 (rt 0x2382c884): lui        $s6, 0x2861
+0x8382c888 (rt 0x2382c888): lw         $s5, 0xd4c($s6)
+0x8382c88c (rt 0x2382c88c): beqz       $s5, 0x8382c8a8
+0x8382c890 (rt 0x2382c890): nop        
+0x8382c894 (rt 0x2382c894): lui        $s7, 0x26b5
+0x8382c898 (rt 0x2382c898): addiu      $a1, $s7, 0x5aa8
+0x8382c89c (rt 0x2382c89c): move       $a0, $s2
+0x8382c8a0 (rt 0x2382c8a0): jal        0x8383dbac
+0x8382c8a4 (rt 0x2382c8a4): move       $a2, $s0
+0x8382c8a8 (rt 0x2382c8a8): beqz       $fp, 0x8382c8bc
+0x8382c8ac (rt 0x2382c8ac): move       $t9, $zero
+0x8382c8b0 (rt 0x2382c8b0): move       $ra, $zero
+0x8382c8b4 (rt 0x2382c8b4): sw         $ra, 4($fp)
+0x8382c8b8 (rt 0x2382c8b8): sw         $t9, ($fp)
+0x8382c8bc (rt 0x2382c8bc): move       $a0, $s2
+0x8382c8c0 (rt 0x2382c8c0): move       $a1, $s1
+0x8382c8c4 (rt 0x2382c8c4): jal        0x8383a384
+0x8382c8c8 (rt 0x2382c8c8): move       $a2, $s0
+0x8382c8cc (rt 0x2382c8cc): j          0x8382cb54
+0x8382c8d0 (rt 0x2382c8d0): lw         $ra, 0x44($sp)
+0x8382c8d4 (rt 0x2382c8d4): lw         $v0, 0x54($sp)
+0x8382c8d8 (rt 0x2382c8d8): beqz       $v0, 0x8382c724
+0x8382c8dc (rt 0x2382c8dc): addiu      $t9, $zero, 1
+0x8382c8e0 (rt 0x2382c8e0): lw         $a0, 0xec($s2)
+0x8382c8e4 (rt 0x2382c8e4): bnez       $a0, 0x8382ca4c
+0x8382c8e8 (rt 0x2382c8e8): sltiu      $a2, $s3, 4
+0x8382c8ec (rt 0x2382c8ec): sltu       $v1, $zero, $s0
+0x8382c8f0 (rt 0x2382c8f0): and        $a1, $a2, $v1
+0x8382c8f4 (rt 0x2382c8f4): beqz       $a1, 0x8382c940
+0x8382c8f8 (rt 0x2382c8f8): lui        $a3, 0x2665
+0x8382c8fc (rt 0x2382c8fc): lw         $a2, 0xf0($s2)
+
+==============================================================================
+## SSH2 报文循环
+## 0x838398a8-0x83839ad4  rt 0x238398a8
+## 调用 parser 0x83839458 与 ssh_receive 0x8382c5fc。
+==============================================================================
+0x838398a8 (rt 0x238398a8): addiu      $sp, $sp, -0x48
+0x838398ac (rt 0x238398ac): sw         $s5, 0x3c($sp)
+0x838398b0 (rt 0x238398b0): sw         $s4, 0x38($sp)
+0x838398b4 (rt 0x238398b4): sw         $s3, 0x34($sp)
+0x838398b8 (rt 0x238398b8): sw         $s2, 0x30($sp)
+0x838398bc (rt 0x238398bc): sw         $ra, 0x40($sp)
+0x838398c0 (rt 0x238398c0): sw         $s1, 0x2c($sp)
+0x838398c4 (rt 0x238398c4): sw         $s0, 0x28($sp)
+0x838398c8 (rt 0x238398c8): move       $s2, $a0
+0x838398cc (rt 0x238398cc): move       $s3, $a1
+0x838398d0 (rt 0x238398d0): lui        $s4, 0x2861
+0x838398d4 (rt 0x238398d4): lui        $s5, 0x2861
+0x838398d8 (rt 0x238398d8): move       $a0, $s2
+0x838398dc (rt 0x238398dc): jal        0x83839458
+0x838398e0 (rt 0x238398e0): move       $a1, $zero
+0x838398e4 (rt 0x238398e4): move       $s0, $v0
+0x838398e8 (rt 0x238398e8): addiu      $v0, $zero, 2
+0x838398ec (rt 0x238398ec): beq        $s0, $v0, 0x83839aa4
+0x838398f0 (rt 0x238398f0): slti       $v1, $s0, 3
+0x838398f4 (rt 0x238398f4): beqz       $v1, 0x83839914
+0x838398f8 (rt 0x238398f8): nop        
+0x838398fc (rt 0x238398fc): beqz       $s0, 0x83839930
+0x83839900 (rt 0x23839900): addiu      $a0, $zero, 1
+0x83839904 (rt 0x23839904): bne        $s0, $a0, 0x83839aac
+0x83839908 (rt 0x23839908): nop        
+0x8383990c (rt 0x2383990c): j          0x838399b4
+0x83839910 (rt 0x23839910): move       $a0, $s2
+0x83839914 (rt 0x23839914): addiu      $a1, $zero, 3
+0x83839918 (rt 0x23839918): beq        $s0, $a1, 0x83839a74
+0x8383991c (rt 0x2383991c): addiu      $a2, $zero, 4
+0x83839920 (rt 0x23839920): beq        $s0, $a2, 0x83839964
+0x83839924 (rt 0x23839924): lw         $a3, 0xd74($s4)
+0x83839928 (rt 0x23839928): j          0x83839ab0
+0x8383992c (rt 0x2383992c): move       $v0, $s0
+0x83839930 (rt 0x23839930): bnez       $s3, 0x8383993c
+0x83839934 (rt 0x23839934): addiu      $v0, $sp, 0x18
+0x83839938 (rt 0x23839938): move       $v0, $zero
+0x8383993c (rt 0x2383993c): move       $a0, $s2
+0x83839940 (rt 0x23839940): addiu      $a1, $sp, 0x20
+0x83839944 (rt 0x23839944): addiu      $a2, $sp, 0x24
+0x83839948 (rt 0x23839948): addiu      $a3, $zero, 1
+0x8383994c (rt 0x2383994c): jal        0x8382c5fc
+0x83839950 (rt 0x23839950): sw         $v0, 0x10($sp)
+0x83839954 (rt 0x23839954): bnez       $v0, 0x83839aa4
+0x83839958 (rt 0x23839958): addiu      $v0, $zero, -1
+0x8383995c (rt 0x2383995c): j          0x83839ab4
+0x83839960 (rt 0x23839960): lw         $ra, 0x40($sp)
+0x83839964 (rt 0x23839964): bnez       $a3, 0x83839974
+0x83839968 (rt 0x23839968): lw         $t0, 0xd4c($s5)
+0x8383996c (rt 0x2383996c): beqz       $t0, 0x83839aa4
+0x83839970 (rt 0x23839970): nop        
+0x83839974 (rt 0x23839974): jal        0x83838c24
+0x83839978 (rt 0x23839978): move       $a0, $s2
+0x8383997c (rt 0x2383997c): move       $a0, $s2
+0x83839980 (rt 0x23839980): jal        0x83838d08
+0x83839984 (rt 0x23839984): move       $a1, $zero
+0x83839988 (rt 0x23839988): beqz       $v0, 0x83839a6c
+0x8383998c (rt 0x2383998c): move       $s1, $v0
+0x83839990 (rt 0x23839990): lui        $t1, 0x26b5
+0x83839994 (rt 0x23839994): move       $a0, $s2
+0x83839998 (rt 0x23839998): addiu      $a1, $t1, 0x7940
+0x8383999c (rt 0x2383999c): jal        0x8383dbac
+0x838399a0 (rt 0x238399a0): move       $a2, $v0
+0x838399a4 (rt 0x238399a4): jal        0x85932f70
+0x838399a8 (rt 0x238399a8): move       $a0, $s1
+0x838399ac (rt 0x238399ac): j          0x83839aa4
+0x838399b0 (rt 0x238399b0): nop        
+0x838399b4 (rt 0x238399b4): jal        0x83838c4c
+0x838399b8 (rt 0x238399b8): lw         $s3, 0xc($s2)
+0x838399bc (rt 0x238399bc): move       $a0, $s2
+0x838399c0 (rt 0x238399c0): move       $a1, $zero
+0x838399c4 (rt 0x238399c4): jal        0x83838d08
+0x838399c8 (rt 0x238399c8): move       $s1, $v0
+0x838399cc (rt 0x238399cc): move       $s0, $v0
+0x838399d0 (rt 0x238399d0): beqz       $s0, 0x83839ab0
+0x838399d4 (rt 0x238399d4): addiu      $v0, $zero, -1
+0x838399d8 (rt 0x238399d8): lw         $t2, 0x124($s2)
+0x838399dc (rt 0x238399dc): beqz       $t2, 0x83839a0c
+0x838399e0 (rt 0x238399e0): lw         $t4, 0xd74($s4)
+0x838399e4 (rt 0x238399e4): jal        0x822807b4
+0x838399e8 (rt 0x238399e8): addiu      $a0, $s2, 0x9c
+0x838399ec (rt 0x238399ec): lui        $t3, 0x26b5
+0x838399f0 (rt 0x238399f0): addiu      $a0, $t3, 0x794c
+0x838399f4 (rt 0x238399f4): move       $a1, $v0
+0x838399f8 (rt 0x238399f8): move       $a2, $s1
+0x838399fc (rt 0x238399fc): jal        0x8225327c
+0x83839a00 (rt 0x23839a00): move       $a3, $s0
+0x83839a04 (rt 0x23839a04): j          0x83839a4c
+0x83839a08 (rt 0x23839a08): nop        
+0x83839a0c (rt 0x23839a0c): bnez       $t4, 0x83839a28
+0x83839a10 (rt 0x23839a10): lw         $t5, 0xd4c($s5)
+0x83839a14 (rt 0x23839a14): bnez       $t5, 0x83839a28
+0x83839a18 (rt 0x23839a18): lui        $t7, 0x2861
+0x83839a1c (rt 0x23839a1c): lw         $t6, 0xd50($t7)
+0x83839a20 (rt 0x23839a20): beqz       $t6, 0x83839a4c
+0x83839a24 (rt 0x23839a24): nop        
+0x83839a28 (rt 0x23839a28): jal        0x822807b4
+0x83839a2c (rt 0x23839a2c): addiu      $a0, $s2, 0x9c
+0x83839a30 (rt 0x23839a30): lui        $s4, 0x26b5
+0x83839a34 (rt 0x23839a34): addiu      $a1, $s4, 0x7974
+0x83839a38 (rt 0x23839a38): move       $a2, $v0
+0x83839a3c (rt 0x23839a3c): move       $a3, $s1
+0x83839a40 (rt 0x23839a40): move       $a0, $s2
+0x83839a44 (rt 0x23839a44): jal        0x8383dbac
+0x83839a48 (rt 0x23839a48): sw         $s0, 0x10($sp)
+0x83839a4c (rt 0x23839a4c): jal        0x85932f70
+0x83839a50 (rt 0x23839a50): move       $a0, $s0
+0x83839a54 (rt 0x23839a54): beqz       $s3, 0x83839a60
+0x83839a58 (rt 0x23839a58): addiu      $s0, $zero, 7
+0x83839a5c (rt 0x23839a5c): sw         $s0, 0x40($s3)
+0x83839a60 (rt 0x23839a60): lw         $a0, 0x14($s2)
+0x83839a64 (rt 0x23839a64): jal        0x8382b2e0
+0x83839a68 (rt 0x23839a68): move       $a1, $s2
+0x83839a6c (rt 0x23839a6c): j          0x83839ab0
+0x83839a70 (rt 0x23839a70): addiu      $v0, $zero, -1
+0x83839a74 (rt 0x23839a74): jal        0x83838c4c
+0x83839a78 (rt 0x23839a78): move       $a0, $s2
+0x83839a7c (rt 0x23839a7c): lw         $s1, 0xd74($s4)
+0x83839a80 (rt 0x23839a80): bnez       $s1, 0x83839a94
+0x83839a84 (rt 0x23839a84): move       $a2, $v0
+0x83839a88 (rt 0x23839a88): lw         $t8, 0xd4c($s5)
+0x83839a8c (rt 0x23839a8c): beqz       $t8, 0x83839aa4
+0x83839a90 (rt 0x23839a90): nop        
+0x83839a94 (rt 0x23839a94): lui        $t9, 0x26b5
+0x83839a98 (rt 0x23839a98): addiu      $a1, $t9, 0x7998
+0x83839a9c (rt 0x23839a9c): jal        0x8383dbac
+0x83839aa0 (rt 0x23839aa0): move       $a0, $s2
+0x83839aa4 (rt 0x23839aa4): bnez       $s3, 0x838398d8
+0x83839aa8 (rt 0x23839aa8): nop        
+0x83839aac (rt 0x23839aac): move       $v0, $s0
+0x83839ab0 (rt 0x23839ab0): lw         $ra, 0x40($sp)
+0x83839ab4 (rt 0x23839ab4): lw         $s5, 0x3c($sp)
+0x83839ab8 (rt 0x23839ab8): lw         $s4, 0x38($sp)
+0x83839abc (rt 0x23839abc): lw         $s3, 0x34($sp)
+0x83839ac0 (rt 0x23839ac0): lw         $s2, 0x30($sp)
+0x83839ac4 (rt 0x23839ac4): lw         $s1, 0x2c($sp)
+0x83839ac8 (rt 0x23839ac8): lw         $s0, 0x28($sp)
+0x83839acc (rt 0x23839acc): jr         $ra
+0x83839ad0 (rt 0x23839ad0): addiu      $sp, $sp, 0x48
+
+==============================================================================
+## SSH2 packet parser 开头
+## 0x83839458-0x838395a0  rt 0x23839458
+## 关联 Bad packet length / padding error / Corrupted MAC。
+==============================================================================
+0x83839458 (rt 0x23839458): addiu      $sp, $sp, -0x58
+0x8383945c (rt 0x2383945c): sw         $fp, 0x50($sp)
+0x83839460 (rt 0x23839460): sw         $ra, 0x54($sp)
+0x83839464 (rt 0x23839464): sw         $s7, 0x4c($sp)
+0x83839468 (rt 0x23839468): sw         $s6, 0x48($sp)
+0x8383946c (rt 0x2383946c): sw         $s5, 0x44($sp)
+0x83839470 (rt 0x23839470): sw         $s4, 0x40($sp)
+0x83839474 (rt 0x23839474): sw         $s3, 0x3c($sp)
+0x83839478 (rt 0x23839478): sw         $s2, 0x38($sp)
+0x8383947c (rt 0x2383947c): sw         $s1, 0x34($sp)
+0x83839480 (rt 0x23839480): sw         $s0, 0x30($sp)
+0x83839484 (rt 0x23839484): lw         $s2, 0xdc($a0)
+0x83839488 (rt 0x23839488): move       $fp, $a0
+0x8383948c (rt 0x2383948c): sw         $a1, 0x5c($sp)
+0x83839490 (rt 0x23839490): beqz       $s2, 0x83839874
+0x83839494 (rt 0x23839494): addiu      $v1, $zero, -1
+0x83839498 (rt 0x23839498): lw         $v0, 0x54($s2)
+0x8383949c (rt 0x2383949c): addiu      $s5, $s2, 0x10
+0x838394a0 (rt 0x238394a0): move       $s4, $zero
+0x838394a4 (rt 0x238394a4): beqz       $v0, 0x838394cc
+0x838394a8 (rt 0x238394a8): move       $s7, $zero
+0x838394ac (rt 0x238394ac): addiu      $s7, $v0, 0x20
+0x838394b0 (rt 0x238394b0): beqz       $s7, 0x838394cc
+0x838394b4 (rt 0x238394b4): move       $s4, $v0
+0x838394b8 (rt 0x238394b8): lw         $v0, 8($s7)
+0x838394bc (rt 0x238394bc): beqz       $v0, 0x838394cc
+0x838394c0 (rt 0x238394c0): nop        
+0x838394c4 (rt 0x238394c4): j          0x838394d0
+0x838394c8 (rt 0x238394c8): lw         $s6, 0xc($s7)
+0x838394cc (rt 0x238394cc): move       $s6, $zero
+0x838394d0 (rt 0x238394d0): beqz       $s4, 0x838394dc
+0x838394d4 (rt 0x238394d4): addiu      $s3, $zero, 8
+0x838394d8 (rt 0x238394d8): lw         $s3, 0x14($s4)
+0x838394dc (rt 0x238394dc): lw         $v1, 0x4c($s2)
+0x838394e0 (rt 0x238394e0): bnez       $v1, 0x838395f4
+0x838394e4 (rt 0x238394e4): move       $s1, $v1
+0x838394e8 (rt 0x238394e8): jal        0x83835560
+0x838394ec (rt 0x238394ec): move       $a0, $s5
+0x838394f0 (rt 0x238394f0): sltu       $a0, $v0, $s3
+0x838394f4 (rt 0x238394f4): bnez       $a0, 0x83839874
+0x838394f8 (rt 0x238394f8): move       $v1, $zero
+0x838394fc (rt 0x238394fc): jal        0x838352c8
+0x83839500 (rt 0x23839500): move       $a0, $s2
+0x83839504 (rt 0x23839504): beqz       $s4, 0x83839554
+0x83839508 (rt 0x23839508): nop        
+0x8383950c (rt 0x2383950c): lw         $a1, 0xc($s4)
+0x83839510 (rt 0x23839510): beqz       $a1, 0x83839554
+0x83839514 (rt 0x23839514): nop        
+0x83839518 (rt 0x23839518): move       $a0, $s2
+0x8383951c (rt 0x2383951c): jal        0x838353d4
+0x83839520 (rt 0x23839520): move       $a1, $s3
+0x83839524 (rt 0x23839524): move       $s0, $v0
+0x83839528 (rt 0x23839528): beqz       $v0, 0x83839874
+0x8383952c (rt 0x2383952c): addiu      $v1, $zero, -1
+0x83839530 (rt 0x23839530): jal        0x8383565c
+0x83839534 (rt 0x23839534): move       $a0, $s5
+0x83839538 (rt 0x23839538): move       $a1, $v0
+0x8383953c (rt 0x2383953c): move       $a0, $s4
+0x83839540 (rt 0x23839540): move       $a2, $s0
+0x83839544 (rt 0x23839544): jal        0x8383c7e4
+0x83839548 (rt 0x23839548): move       $a3, $s3
+0x8383954c (rt 0x2383954c): j          0x83839570
+0x83839550 (rt 0x23839550): move       $a0, $s5
+0x83839554 (rt 0x23839554): jal        0x8383565c
+0x83839558 (rt 0x23839558): move       $a0, $s5
+0x8383955c (rt 0x2383955c): move       $a1, $v0
+0x83839560 (rt 0x23839560): move       $a0, $s2
+0x83839564 (rt 0x23839564): jal        0x83835508
+0x83839568 (rt 0x23839568): move       $a2, $s3
+0x8383956c (rt 0x2383956c): move       $a0, $s5
+0x83839570 (rt 0x23839570): jal        0x838355f4
+0x83839574 (rt 0x23839574): move       $a1, $s3
+0x83839578 (rt 0x23839578): jal        0x8383565c
+0x8383957c (rt 0x2383957c): move       $a0, $s2
+0x83839580 (rt 0x23839580): lwl        $s1, ($v0)
+0x83839584 (rt 0x23839584): lwr        $s1, 3($v0)
+0x83839588 (rt 0x23839588): lui        $a3, 0x2861
+0x8383958c (rt 0x2383958c): sw         $s1, 0x4c($s2)
+0x83839590 (rt 0x23839590): lw         $a2, 0xd74($a3)
+0x83839594 (rt 0x23839594): bnez       $a2, 0x838395a8
+0x83839598 (rt 0x23839598): lui        $t1, 0x2861
+0x8383959c (rt 0x2383959c): lw         $t0, 0xd4c($t1)
+
+==============================================================================
+## SSH2 消息分发
+## 0x83839fcc-0x8383a124  rt 0x23839fcc
+## 按 message code 切换。
+==============================================================================
+0x83839fcc (rt 0x23839fcc): addiu      $sp, $sp, -0x28
+0x83839fd0 (rt 0x23839fd0): sw         $s2, 0x18($sp)
+0x83839fd4 (rt 0x23839fd4): sw         $s1, 0x14($sp)
+0x83839fd8 (rt 0x23839fd8): sw         $s0, 0x10($sp)
+0x83839fdc (rt 0x23839fdc): sw         $ra, 0x20($sp)
+0x83839fe0 (rt 0x23839fe0): sw         $s3, 0x1c($sp)
+0x83839fe4 (rt 0x23839fe4): lw         $v0, 0x58($a0)
+0x83839fe8 (rt 0x23839fe8): move       $s0, $a1
+0x83839fec (rt 0x23839fec): lui        $s1, 0x2861
+0x83839ff0 (rt 0x23839ff0): bnez       $v0, 0x8383a000
+0x83839ff4 (rt 0x23839ff4): lui        $s2, 0x2861
+0x83839ff8 (rt 0x23839ff8): j          0x8383a108
+0x83839ffc (rt 0x23839ffc): sw         $zero, 0x40($a0)
+0x8383a000 (rt 0x2383a000): jal        0x83839fc4
+0x8383a004 (rt 0x2383a004): move       $a0, $s0
+0x8383a008 (rt 0x2383a008): bltz       $v0, 0x8383a104
+0x8383a00c (rt 0x2383a00c): move       $a2, $v0
+0x8383a010 (rt 0x2383a010): addiu      $v0, $zero, 0x50
+0x8383a014 (rt 0x2383a014): beq        $a2, $v0, 0x8383a0c4
+0x8383a018 (rt 0x2383a018): slti       $v1, $a2, 0x51
+0x8383a01c (rt 0x2383a01c): beqz       $v1, 0x8383a038
+0x8383a020 (rt 0x2383a020): addiu      $a1, $zero, 0x5a
+0x8383a024 (rt 0x2383a024): addiu      $a0, $zero, 0x14
+0x8383a028 (rt 0x2383a028): beq        $a2, $a0, 0x8383a0d4
+0x8383a02c (rt 0x2383a02c): move       $a0, $s0
+0x8383a030 (rt 0x2383a030): j          0x8383a0fc
+0x8383a034 (rt 0x2383a034): lui        $s0, 0x26b5
+0x8383a038 (rt 0x2383a038): beq        $a2, $a1, 0x8383a050
+0x8383a03c (rt 0x2383a03c): addiu      $a3, $zero, 0x62
+0x8383a040 (rt 0x2383a040): bne        $a2, $a3, 0x8383a0f8
+0x8383a044 (rt 0x2383a044): move       $a0, $s0
+0x8383a048 (rt 0x2383a048): j          0x8383a084
+0x8383a04c (rt 0x2383a04c): lui        $t3, 0x26b5
+0x8383a050 (rt 0x2383a050): lw         $a2, 0xd74($s1)
+0x8383a054 (rt 0x2383a054): bnez       $a2, 0x8383a064
+0x8383a058 (rt 0x2383a058): lw         $t0, 0xd84($s2)
+0x8383a05c (rt 0x2383a05c): beqz       $t0, 0x8383a074
+0x8383a060 (rt 0x2383a060): nop        
+0x8383a064 (rt 0x2383a064): lui        $t1, 0x26b5
+0x8383a068 (rt 0x2383a068): addiu      $a1, $t1, 0x7a2c
+0x8383a06c (rt 0x2383a06c): jal        0x8383dbac
+0x8383a070 (rt 0x2383a070): move       $a0, $s0
+0x8383a074 (rt 0x2383a074): jal        0x83838d64
+0x8383a078 (rt 0x2383a078): move       $a0, $s0
+0x8383a07c (rt 0x2383a07c): j          0x8383a000
+0x8383a080 (rt 0x2383a080): nop        
+0x8383a084 (rt 0x2383a084): addiu      $a1, $t3, 0x7a0c
+0x8383a088 (rt 0x2383a088): jal        0x838390e0
+0x8383a08c (rt 0x2383a08c): move       $a0, $s0
+0x8383a090 (rt 0x2383a090): lw         $t2, 0xd74($s1)
+0x8383a094 (rt 0x2383a094): bnez       $t2, 0x8383a0a8
+0x8383a098 (rt 0x2383a098): move       $s3, $v0
+0x8383a09c (rt 0x2383a09c): lw         $t4, 0xd84($s2)
+0x8383a0a0 (rt 0x2383a0a0): beqz       $t4, 0x8383a0bc
+0x8383a0a4 (rt 0x2383a0a4): nop        
+0x8383a0a8 (rt 0x2383a0a8): lui        $t5, 0x2666
+0x8383a0ac (rt 0x2383a0ac): move       $a0, $s0
+0x8383a0b0 (rt 0x2383a0b0): addiu      $a1, $t5, 0x62ec
+0x8383a0b4 (rt 0x2383a0b4): jal        0x8383dbac
+0x8383a0b8 (rt 0x2383a0b8): move       $a2, $s3
+0x8383a0bc (rt 0x2383a0bc): j          0x8383a108
+0x8383a0c0 (rt 0x2383a0c0): move       $v0, $s3
+0x8383a0c4 (rt 0x2383a0c4): jal        0x83838b84
+0x8383a0c8 (rt 0x2383a0c8): move       $a0, $s0
+0x8383a0cc (rt 0x2383a0cc): j          0x8383a000
+0x8383a0d0 (rt 0x2383a0d0): nop        
+0x8383a0d4 (rt 0x2383a0d4): lw         $s3, 0xdc($s0)
+0x8383a0d8 (rt 0x2383a0d8): lw         $t7, 0x50($s3)
+0x8383a0dc (rt 0x2383a0dc): lw         $t6, 0x38($t7)
+0x8383a0e0 (rt 0x2383a0e0): beqz       $t6, 0x8383a000
+0x8383a0e4 (rt 0x2383a0e4): nop        
+0x8383a0e8 (rt 0x2383a0e8): jal        0x838367b0
+0x8383a0ec (rt 0x2383a0ec): move       $a0, $s0
+0x8383a0f0 (rt 0x2383a0f0): j          0x8383a000
+0x8383a0f4 (rt 0x2383a0f4): nop        
+0x8383a0f8 (rt 0x2383a0f8): lui        $s0, 0x26b5
+0x8383a0fc (rt 0x2383a0fc): jal        0x83838f18
+0x8383a100 (rt 0x2383a100): addiu      $a1, $s0, 0x79ec
+0x8383a104 (rt 0x2383a104): move       $v0, $zero
+0x8383a108 (rt 0x2383a108): lw         $ra, 0x20($sp)
+0x8383a10c (rt 0x2383a10c): lw         $s3, 0x1c($sp)
+0x8383a110 (rt 0x2383a110): lw         $s2, 0x18($sp)
+0x8383a114 (rt 0x2383a114): lw         $s1, 0x14($sp)
+0x8383a118 (rt 0x2383a118): lw         $s0, 0x10($sp)
+0x8383a11c (rt 0x2383a11c): jr         $ra
+0x8383a120 (rt 0x2383a120): addiu      $sp, $sp, 0x28
+
+==============================================================================
+## SSH 版本串构造
+## 0x8382edd8-0x8382f040  rt 0x2382edd8
+## 格式串 0x86b55e8c，Cisco-1.25 0x86b55e9c。
+==============================================================================
+0x8382edd8 (rt 0x2382edd8): addiu      $sp, $sp, -0x50
+0x8382eddc (rt 0x2382eddc): sw         $s3, 0x34($sp)
+0x8382ede0 (rt 0x2382ede0): move       $s3, $a0
+0x8382ede4 (rt 0x2382ede4): addiu      $a0, $zero, 0x28
+0x8382ede8 (rt 0x2382ede8): sw         $s7, 0x44($sp)
+0x8382edec (rt 0x2382edec): sw         $s6, 0x40($sp)
+0x8382edf0 (rt 0x2382edf0): sw         $s1, 0x2c($sp)
+0x8382edf4 (rt 0x2382edf4): sw         $s0, 0x28($sp)
+0x8382edf8 (rt 0x2382edf8): sw         $ra, 0x4c($sp)
+0x8382edfc (rt 0x2382edfc): sw         $fp, 0x48($sp)
+0x8382ee00 (rt 0x2382ee00): sw         $s5, 0x3c($sp)
+0x8382ee04 (rt 0x2382ee04): sw         $s4, 0x38($sp)
+0x8382ee08 (rt 0x2382ee08): sw         $s2, 0x30($sp)
+0x8382ee0c (rt 0x2382ee0c): move       $s1, $a1
+0x8382ee10 (rt 0x2382ee10): move       $s6, $a2
+0x8382ee14 (rt 0x2382ee14): jal        0x85932fac
+0x8382ee18 (rt 0x2382ee18): move       $s7, $a3
+0x8382ee1c (rt 0x2382ee1c): bnez       $v0, 0x8382eea0
+0x8382ee20 (rt 0x2382ee20): move       $s0, $v0
+0x8382ee24 (rt 0x2382ee24): addiu      $a0, $zero, 5
+0x8382ee28 (rt 0x2382ee28): sw         $a0, 0x40($s3)
+0x8382ee2c (rt 0x2382ee2c): lui        $v1, 0x2861
+0x8382ee30 (rt 0x2382ee30): lw         $v0, 0xd74($v1)
+0x8382ee34 (rt 0x2382ee34): bnez       $v0, 0x8382ee54
+0x8382ee38 (rt 0x2382ee38): lui        $a2, 0x2861
+0x8382ee3c (rt 0x2382ee3c): lw         $a1, 0xd84($a2)
+0x8382ee40 (rt 0x2382ee40): bnez       $a1, 0x8382ee54
+0x8382ee44 (rt 0x2382ee44): lui        $t0, 0x2861
+0x8382ee48 (rt 0x2382ee48): lw         $a3, 0xd50($t0)
+0x8382ee4c (rt 0x2382ee4c): beqz       $a3, 0x8382f028
+0x8382ee50 (rt 0x2382ee50): move       $v0, $zero
+0x8382ee54 (rt 0x2382ee54): lw         $t1, 0x124($s1)
+0x8382ee58 (rt 0x2382ee58): lui        $t2, 0x26b5
+0x8382ee5c (rt 0x2382ee5c): bnez       $t1, 0x8382ee6c
+0x8382ee60 (rt 0x2382ee60): addiu      $a1, $t2, 0x595c
+0x8382ee64 (rt 0x2382ee64): lui        $t3, 0x26b5
+0x8382ee68 (rt 0x2382ee68): addiu      $a1, $t3, 0x41b4
+0x8382ee6c (rt 0x2382ee6c): lw         $t6, 0x14($s1)
+0x8382ee70 (rt 0x2382ee70): addiu      $t4, $zero, 3
+0x8382ee74 (rt 0x2382ee74): lw         $t5, ($t6)
+0x8382ee78 (rt 0x2382ee78): bne        $t5, $t4, 0x8382ee8c
+0x8382ee7c (rt 0x2382ee7c): lw         $a2, 0x5c($s3)
+0x8382ee80 (rt 0x2382ee80): lui        $s0, 0x28bc
+0x8382ee84 (rt 0x2382ee84): lw         $t7, 0x66b4($s0)
+0x8382ee88 (rt 0x2382ee88): subu       $a2, $a2, $t7
+0x8382ee8c (rt 0x2382ee8c): lui        $s1, 0x26b5
+0x8382ee90 (rt 0x2382ee90): jal        0x8225327c
+0x8382ee94 (rt 0x2382ee94): addiu      $a0, $s1, 0x5e58
+0x8382ee98 (rt 0x2382ee98): j          0x8382f028
+0x8382ee9c (rt 0x2382ee9c): move       $v0, $zero
+0x8382eea0 (rt 0x2382eea0): lui        $t9, 0x26b5
+0x8382eea4 (rt 0x2382eea4): lui        $s4, 0x26b5
+0x8382eea8 (rt 0x2382eea8): lui        $s5, 0x26a1
+0x8382eeac (rt 0x2382eeac): addiu      $s2, $s4, 0x5e9c
+0x8382eeb0 (rt 0x2382eeb0): addiu      $a2, $t9, 0x5e8c
+0x8382eeb4 (rt 0x2382eeb4): move       $a0, $v0
+0x8382eeb8 (rt 0x2382eeb8): addiu      $a1, $zero, 0x28
+0x8382eebc (rt 0x2382eebc): addiu      $a3, $s5, 0x7780
+0x8382eec0 (rt 0x2382eec0): lui        $fp, 0x2861
+0x8382eec4 (rt 0x2382eec4): sw         $s2, 0x18($sp)
+0x8382eec8 (rt 0x2382eec8): sw         $s6, 0x10($sp)
+0x8382eecc (rt 0x2382eecc): jal        0x8593a6b0
+0x8382eed0 (rt 0x2382eed0): sw         $s7, 0x14($sp)
+0x8382eed4 (rt 0x2382eed4): lw         $t8, 0xd74($fp)
+0x8382eed8 (rt 0x2382eed8): bnez       $t8, 0x8382eef0
+0x8382eedc (rt 0x2382eedc): move       $s2, $v0
+0x8382eee0 (rt 0x2382eee0): lui        $v0, 0x2861
+0x8382eee4 (rt 0x2382eee4): lw         $ra, 0xd84($v0)
+0x8382eee8 (rt 0x2382eee8): beqz       $ra, 0x8382ef48
+0x8382eeec (rt 0x2382eeec): nop        
+0x8382eef0 (rt 0x2382eef0): lw         $v1, 0x124($s1)
+0x8382eef4 (rt 0x2382eef4): lui        $a0, 0x26b5
+0x8382eef8 (rt 0x2382eef8): bnez       $v1, 0x8382ef08
+0x8382eefc (rt 0x2382eefc): addiu      $a1, $a0, 0x595c
+0x8382ef00 (rt 0x2382ef00): lui        $a2, 0x26b5
+0x8382ef04 (rt 0x2382ef04): addiu      $a1, $a2, 0x41b4
+0x8382ef08 (rt 0x2382ef08): lw         $t1, 0x14($s1)
+0x8382ef0c (rt 0x2382ef0c): addiu      $a3, $zero, 3
+0x8382ef10 (rt 0x2382ef10): lw         $t0, ($t1)
+0x8382ef14 (rt 0x2382ef14): bne        $t0, $a3, 0x8382ef28
+0x8382ef18 (rt 0x2382ef18): lw         $a2, 0x5c($s3)
+0x8382ef1c (rt 0x2382ef1c): lui        $t3, 0x28bc
+0x8382ef20 (rt 0x2382ef20): lw         $t2, 0x66b4($t3)
+0x8382ef24 (rt 0x2382ef24): subu       $a2, $a2, $t2
+0x8382ef28 (rt 0x2382ef28): addiu      $t4, $s4, 0x5e9c
+0x8382ef2c (rt 0x2382ef2c): lui        $s4, 0x26b5
+0x8382ef30 (rt 0x2382ef30): addiu      $a0, $s4, 0x5ea8
+0x8382ef34 (rt 0x2382ef34): addiu      $a3, $s5, 0x7780
+0x8382ef38 (rt 0x2382ef38): sw         $s6, 0x10($sp)
+0x8382ef3c (rt 0x2382ef3c): sw         $s7, 0x14($sp)
+0x8382ef40 (rt 0x2382ef40): jal        0x8225327c
+0x8382ef44 (rt 0x2382ef44): sw         $t4, 0x18($sp)
+0x8382ef48 (rt 0x2382ef48): addiu      $s5, $sp, 0x20
+0x8382ef4c (rt 0x2382ef4c): move       $a2, $s2
+0x8382ef50 (rt 0x2382ef50): move       $a0, $s1
+0x8382ef54 (rt 0x2382ef54): move       $a1, $s0
+0x8382ef58 (rt 0x2382ef58): move       $a3, $zero
+0x8382ef5c (rt 0x2382ef5c): jal        0x8382c1c0
+0x8382ef60 (rt 0x2382ef60): sw         $s5, 0x10($sp)
+0x8382ef64 (rt 0x2382ef64): bnez       $v0, 0x8382efd8
+0x8382ef68 (rt 0x2382ef68): lw         $s6, 0xd74($fp)
+0x8382ef6c (rt 0x2382ef6c): bnez       $s6, 0x8382ef80
+0x8382ef70 (rt 0x2382ef70): lui        $fp, 0x2861
+0x8382ef74 (rt 0x2382ef74): lw         $s7, 0xd84($fp)
+0x8382ef78 (rt 0x2382ef78): beqz       $s7, 0x8382efc8
+0x8382ef7c (rt 0x2382ef7c): nop        
+0x8382ef80 (rt 0x2382ef80): lw         $t5, 0x124($s1)
+0x8382ef84 (rt 0x2382ef84): lui        $t6, 0x26b5
+0x8382ef88 (rt 0x2382ef88): bnez       $t5, 0x8382ef98
+0x8382ef8c (rt 0x2382ef8c): addiu      $a1, $t6, 0x595c
+0x8382ef90 (rt 0x2382ef90): lui        $t7, 0x26b5
+0x8382ef94 (rt 0x2382ef94): addiu      $a1, $t7, 0x41b4
+0x8382ef98 (rt 0x2382ef98): lw         $s2, 0x14($s1)
+0x8382ef9c (rt 0x2382ef9c): addiu      $s1, $zero, 3
+0x8382efa0 (rt 0x2382efa0): lw         $t8, ($s2)
+0x8382efa4 (rt 0x2382efa4): bne        $t8, $s1, 0x8382efb8
+0x8382efa8 (rt 0x2382efa8): lw         $a2, 0x5c($s3)
+0x8382efac (rt 0x2382efac): lui        $ra, 0x28bc
+0x8382efb0 (rt 0x2382efb0): lw         $t9, 0x66b4($ra)
+0x8382efb4 (rt 0x2382efb4): subu       $a2, $a2, $t9
+0x8382efb8 (rt 0x2382efb8): lbu        $a3, 0x43($s3)
+0x8382efbc (rt 0x2382efbc): lui        $s3, 0x26b5
+0x8382efc0 (rt 0x2382efc0): jal        0x8225327c
+0x8382efc4 (rt 0x2382efc4): addiu      $a0, $s3, 0x5ed8
+0x8382efc8 (rt 0x2382efc8): jal        0x85932f70
+0x8382efcc (rt 0x2382efcc): move       $a0, $s0
+0x8382efd0 (rt 0x2382efd0): j          0x8382f028
+0x8382efd4 (rt 0x2382efd4): move       $v0, $zero
+0x8382efd8 (rt 0x2382efd8): lw         $a1, 0x124($s1)
+0x8382efdc (rt 0x2382efdc): beqz       $a1, 0x8382eff4
+0x8382efe0 (rt 0x2382efe0): nop        
+0x8382efe4 (rt 0x2382efe4): j          0x8382eff8
+0x8382efe8 (rt 0x2382efe8): sw         $s0, 0x118($s1)
+0x8382efec (rt 0x2382efec): j          0x8382f024
+0x8382eff0 (rt 0x2382eff0): sb         $zero, ($s0)
+0x8382eff4 (rt 0x2382eff4): sw         $s0, 0x11c($s1)
+0x8382eff8 (rt 0x2382eff8): lbu        $v0, ($s0)
+0x8382effc (rt 0x2382effc): beqz       $v0, 0x8382f024
+0x8382f000 (rt 0x2382f000): xori       $a2, $v0, 0xa
+0x8382f004 (rt 0x2382f004): xori       $a3, $v0, 0xd
+0x8382f008 (rt 0x2382f008): sltiu      $a0, $a3, 1
+0x8382f00c (rt 0x2382f00c): sltiu      $v1, $a2, 1
+0x8382f010 (rt 0x2382f010): or         $v0, $a0, $v1
+0x8382f014 (rt 0x2382f014): bnez       $v0, 0x8382efec
+0x8382f018 (rt 0x2382f018): nop        
+0x8382f01c (rt 0x2382f01c): j          0x8382eff8
+0x8382f020 (rt 0x2382f020): addiu      $s0, $s0, 1
+0x8382f024 (rt 0x2382f024): addiu      $v0, $zero, 1
+0x8382f028 (rt 0x2382f028): lw         $ra, 0x4c($sp)
+0x8382f02c (rt 0x2382f02c): lw         $fp, 0x48($sp)
+0x8382f030 (rt 0x2382f030): lw         $s7, 0x44($sp)
+0x8382f034 (rt 0x2382f034): lw         $s6, 0x40($sp)
+0x8382f038 (rt 0x2382f038): lw         $s5, 0x3c($sp)
+0x8382f03c (rt 0x2382f03c): lw         $s4, 0x38($sp)
+

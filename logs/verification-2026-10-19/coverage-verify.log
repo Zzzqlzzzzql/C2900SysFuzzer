@@ -1,0 +1,26 @@
+== 清理旧实例 ==
+== 以暂停状态启动（-S，m7） ==
+C2900 fuzz QEMU 已启动（tmux session=c2900fuzz）
+  固件：<C2900_PKG>/firmware/C2900-UN.150.BIN
+  配置：<PROJECT_ROOT>/runtime/c2900-ios-m7.json
+  串口：<PROJECT_ROOT>/runtime/run/serial.log
+  覆盖率：<PROJECT_ROOT>/runtime/run/Logs/coverage.log
+  监视器：<PROJECT_ROOT>/runtime/run/monitor.sock（socat - UNIX-CONNECT:<PROJECT_ROOT>/runtime/run/monitor.sock）
+  forkserver：/tmp/qemu_fuzz_ctl、/tmp/qemu_fuzz_st
+  等待 banner：<PROJECT_ROOT>/runtime/start_c2900_fuzz.sh wait
+  注意：CPU 以暂停状态启动（-S），用 monitor 的 cont 恢复
+  停止：<PROJECT_ROOT>/runtime/start_c2900_fuzz.sh stop
+  paused: edges=0 sum=0
+== cont：guest 开始执行 ==
+  running: edges=1544 sum=16942 hash=c5313d37b8bf9f31
+== stop：冻结后 bitmap 必须不变 ==
+  stopped: edges=1544/1544 sum=17035/17035 hash=d1e4af68f40ce9ab/d1e4af68f40ce9ab
+== cont：bitmap 必须再次变化 ==
+  resumed: edges=1544 sum=17887 hash=23abd45c27ada055
+== 快照 + loadvm：每轮 reset 必须清空/大幅缩小 bitmap ==
+  snapshot(mid-boot): edges=1544 hash=29c2af5f37088c60
+  after 0x02: edges=20 hash=b119f7c9fb7b061b
+  after 0x03: edges=20 hash=d5902ce0621873a4
+
+PASS：覆盖率是 guest 执行实时写入的；VM 停止时冻结；每轮 loadvm 后重置。
+  paused 0 / running 1544 / stopped 1544 / resumed 1544 / snapshot 1544 / round 20 / end 20

@@ -1,0 +1,24 @@
+[2026-10-19 14:26:18] [INFO] config loaded: <PROJECT_ROOT>/runtime/c2900-ios.json
+[2026-10-19 14:26:18] [INFO] mode: 3, target: ios, debug: false
+[2026-10-19 14:26:18] [INFO] coverage: range=0x0000000001000000-0x0000000005956000 addr_mode=phys runtime_delta=0x0000000060000000
+[2026-10-19 14:26:18] [INFO] inst_ratio: 65536
+[2026-10-19 14:26:18] [INFO] entry instructions: 
+[2026-10-19 14:26:18] [INFO] entry addr: 0x0000000000000000  text_start: 0x0000000081000000  text_size: 0x0000000004956000
+[2026-10-19 14:26:19] [INFO] alias merge #1: canon=0x000000000111c704 virt 0xffffffff8111c704 -> 0x000000002111c704
+[2026-10-19 14:26:19] [INFO] alias merge #2: canon=0x000000000111c73c virt 0xffffffff8111c73c -> 0x000000002111c73c
+[2026-10-19 14:26:19] [INFO] alias merge #3: canon=0x000000000111c764 virt 0xffffffff8111c764 -> 0x000000002111c764
+[2026-10-19 14:26:19] [INFO] alias merge #4: canon=0x000000000111c76c virt 0xffffffff8111c76c -> 0x000000002111c76c
+[2026-10-19 14:26:19] [INFO] alias merge #5: canon=0x000000000111c778 virt 0xffffffff8111c778 -> 0x000000002111c778
+[2026-10-19 14:26:19] [INFO] alias merge #6: canon=0x000000000111c784 virt 0xffffffff8111c784 -> 0x000000002111c784
+[2026-10-19 14:26:19] [INFO] alias merge #7: canon=0x000000000111c78c virt 0xffffffff8111c78c -> 0x000000002111c78c
+[2026-10-19 14:26:19] [INFO] alias merge #8: canon=0x000000000111c798 virt 0xffffffff8111c798 -> 0x000000002111c798
+[2026-10-19 14:34:45] [INFO] coverage captured at snapshot save, before any fuzz round
+[2026-10-19 14:34:45] [INFO] ios tb stats: seen=5997175890 phys_missing=0 in_range=5997055097 out_range=120793 virt[kseg0=0 runtime=5997039067 other=136823] alias_merge=57197660 (range 0x0000000001000000-0x0000000005956000)
+[2026-10-19 14:34:45] [INFO] 138532 TB entries collected
+[2026-10-19 14:34:45] [INFO] edge coverage: 62004 edges hit
+[2026-10-19 14:34:45] [INFO] exit status: 0xdeadbeef (timeout sentinel, program did not exit)
+[2026-10-19 14:34:54] [INFO] coverage after fuzz round 1
+[2026-10-19 14:34:54] [INFO] ios tb stats: seen=24901046 phys_missing=0 in_range=24901046 out_range=0 virt[kseg0=0 runtime=24901046 other=0] alias_merge=0 (range 0x0000000001000000-0x0000000005956000)
+[2026-10-19 14:34:54] [INFO] 138532 TB entries collected
+[2026-10-19 14:34:54] [INFO] edge coverage: 62003 edges hit
+[2026-10-19 14:34:54] [INFO] exit status: 0xdeadbeef (timeout sentinel, program did not exit)

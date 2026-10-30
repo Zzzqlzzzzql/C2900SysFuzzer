@@ -1,0 +1,30 @@
+[2026-10-19 14:17:10] [INFO] config loaded: <PROJECT_ROOT>/runtime/c2900-ios.json
+[2026-10-19 14:17:10] [INFO] mode: 3, target: ios, debug: false
+[2026-10-19 14:17:10] [INFO] coverage: range=0x0000000001000000-0x0000000005956000 addr_mode=phys runtime_delta=0x0000000060000000
+[2026-10-19 14:17:10] [INFO] inst_ratio: 65536
+[2026-10-19 14:17:10] [INFO] entry instructions: 
+[2026-10-19 14:17:10] [INFO] entry addr: 0x0000000000000000  text_start: 0x0000000081000000  text_size: 0x0000000004956000
+[2026-10-19 14:25:03] [INFO] coverage captured at snapshot save, before any fuzz round
+[2026-10-19 14:25:03] [INFO] 138505 TB entries collected
+[2026-10-19 14:25:03] [INFO] edge coverage: 61987 edges hit
+[2026-10-19 14:25:03] [INFO] exit status: 0xdeadbeef (timeout sentinel, program did not exit)
+[2026-10-19 14:25:12] [INFO] coverage after fuzz round 1
+[2026-10-19 14:25:12] [INFO] 138505 TB entries collected
+[2026-10-19 14:25:12] [INFO] edge coverage: 61988 edges hit
+[2026-10-19 14:25:12] [INFO] exit status: 0xdeadbeef (timeout sentinel, program did not exit)
+[2026-10-19 14:25:36] [INFO] coverage captured at snapshot save, before any fuzz round
+[2026-10-19 14:25:36] [INFO] 138505 TB entries collected
+[2026-10-19 14:25:36] [INFO] edge coverage: 61988 edges hit
+[2026-10-19 14:25:36] [INFO] exit status: 0xdeadbeef (timeout sentinel, program did not exit)
+[2026-10-19 14:25:38] [INFO] coverage after fuzz round 2
+[2026-10-19 14:25:38] [INFO] 138505 TB entries collected
+[2026-10-19 14:25:38] [INFO] edge coverage: 61988 edges hit
+[2026-10-19 14:25:38] [INFO] exit status: 0xdeadbeef (timeout sentinel, program did not exit)
+[2026-10-19 14:25:40] [INFO] coverage after fuzz round 3
+[2026-10-19 14:25:40] [INFO] 138505 TB entries collected
+[2026-10-19 14:25:40] [INFO] edge coverage: 61988 edges hit
+[2026-10-19 14:25:40] [INFO] exit status: 0xdeadbeef (timeout sentinel, program did not exit)
+[2026-10-19 14:25:43] [INFO] coverage after fuzz round 4
+[2026-10-19 14:25:43] [INFO] 138505 TB entries collected
+[2026-10-19 14:25:43] [INFO] edge coverage: 61987 edges hit
+[2026-10-19 14:25:43] [INFO] exit status: 0xdeadbeef (timeout sentinel, program did not exit)

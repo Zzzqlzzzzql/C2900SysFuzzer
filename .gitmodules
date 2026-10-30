@@ -1,0 +1,3 @@
+[submodule "vendor/aflnet"]
+	path = vendor/aflnet
+	url = https://github.com/aflnet/aflnet.git
